@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import validates
 
 
 class User(db.Model, UserMixin):
@@ -10,8 +11,12 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    firstName = db.Column(db.String(25), nullable=False)
+    lastName = db.Column(db.String(25), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    phoneNumber = db.Column(db.String(10))
+    authLevel = db.Column(db.Integer, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     @property
@@ -29,5 +34,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'email': self.email,
+            'phoneNumber': self.phoneNumber,
         }
