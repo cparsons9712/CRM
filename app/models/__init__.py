@@ -5,3 +5,4 @@ from .user import User
 from .client import Client
 from .notes import Note
 from .task import Task
+from .avaliability import Availability
