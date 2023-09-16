@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     phoneNumber = db.Column(db.String(10))
     authLevel = db.Column(db.Integer, nullable=False)
+    aboutMe = db.Column(db.String(255))
+    title= db.Column(db.String(50))
     hashed_password = db.Column(db.String(255), nullable=False)
 
     @property
@@ -38,4 +40,7 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'email': self.email,
             'phoneNumber': self.phoneNumber,
+            'authLevel': self.authLevel,
+            'aboutMe': self.aboutMe,
+            'title': self.title
         }
