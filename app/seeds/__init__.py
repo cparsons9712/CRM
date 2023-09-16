@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .notes import seed_notes, undo_notes
 from .task import seed_tasks, undo_tasks
+from .avaliability import seed_availability, undo_availability
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,10 +22,12 @@ def seed():
         undo_users()
         undo_notes()
         undo_tasks()
+        undo_availability()
 
     seed_users()
     seed_notes()
     seed_tasks()
+    seed_availability()
 
 
 
@@ -34,3 +37,4 @@ def undo():
     undo_users()
     undo_notes()
     undo_tasks()
+    undo_availability()

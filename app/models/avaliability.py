@@ -15,7 +15,7 @@ class Availability(db.Model):
     endTime = db.Column(db.Time, nullable=False)
 
     @validates('dayOfWeek')
-    def validate_dayOfWeek(self, value):
+    def validate_dayOfWeek(self, key, value):
         # Ensure dayOfWeek is one of the allowed values
         allowed_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
         if value not in allowed_days:
