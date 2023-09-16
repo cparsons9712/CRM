@@ -16,13 +16,13 @@ class Task(db.Model):
     completed = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.Date)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
-    completedAt = db.Column(db.DateTime)
+  
 
     freelancerRef = db.relationship('User', foreign_keys='Task.freelancerId')
     clientRef = db.relationship('User', foreign_keys='Task.clientId')
 
     @validates('priority')
-    def validate_priority(self, value):
+    def validate_priority(self, key, value):
         # Ensure priority is one of the allowed values
         allowed_priorities = ['Low', 'Med', 'High']
         if value not in allowed_priorities:
@@ -33,7 +33,7 @@ class Task(db.Model):
         return {
             "id": self.id,
             "freelancerId": self.freelancerId,
-            "clientId": self.clientId,
+            "clientInfo": self.clientRef.to_dict(),
             "description": self.description,
             "priority": self.priority,
             "completed": self.completed,

@@ -23,9 +23,7 @@ class Booking(db.Model):
     def to_dict(self):
         return {
             "id" : self.id,
-            "freelancerId" :self.freelancerId,
             "freelancerInfo": self.freelancerRef.to_dict(),
-            "clientId": self.clientId,
             "clientInfo": self.clientRef.to_dict(),
             "day" : self.day,
             "time" : self.time,

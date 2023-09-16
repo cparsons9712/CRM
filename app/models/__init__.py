@@ -9,3 +9,4 @@ from .avaliability import Availability
 from .booking import Booking
 from .message import Message
 from .service import Service
+from .review import Review

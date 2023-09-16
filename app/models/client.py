@@ -14,18 +14,9 @@ class Client(db.Model):
     freelancerRef = db.relationship('User', foreign_keys='Client.freelancerId')
     clientRef = db.relationship('User', foreign_keys='Client.clientId')
 
-    def to_dict_clientInfo(self):
+    def to_dict(self):
         return {
             'id': self.id,
-            'freelancer_id': self.freelancerId,
-            'client_id': self.clientId,
-            'client_info': self.clientRef.to_dict()
-        }
-
-    def to_dict_freelancerInfo(self):
-        return {
-            'id': self.id,
-            'client_id': self.clientId,
-            'freelancer_id': self.freelancerId,
+            'client_info': self.clientRef.to_dict(),
             'freelancer_info': self.freelancerRef.to_dict()
         }
