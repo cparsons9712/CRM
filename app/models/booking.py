@@ -17,8 +17,8 @@ class Booking(db.Model):
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-    freelancerRef = db.relationship('User', foreign_keys='Client.freelancerId')
-    clientRef = db.relationship('User', foreign_keys='Client.clientId')
+    freelancerRef = db.relationship('User', foreign_keys='Booking.freelancerId')
+    clientRef = db.relationship('User', foreign_keys='Booking.clientId')
 
     def to_dict(self):
         return {
