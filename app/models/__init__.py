@@ -4,3 +4,4 @@ from .db import environment, SCHEMA
 from .user import User
 from .client import Client
 from .notes import Note
+from .task import Task
