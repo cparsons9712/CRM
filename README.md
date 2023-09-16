@@ -23,9 +23,7 @@ This is the starter for the Flask React project.
 
 6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
 
-     ```bash
-   pipenv run flask db migrate -m "create packages table"
-   ```
+
 
    ```bash
    pipenv shell
@@ -34,6 +32,11 @@ This is the starter for the Flask React project.
    ```bash
    flask db upgrade
    ```
+
+   ```bash
+   pipenv run flask db migrate -m "create packages table"
+   ```
+
 
    ```bash
    flask seed all
