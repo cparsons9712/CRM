@@ -6,6 +6,7 @@ from .avaliability import seed_availability, undo_availability
 from .booking import seed_bookings, undo_bookings
 from .message import seed_messages, undo_messages
 from .service import seed_services, undo_services
+from .review import seed_reviews, undo_reviews
 
 from app.models.db import db, environment, SCHEMA
 
@@ -29,6 +30,7 @@ def seed():
         undo_bookings()
         undo_messages()
         undo_services()
+        undo_reviews()
 
     seed_users()
     seed_notes()
@@ -37,7 +39,7 @@ def seed():
     seed_bookings()
     seed_messages()
     seed_services()
-
+    seed_reviews()
 
 
 # Creates the `flask seed undo` command
@@ -50,3 +52,4 @@ def undo():
     undo_bookings()
     undo_messages()
     undo_services()
+    undo_reviews()
