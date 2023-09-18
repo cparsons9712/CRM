@@ -32,7 +32,7 @@ def seed_services():
     four = Service(
         freelancerId= 4,
         name= "Painting Services",
-        description= "Do you want to paint your house but don't want to go through the work and save your time? Count on me to perform the service. Choose the color, explain your project to me and let me do it. Rest assured, my years of experience will leave your home looking amazing, without you taking any risks.",
+        description= "Do you want to paint your house but don't want to go through the work and save your time? Rest assured, my years of experience will leave your home looking amazing, without you taking any risks.",
 
     )
 
