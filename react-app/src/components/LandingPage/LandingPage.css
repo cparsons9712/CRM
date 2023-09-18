@@ -1,0 +1,15 @@
+.landingHeader{
+
+    padding: 20px;
+    text-align: center;
+    color: #020202; /* Text color on the background image */
+    text-shadow: 2px 2px 5px black;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+}
+.landingCont{
+    background-image: url('../../images/TealBackground.png');
+    background-size: cover;
+}

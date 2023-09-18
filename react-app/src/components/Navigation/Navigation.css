@@ -1,7 +1,32 @@
 .profile-dropdown {
   position: absolute;
+  right: 10px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hidden {
   display: none;
+}
+.NavBarCont{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #2F838E;
+  justify-content: space-between;
+}
+.logo{
+  height:75px;
+}
+.bantam{
+  font-family: 'Kirsty';
+  color: #333333;
+}
+
+.userIcon{
+  color: #333333;
+  height: 45px;
+  cursor: pointer;
+  margin: 15px;
 }
