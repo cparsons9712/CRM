@@ -4,6 +4,7 @@ from .notes import seed_notes, undo_notes
 from .task import seed_tasks, undo_tasks
 from .avaliability import seed_availability, undo_availability
 from .booking import seed_bookings, undo_bookings
+from .message import seed_messages, undo_messages
 
 from app.models.db import db, environment, SCHEMA
 
@@ -25,12 +26,14 @@ def seed():
         undo_tasks()
         undo_availability()
         undo_bookings()
+        undo_messages()
 
     seed_users()
     seed_notes()
     seed_tasks()
     seed_availability()
     seed_bookings()
+    seed_messages()
 
 
 
@@ -42,3 +45,4 @@ def undo():
     undo_tasks()
     undo_availability()
     undo_bookings()
+    undo_messages()
