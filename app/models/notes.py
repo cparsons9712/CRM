@@ -22,8 +22,7 @@ class Note(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "freelancerId": self.freelancerId,
-            "clientInfo": self.clientRef.to_dict(),
+            "clientId": self.clientId,
             "text": self.text,
             "createdAt": self.createdAt
         }
