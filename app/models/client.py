@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import validates
+from flask_login import current_user
 
 class Client(db.Model):
     __tablename__ = 'clients'
@@ -15,8 +16,12 @@ class Client(db.Model):
     clientRef = db.relationship('User', foreign_keys='Client.clientId')
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'client_info': self.clientRef.to_dict(),
-            'freelancer_info': self.freelancerRef.to_dict()
-        }
+
+        if current_user.authLevel == 1:
+            client = self.clientRef.to_dict()
+            res = {'id':client['id'], 'firstName': client['firstName'], 'lastName': client['lastName'], 'email': client['email'], 'phoneNumber': client['phoneNumber'] }
+            return res
+        else:
+            freelancer = self.freelancerRef.to_dict()
+            res = {'id': freelancer['id'], 'firstName': freelancer['firstName'], 'lastName': freelancer['lastName'], 'email': freelancer['email'], 'phoneNumber': freelancer['phoneNumber'], 'title': freelancer['title']}
+            return res

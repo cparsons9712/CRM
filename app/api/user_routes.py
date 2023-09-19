@@ -23,3 +23,12 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/freelancers')
+@login_required
+def freelancers():
+    """
+    Query for all freelancers and return them in an array
+    """
+    freelancers = User.query.filter(User.authLevel == 1).all()
+    return {'Freelancers': [freelancer.to_dict() for freelancer in freelancers]}
