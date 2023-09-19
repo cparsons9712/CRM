@@ -27,7 +27,7 @@ class SignUpForm(FlaskForm):
     password = StringField('password', validators=[DataRequired()])
     firstName = StringField('first name', validators=[DataRequired()])
     lastName = StringField('last name', validators=[DataRequired()])
-    phoneNumber = StringField('phone number', validators=[DataRequired()])
+    phoneNumber = StringField('phone number' )
     authLevel = SelectField("auth level", choices=[(0, "Client"), (1, "Freelancer")],validators=[DataRequired()], coerce=int )
     aboutMe = StringField('about me')
     title = StringField('title')

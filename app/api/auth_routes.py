@@ -62,9 +62,7 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # new user class
         user = User()
-        # populate with info from form
         form.populate_obj(user)
         db.session.add(user)
         db.session.commit()
