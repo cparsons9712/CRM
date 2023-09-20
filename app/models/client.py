@@ -23,5 +23,5 @@ class Client(db.Model):
             return res
         else:
             freelancer = self.freelancerRef.to_dict()
-            res = {'id': freelancer['id'], 'firstName': freelancer['firstName'], 'lastName': freelancer['lastName'], 'email': freelancer['email'], 'phoneNumber': freelancer['phoneNumber'], 'title': freelancer['title']}
+            res = {'id': freelancer['id'], 'firstName': freelancer['firstName'], 'lastName': freelancer['lastName'], 'email': freelancer['email'], 'phoneNumber': freelancer['phoneNumber'], 'title': freelancer['title'], 'aboutMe': freelancer['aboutMe']}
             return res
