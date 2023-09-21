@@ -1,10 +1,42 @@
 import SignupFormPage from "../SignupFormPage"
 import './LandingPage.css'
 
+
+import { useDispatch } from "react-redux";
+import { createRelationship } from "../../store/relationships";
+import { useState } from "react";
+
+
+
+
 function LandingPage(){
+  const [otherId, setOtherId] = useState()
+  const dispatch = useDispatch();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const newRelationship = {otherId}
+    await dispatch(createRelationship(newRelationship))
+
+  }
 
     return (
     <div className="landingCont">
+      <form onSubmit={handleSubmit}>
+        <label>other Id</label>
+        <input
+          type= 'number'
+          value={otherId}
+          onChange={e => {setOtherId(e.target.value)}}
+        />
+        <button onClick={(e) => {handleSubmit(e)}}>
+        Submit
+        </button>
+
+
+      </form>
+
+
         <div className="landingHeader">
           <h1>Your Village Starts Here!</h1>
           <p>Life is easier with support. Find the perfect person to help with any aspect of your life.</p>

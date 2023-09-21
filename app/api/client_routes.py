@@ -45,19 +45,27 @@ def newRelationship():
     form = ClientForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print('!!!!!!!!!!!!!!!!!!!!!!!')
+    print(form.data)
     if form.validate_on_submit():
+        print('!!!!!!!!!!!!!!!!!!!!!!!')
+        print(form.data)
+
         if current_user.authLevel == 1:
             relationship = Client(
                 freelancerId = current_user.id,
-                clientId = form.data['otherId']
+                clientId = +form.data['otherId']
             )
+            db.session.add(relationship)
+            db.session.commit()
+            return {'Client' : relationship.to_dict()}
 
         else:
             relationship = Client(
                 clientId = current_user.id,
-                freelancerId = form.data['otherId']
+                freelancerId = +form.data['otherId']
             )
-        db.session.add(relationship)
-        db.session.commit()
-        return relationship.to_dict()
+            db.session.add(relationship)
+            db.session.commit()
+            return {'Freelancer': relationship.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 422

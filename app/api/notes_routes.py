@@ -26,7 +26,7 @@ def notes(client_id):
         return {'errors': {'Unauthorized': 'Freelancer does not have an existing client relationship with this user.'}}, 401
     notes = Note.query.filter((Note.clientId == client_id) & (Note.freelancerId == current_user.id)).all()
 
-    return {"Notes": [note.to_dict() for note in notes]}
+    return  [note.to_dict() for note in notes]
 
 @note_routes.route('/<client_id>', methods=['POST'])
 @login_required

@@ -23,4 +23,4 @@ def userExist(form, field):
         raise ValidationError('No user exist under that id')
 
 class ClientForm(FlaskForm):
-    otherId = IntegerField('other Id', validators=[DataRequired(), relationship_exists, userExist])
+    otherId = IntegerField('otherId', validators=[DataRequired(), relationship_exists, userExist])
