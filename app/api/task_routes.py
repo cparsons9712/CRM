@@ -24,7 +24,7 @@ def task():
 
     tasks = Task.query.filter(Task.freelancerId == current_user.id).all()
 
-    return {"Task": [task.to_dict() for task in tasks]}
+    return [task.to_dict() for task in tasks]
 
 @task_routes.route('/<client_id>')
 @login_required
@@ -37,7 +37,7 @@ def clientTask(client_id):
         return {'errors': {'Unauthorized': 'Freelancer does not have an existing client relationship with this user.'}}, 401
     tasks = Task.query.filter((Task.freelancerId == current_user.id) & (Task.clientId == client_id)).all()
 
-    return {"Task": [task.to_dict() for task in tasks]}
+    return  [task.to_dict() for task in tasks]
 
 @task_routes.route('/', methods=['POST'])
 @login_required

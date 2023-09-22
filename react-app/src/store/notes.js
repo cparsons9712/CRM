@@ -92,7 +92,7 @@ export const removeNote = note_id => async dispatch => {
     })
     if (response.ok){
         dispatch(deleteNote(note_id))
-        return null
+        return {"message": "Task Deleted Successfully"}
     }else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
