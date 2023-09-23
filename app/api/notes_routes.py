@@ -15,16 +15,14 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@note_routes.route('/<client_id>')
+@note_routes.route('/')
 @login_required
-def notes(client_id):
+def notes():
     """
-    Get all the notes that the signed in user has made for a client
+    Get all the notes that the signed in user has made
     """
-    relationship = Client.query.filter((Client.clientId == client_id) & (Client.freelancerId == current_user.id)).first()
-    if relationship is None:
-        return {'errors': {'Unauthorized': 'Freelancer does not have an existing client relationship with this user.'}}, 401
-    notes = Note.query.filter((Note.clientId == client_id) & (Note.freelancerId == current_user.id)).all()
+
+    notes = Note.query.filter( Note.freelancerId == current_user.id).all()
 
     return  [note.to_dict() for note in notes]
 

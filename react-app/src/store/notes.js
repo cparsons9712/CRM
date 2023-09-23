@@ -17,8 +17,9 @@ const deleteNote = id => ({
     id
 })
 
-export const loadClientNotes = (clientId) => async dispatch => {
-    const response = await fetch(`api/notes/${clientId}`)
+export const loadClientNotes = () => async dispatch => {
+
+    const response = await fetch(`/api/notes/`)
     if (response.ok) {
         const data = await response.json()
         dispatch(getClientsNotes(data))
@@ -33,7 +34,7 @@ export const loadClientNotes = (clientId) => async dispatch => {
 }
 
 export const createNote = (client_id, payload ) => async dispatch =>{
-    const response = await fetch(`api/notes/${client_id}`, {
+    const response = await fetch(`/api/notes/${client_id}`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -108,19 +109,25 @@ const initialState = {byClient:{}, all:{}}
 
 export default function reducer(state = initialState, action) {
 	const copyState = {byClient:{...state.byClient}, all:{...state.all}}
-
+	const cleanState = {all: {}, byClient: {}}
 
 	switch (action.type) {
 		case GET_CLIENTS_NOTES:
-			// Get the client ID from one of the notes so that we dont need to pass it down, then set that key in the byClient object to an empty array so we dont accidently pollute our data with outdated information
-			const clientId = action.payload[0].clientId;
-			copyState.byClient[clientId] = [];
+			// Check to make sure theres something in the payload or you'll get errors
+			if (action.payload.length){
+
 			// we will have an all object sorted by note id to make it easy to find the specific note we need to update or delete and we will have an array of ids for each client id so when we open up a client folder we can find the data we need quicker
-			action.payload.forEach((note) => {
-				copyState.all[note.id] = note;
-				copyState.byClient[clientId].push(note.id);
-			});
-			return copyState;
+				action.payload.forEach((note) => {
+					let clientId = note.clientId
+					cleanState.all[note.id] = note;
+					if(!cleanState.byClient[clientId]){
+						cleanState.byClient[clientId] = [];
+					}
+					cleanState.byClient[clientId].push(note.id);
+				});
+			}
+
+			return cleanState;
 
 		case CREATE_UPDATE_NOTE:
 			const note = action.payload
