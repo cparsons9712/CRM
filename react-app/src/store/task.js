@@ -17,13 +17,17 @@ const deleteTask = id => ({
     type: DELETE_TASK,
     id
 })
-export const loadAllTask = (clientId) => async dispatch => {
-    const response = await fetch(`api/notes/${clientId}`)
+export const loadAllTask = () => async dispatch => {
+	console.log('IN THE TASK THUNK')
+    const response = await fetch(`api/task/`)
+	console.log('RESPONSE:', response)
     if (response.ok) {
         const data = await response.json()
+		console.log('SUCCESS --- data: ', data)
         dispatch(getTask(data))
     } else if (response.status < 500) {
 		const data = await response.json();
+		console.log('FAILURE ---- data: ', data)
 		if (data.errors) {
 			console.log("An Error occured:", data.errors)
 			return data.errors;
@@ -115,18 +119,20 @@ export default function reducer(state = initialState, action) {
 		case GET_TASK:
 
 			action.payload.forEach((task) => {
+				let clientId = task.Client.id
 				cleanState.all[task.id] = task;
-				if (!cleanState.byClient[task.clientId]) {
-					cleanState.byClient[task.clientId] = [];
+				if (!cleanState.byClient[clientId]) {
+					cleanState.byClient[clientId] = [];
 				}
-				cleanState.byClient[task.clientId].push(task.id);
+				cleanState.byClient[clientId].push(task.id);
 			});
 			return cleanState;
 
 		case CREATE_UPDATE_TASK:
 			const task = action.payload
+			let clientId = task.Client.id
 			copyState.all[task.id] = task
-			const clientsTasks = copyState.byClient[task.clientId];
+			const clientsTasks = copyState.byClient[clientId];
 			const taskIndex = clientsTasks.findIndex((n) => n.id === task.id);
 			if(taskIndex === -1){
 				clientsTasks.push(task.id)
