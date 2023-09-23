@@ -14,3 +14,13 @@
     font-weight: normal;
     font-style: normal;
   }
+
+#root{
+  background-color: #333333;
+  height: 100vh
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}

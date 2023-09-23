@@ -20,12 +20,12 @@ function MenuBar(){
     const NavigationForFreelancers = () => {
       // Render navigation for authLevel 0
       return (
-        <nav>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/clients">Clients</NavLink>
-          <NavLink to="/task">Task</NavLink>
-          <NavLink to="/">Calender</NavLink>
-          <NavLink to="/">Messages</NavLink>
+        <nav className='signedInBar'>
+          <NavLink className="userBar" to="/dashboard">Dashboard</NavLink>
+          <NavLink className="userBar" to="/clients">Clients</NavLink>
+          <NavLink className="userBar" exact to="/task">Task</NavLink>
+          <NavLink className="userBar" exact to="/">Calender</NavLink>
+          <NavLink className="userBar" exact to="/">Messages</NavLink>
         </nav>
       );
     };

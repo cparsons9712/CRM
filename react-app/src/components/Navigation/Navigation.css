@@ -30,3 +30,29 @@
   cursor: pointer;
   margin: 15px;
 }
+
+.signedInBar{
+  height: 50px;
+  background-color: #91CCCE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+
+}
+
+.userBar {
+    font-family: 'Kirsty';
+    color: #333333;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.userBar.active{
+  background-color: #2F838E;
+  margin: 10px;
+  color: #DBDBDB;
+  box-shadow: 2px 2px 10px rgb(72, 72, 72);
+
+}

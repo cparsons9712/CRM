@@ -1,6 +1,7 @@
 .taskTile{
     background-color:#333333 ;
     width: 150px;
+    min-width: 150px;
     height: 150px;
     box-shadow: 2px 2px 10px black;
     margin: 5px;

@@ -1,12 +1,21 @@
 import TaskComponent from "../Task/TaskComponent"
+import './dashboard.css'
+
 function Dashboard (){
 
     return (
         <>
-        <h3>Task</h3>
-        < TaskComponent />
-        <h3>Appointments</h3>
-        <h3>Messages</h3>
+        <div className="componentTitle">Task</div>
+            < TaskComponent />
+
+        <div className="componentTitle">Appointments</div>
+
+   
+        <div className="componentTitle">Messages</div>
+
+
+
+
         </>
     )
 }
