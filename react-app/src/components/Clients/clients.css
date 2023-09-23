@@ -1,0 +1,78 @@
+.clientPageCont{
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    width: 100%;
+    height: 100%;
+    max-height: 85vh; /* Set a maximum height to fit within the viewport */
+    overflow-y: hidden;
+
+
+}
+
+.clientNav{
+    background-color: #2F838E;
+    grid-row: 1 / span 4;
+    height: 100%;
+    overflow-y: auto;
+
+}
+.clientOption{
+    border-bottom: 1px solid #333333;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron';
+    cursor: pointer;
+}
+.clientOption:hover{
+    background-color: rgba(128, 128, 128, 0.6);
+}
+.clientOption:active > label{
+    background-color: rgba(128, 128, 128)
+
+}
+
+.clientInfo{
+    padding: 5px;
+    margin: 15px;
+    background-color: rgba(128, 128, 128, .6) ;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.clientName{
+    font-family: 'Kirsty';
+    font-size: x-large;
+    color:#333333;
+
+}
+.clientContact{
+    color: #333333;
+    font-family: 'Orbitron';
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.upcomingAppt{
+
+}
+
+.notes{
+    grid-column: 2/ span 2;
+
+}
+
+.task{
+
+   grid-column: 2/ span 2;
+}
+.messages {
+
+    grid-column: 2/ span 2;
+}

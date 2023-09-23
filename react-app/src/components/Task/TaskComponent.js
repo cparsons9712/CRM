@@ -1,17 +1,8 @@
-import { loadAllTask } from "../../store/task"
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import "./task.css"
 
-function TaskComponent (){
-    const dispatch = useDispatch();
+function TaskComponent ({task}){
 
-    useEffect(() => {
-      dispatch(loadAllTask());
-    }, [dispatch]);
-
-    const task = useSelector((state) => state.task.all);
-    console.log(task)
 
     const convertDate = (date) => {
         let day = date.slice(5, 7)
