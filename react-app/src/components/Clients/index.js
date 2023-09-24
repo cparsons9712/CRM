@@ -3,23 +3,27 @@
 import { useEffect , useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./clients.css"
-
+import { useModal } from "../../context/Modal";
 import TaskComponent from "../Task/TaskComponent";
 import NotesComponent from "./notes";
-
+import EditCreateNote from "./edit_new";
 import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
 import { loadClientNotes } from "../../store/notes";
 
 function ClientPage (){
+
     const [selectedClient, setClient] = useState("")
     const [clientInfo, setClientInfo] = useState()
     const[clientTask, setClientTask] = useState(null)
     const [clientNotes, setClientNotes] = useState(null)
+
     const Alltask = useSelector((state) => state.task);
     const clients = useSelector((state)=> state.relationships.Clients)
     const allNotes = useSelector((state)=> state.notes)
+
     const dispatch = useDispatch()
+    const {modalContent, setModalContent} = useModal()
 
     useEffect(()=>{
         dispatch(getUserRelationships())
@@ -51,12 +55,6 @@ function ClientPage (){
         }
 
     }, [selectedClient, Alltask, allNotes])
-
-
-
-
-
-
 
 
 
@@ -105,7 +103,11 @@ function ClientPage (){
                     <div className="clientButtons">
                         <button>Schedule</button>
                         <button>Message</button>
-                        <button>Note</button>
+                        <button
+                            onClick={() =>
+                                setModalContent(<EditCreateNote clientInfo={clientInfo} />)}>
+                            Note
+                        </button>
                         <button>Task</button>
                     </div>
                 </>

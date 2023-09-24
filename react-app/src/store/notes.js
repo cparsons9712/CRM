@@ -131,15 +131,18 @@ export default function reducer(state = initialState, action) {
 
 		case CREATE_UPDATE_NOTE:
 			const note = action.payload
+			const clientId = note.clientId
 			copyState.all[note.id] = note
 			// get the array of ids for the client this note was made for
-			const clientsNotes = copyState.byClient[note.clientId];
+			const clientsNotes = copyState.byClient[note.clientId] || [];
 
 			// check if the note currently exist
-			const noteIndex = clientsNotes.findIndex((n) => n.id === note.id);
+			const noteIndex = clientsNotes.indexOf(note.id);
+
+
 			if(noteIndex === -1){
 				// if the note doesn't exist add the id to the client's array
-				clientsNotes.push(note.id)
+				copyState.byClient[clientId] = clientsNotes
 			}
 			return copyState;
 

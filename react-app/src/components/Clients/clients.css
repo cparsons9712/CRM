@@ -39,7 +39,7 @@
 .clientInfo{
     padding: 5px;
     margin: 15px;
-    background-color: rgba(128, 128, 128, .6) ;
+    background-color:#91ccce77; ;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -72,7 +72,34 @@
 
    grid-column: 2/ span 2;
 }
+.taskDueDate{
+    text-align: center;
+}
+
 .messages {
 
     grid-column: 2/ span 2;
+}
+
+.editCreateCont{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Kirsty';
+    background-color: #013358;
+    box-shadow: 2px 2px 10px rgb(6, 6, 6);
+
+}
+.formHeading{
+    color:#2F838E
+}
+.formTextArea{
+    height: 150px;
+    width: 150px;
+    text-align: left;
+    vertical-align: top;
+    margin: 5px;
+    background-color: #91CCCE
 }
