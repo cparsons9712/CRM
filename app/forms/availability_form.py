@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Email, ValidationError
 
 
 class AvailabilityForm(FlaskForm):
-
+    dayOfWeek = StringField('Day of Week')
     startTime = TimeField('Start Time', validators=[DataRequired()] )
     endTime = TimeField('End Time', validators=[DataRequired()])
 
