@@ -80,7 +80,7 @@ def editTask(task_id):
 
     task = Task.query.get_or_404(task_id)
     if task.freelancerId != current_user.id:
-        return {'errors': {'Unauthorized': 'Freelancer is not the author of this note.'}}, 401
+        return {'errors': {'Unauthorized': 'Freelancer is not the author of this task.'}}, 401
 
     if form.validate_on_submit():
         if 'completed' in form.data:

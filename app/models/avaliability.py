@@ -10,6 +10,7 @@ class Availability(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+
     dayOfWeek = db.Column(db.String(15), nullable=False)
     startTime = db.Column(db.Time, nullable=False)
     endTime = db.Column(db.Time, nullable=False)
@@ -23,10 +24,13 @@ class Availability(db.Model):
         return value
 
     def to_dict(self):
+        def serialize_time(time_obj):
+            return time_obj.strftime('%H:%M:%S')
+
         return {
             "id" : self.id,
             "userId" : self.userId,
             "dayOfWeek":  self.dayOfWeek,
-            "startTime": self.startTime,
-            "endTime": self.endTime
+            "startTime": serialize_time(self.startTime),
+            "endTime": serialize_time(self.endTime)
         }
