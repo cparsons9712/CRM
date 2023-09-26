@@ -9,8 +9,8 @@ class Task(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    freelancerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('clients.id')), nullable=False)
-    clientId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('clients.id')))
+    freelancerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    clientId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     description = db.Column(db.String(50), nullable=False)
     priority = db.Column(db.String(5), nullable=False)
     completed = db.Column(db.Boolean, default=False)
@@ -18,8 +18,8 @@ class Task(db.Model):
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-    freelancerRef = db.relationship('Client', foreign_keys='Task.freelancerId')
-    clientRef = db.relationship('Client', foreign_keys='Task.clientId')
+    freelancerRef = db.relationship('User', foreign_keys='Task.freelancerId')
+    clientRef = db.relationship('User', foreign_keys='Task.clientId')
 
     @validates('priority')
     def validate_priority(self, key, value):

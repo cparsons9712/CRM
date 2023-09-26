@@ -18,18 +18,16 @@ const deleteTask = id => ({
     id
 })
 export const loadAllTask = () => async dispatch => {
-	console.log('IN THE TASK THUNK')
+
     const response = await fetch(`api/task/`)
-	console.log('RESPONSE:', response)
+
     if (response.ok) {
         const data = await response.json()
-		console.log('SUCCESS --- data: ', data)
         dispatch(getTask(data))
     } else if (response.status < 500) {
 		const data = await response.json();
-		console.log('FAILURE ---- data: ', data)
 		if (data.errors) {
-			console.log("An Error occured:", data.errors)
+			console.log('!!!!!!!!!!!!!!', data.errors)
 			return data.errors;
 		}
 	} else {
@@ -38,7 +36,10 @@ export const loadAllTask = () => async dispatch => {
 }
 
 export const createTask = (payload) => async dispatch =>{
-    const response = await fetch(`api/task`, {
+	console.log('********thunk*********')
+	console.log('payload: ', payload)
+
+    const response = await fetch(`api/task/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -64,7 +65,10 @@ export const createTask = (payload) => async dispatch =>{
 }
 
 export const updateTask = (taskId, payload) => async dispatch =>{
-    const response = await fetch(`/api/task/${taskId}`, {
+    console.log('^^^^^^^^ updateTask Thunk ^^^^^^^^^^^')
+	console.log('Payload:::' , JSON.stringify(payload))
+
+	const response = await fetch(`/api/task/${taskId}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -74,14 +78,14 @@ export const updateTask = (taskId, payload) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('$$$$ Edit Task success. Received data:', data);
-		dispatch(createOrUpdateTask(data));
+		console.log('^^^ Edit Task success. Received data:', data);
+		 dispatch(createOrUpdateTask(data));
 		return data;
 
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('$$$$ Edit Task Failed. Errors:', data.errors);
+			console.log('^^^ Edit Task Failed. Errors:', data.errors);
 			return data.errors;
 		}
 
@@ -96,7 +100,8 @@ export const removeTask = taskId => async dispatch => {
         method: 'DELETE',
     })
     if (response.ok){
-        dispatch(deleteTask(taskId))
+        await dispatch(deleteTask(taskId))
+		await dispatch(loadAllTask());
 		console.log(`Task ${taskId} deleted`)
         return {"message": "Task Deleted Successfully"}
     }else if (response.status < 500) {
@@ -117,7 +122,6 @@ export default function reducer(state = initialState, action) {
 	const cleanState = {all: {}, byClient: {}}
 	switch (action.type) {
 		case GET_TASK:
-
 			action.payload.forEach((task) => {
 				let clientId = task.Client.id
 				cleanState.all[task.id] = task;
@@ -129,29 +133,51 @@ export default function reducer(state = initialState, action) {
 			return cleanState;
 
 		case CREATE_UPDATE_TASK:
-			const task = action.payload
-			let clientId = task.Client.id
-			copyState.all[task.id] = task
-			const clientsTasks = copyState.byClient[clientId];
-			const taskIndex = clientsTasks.findIndex((n) => n.id === task.id);
-			if(taskIndex === -1){
-				clientsTasks.push(task.id)
+			const task = action.payload;
+			const clientId = task.Client.id;
+
+			// Check if the task already exists in the all object
+			if (copyState.all[task.id]) {
+			  // Update the task object in the all object without modifying the byClient section
+			  copyState.all[task.id] = task;
+			} else {
+			  // If it doesn't exist, add the task to the all object
+			  copyState.all[task.id] = task;
+
+			  if (!Array.isArray(copyState.byClient[clientId])) {
+				copyState.byClient[clientId] = [];
+			  }
+
+			  const clientsTasks = copyState.byClient[clientId];
+			  const taskIndex = clientsTasks.findIndex((n) => n === task.id); // Use strict equality check here
+			  if (taskIndex === -1) {
+				clientsTasks.push(task.id);
+			  }
 			}
+
 			return copyState;
+
+
 		case DELETE_TASK:
-			const IdToDelete = action.id;
+			const taskIdToDelete = action.id;
+			const taskClientId = copyState.all[taskIdToDelete]?.clientId;
 
-			const taskclientId = copyState.all[IdToDelete].clientId;
-			delete copyState.all[IdToDelete];
-
-			if (taskclientId in copyState.byClient) {
-				const clientTask = copyState.byClient[taskclientId];
-				const noteIndex = clientTask.indexOf(taskclientId);
-				if (noteIndex !== -1) {
-					clientTask.splice(noteIndex, 1);
-				}
+			// Remove the task from the all object
+			if (taskIdToDelete in copyState.all) {
+			  delete copyState.all[taskIdToDelete];
 			}
-			return copyState
+
+			// Remove the task from the byClient object
+			if (taskClientId && Array.isArray(copyState.byClient[taskClientId])) {
+			  const clientTasks = copyState.byClient[taskClientId];
+			  const taskIndex = clientTasks.indexOf(taskIdToDelete);
+
+			  if (taskIndex !== -1) {
+				clientTasks.splice(taskIndex, 1);
+			  }
+			}
+
+			return copyState;
 
 		default:
 			return state;

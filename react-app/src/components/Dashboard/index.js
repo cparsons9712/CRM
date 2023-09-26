@@ -4,6 +4,8 @@ import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 function Dashboard (){
     const dispatch = useDispatch();
@@ -14,13 +16,19 @@ function Dashboard (){
     }, [dispatch]);
 
     const task = useSelector((state) => state.task.all);
+    const taskArray = task ? Object.values(task) : [];
 
 
 
     return (
         <>
-        <div className="componentTitle">Task</div>
-            < TaskComponent task={task}/>
+        <div className="componentHeader">
+                <div className="componentTitle">Task</div>
+                <div className="componentMenu"><FontAwesomeIcon icon={faSquareCaretDown} /></div>
+        </div>
+
+            {task?< TaskComponent task={taskArray}/>: <div className="empty">LOADING</div> }
+
 
         <div className="componentTitle">Appointments</div>
 

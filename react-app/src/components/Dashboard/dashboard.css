@@ -1,14 +1,32 @@
 .componentTitle{
     font-family: 'Kirsty';
     color:#91CCCE;
-    font-size: x-large;
     margin: 10px;
+    font-size: x-large;
+
+
 }
 
 .sliceCont{
     display: flex;
     flex-direction: row;
     background-color:#91ccce77;
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
+    height: 160px;
+    width: 98%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+
+}
+.componentHeader{
+    gap: 15px;
+    display: flex;
+    flex-direction: row
+}
+.componentMenu{
+    margin-top: 15px;
+    color:#91CCCE;
+
 }

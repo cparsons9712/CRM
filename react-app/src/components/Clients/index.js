@@ -4,9 +4,12 @@ import { useEffect , useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./clients.css"
 import { useModal } from "../../context/Modal";
+
 import TaskComponent from "../Task/TaskComponent";
 import NotesComponent from "./notes";
 import EditCreateNote from "./edit_new";
+import EditCreateTask from "../Task/create_edit";
+
 import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
 import { loadClientNotes } from "../../store/notes";
@@ -19,11 +22,12 @@ function ClientPage (){
     const [clientNotes, setClientNotes] = useState(null)
 
     const Alltask = useSelector((state) => state.task);
+    console.log('ALLTASK SELCTED FROM STATE:: ', Alltask)
     const clients = useSelector((state)=> state.relationships.Clients)
     const allNotes = useSelector((state)=> state.notes)
 
     const dispatch = useDispatch()
-    const {modalContent, setModalContent} = useModal()
+    const {setModalContent} = useModal()
 
     useEffect(()=>{
         dispatch(getUserRelationships())
@@ -44,6 +48,7 @@ function ClientPage (){
                 return task.push(Alltask.all[id])
         })
         }
+        console.log('SELECTED TASK FOR CLIENT::::', task)
         setClientTask(task)
         setClientNotes(null)
         let notes = [];
@@ -86,7 +91,7 @@ function ClientPage (){
             </div>
             <div className="clientInfo">
 
-                {/* Display client information based on the selectedClient */}
+
                 {clientInfo ? (
                 <>
                     <div className="clientName">
@@ -105,10 +110,16 @@ function ClientPage (){
                         <button>Message</button>
                         <button
                             onClick={() =>
-                                setModalContent(<EditCreateNote clientInfo={clientInfo} />)}>
+                                setModalContent(<EditCreateNote clientInfo={clientInfo}/>)
+                            }
+                        >
                             Note
                         </button>
-                        <button>Task</button>
+                        <button
+                            onClick={() =>
+                                setModalContent(<EditCreateTask clientInfo={clientInfo}/>
+                            )}
+                        > Task</button>
                     </div>
                 </>
                 ) : (
@@ -127,7 +138,7 @@ function ClientPage (){
                 ) : (
                     <>
                         <div className="componentTitle">Notes</div>
-                        <p>None</p>
+                        <div className="sliceCont"></div>
                     </>
                 )}
             </div>
@@ -140,14 +151,15 @@ function ClientPage (){
                 </>
                 ) : (<>
                     <div className="componentTitle">Task</div>
-                    <p>None</p>
+                    <div className="sliceCont"></div>
                     </>
             )}
 
 
             </div>
             <div className="messages">
-                Messages coming soon
+                <div className="componentTitle">Messages</div>
+                <div className="sliceCont"></div>
 
             </div>
         </div>

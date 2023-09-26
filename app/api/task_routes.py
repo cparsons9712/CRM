@@ -49,10 +49,11 @@ def newTask():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # Make sure user is allowed to interact with this client if the note is for a client
         clientId = form.data['clientId']
+
         if clientId:
                 relationship = Client.query.filter((Client.clientId == clientId) & (Client.freelancerId == current_user.id)).first()
+
                 if relationship is None:
                     return {'errors': {'Unauthorized': 'Freelancer does not have an existing client relationship with this user.'}}, 401
         # Create the new Task with proper info
@@ -62,6 +63,8 @@ def newTask():
 
         db.session.add(newTask)
         db.session.commit()
+
+
         return newTask.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 422
 
@@ -69,20 +72,29 @@ def newTask():
 @login_required
 def editTask(task_id):
     """
-    Edits an existing Task
+    Edits an existing Task or updates the completion status.
     """
+
     form = TaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     task = Task.query.get_or_404(task_id)
     if task.freelancerId != current_user.id:
-        return {'errors': {'Unauthorized': 'Freelancer is not the author of this note. '}}, 401
+        return {'errors': {'Unauthorized': 'Freelancer is not the author of this note.'}}, 401
 
     if form.validate_on_submit():
-        form.populate_obj(task)
+        if 'completed' in form.data:
+            # Handle completion status change
+            task.completed = form.completed.data
+        else:
+            # Handle editing main task details
+            form.populate_obj(task)
+
         db.session.add(task)
         db.session.commit()
+
         return task.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 422
 
 @task_routes.route('/<task_id>', methods=['DELETE'])

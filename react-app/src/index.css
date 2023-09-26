@@ -15,12 +15,18 @@
     font-style: normal;
   }
 
-#root{
-  background-color: #013358;
-  height: 100vh
-}
+
 
 body{
   margin: 0;
   padding: 0;
+  background-color: #393E51;
+}
+
+.emptyBox{
+  height: 150px;
+  width: 98%;
+  background-color:#D8DBE4;
+  padding: 5px;
+  margin: 5px;
 }
