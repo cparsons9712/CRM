@@ -4,13 +4,15 @@ import session from './session'
 import notes from './notes'
 import relationships from './relationships'
 import task from './task'
+import schedule from './schedule'
 
 
 const rootReducer = combineReducers({
   session,
   relationships,
   task,
-  notes
+  notes,
+  schedule
 
 });
 

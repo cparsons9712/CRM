@@ -17,9 +17,10 @@ const deleteTask = id => ({
     type: DELETE_TASK,
     id
 })
+
 export const loadAllTask = () => async dispatch => {
 
-    const response = await fetch(`api/task/`)
+    const response = await fetch(`/api/task/`)
 
     if (response.ok) {
         const data = await response.json()
@@ -39,7 +40,7 @@ export const createTask = (payload) => async dispatch =>{
 	console.log('********thunk*********')
 	console.log('payload: ', payload)
 
-    const response = await fetch(`api/task/`, {
+    const response = await fetch(`/api/task/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

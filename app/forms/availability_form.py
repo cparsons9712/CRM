@@ -5,10 +5,19 @@ from wtforms.validators import DataRequired, Email, ValidationError
 
 
 class AvailabilityForm(FlaskForm):
-    dayOfWeek = StringField('Day of Week')
-    startTime = TimeField('Start Time', validators=[DataRequired()] )
-    endTime = TimeField('End Time', validators=[DataRequired()])
+    monStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    monEndTime = TimeField('End Time', validators=[DataRequired()])
+    tueStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    tueEndTime = TimeField('End Time', validators=[DataRequired()])
+    wedStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    wedEndTime = TimeField('End Time', validators=[DataRequired()])
+    thuStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    thuEndTime = TimeField('End Time', validators=[DataRequired()])
+    friStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    friEndTime = TimeField('End Time', validators=[DataRequired()])
+    satStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    satEndTime = TimeField('End Time', validators=[DataRequired()])
+    sunStartTime = TimeField('Start Time', validators=[DataRequired()] )
+    sunEndTime = TimeField('End Time', validators=[DataRequired()])
 
-    def validate_endTime(form, field):
-        if form.startTime.data and field.data <= form.startTime.data:
-            raise ValidationError('End time must be later than start time.')
+
