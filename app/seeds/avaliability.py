@@ -7,110 +7,60 @@ from datetime import time
 def seed_availability():
     mon1 = Availability(
         userId = 1,
-        dayOfWeek = 'Monday',
-        startTime = time(13, 0, 0),
-        endTime = time(23,0,0)
-    )
-    tues1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Tuesday',
-        startTime =time(13, 0, 0),
-        endTime = time(23, 0, 0)
-    )
-    wed1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Wednesday',
-        startTime = time(13, 0, 0),
-        endTime = time(23, 0, 0)
 
-    )
-    thurs1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Thursday',
-        startTime = time(13, 0, 0),
-        endTime = time(23, 0, 0)
+        monStartTime = time(13, 0, 0),
+        monEndTime = time(23,0,0),
 
-    )
-    fri1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Friday',
-        startTime = time(13, 0, 0),
-        endTime = time(23, 0, 0)
+        tueStartTime = time(13, 0, 0),
+        tueEndTime = time(23,0,0),
+
+        wedStartTime = time(13, 0, 0),
+        wedEndTime = time(23,0,0),
+
+        thuStartTime = time(13, 0, 0),
+        thuEndTime = time(23,0,0),
+
+        friStartTime = time(13, 0, 0),
+        friEndTime = time(23,0,0),
+
+        satStartTime = time(0, 0, 0),
+        satEndTime = time(0,0,0),
+
+        sunStartTime = time(0, 0, 0),
+        sunEndTime = time(0,0,0),
     )
 
-    sat1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Saturday',
-        startTime = time(0, 0, 0),
-        endTime = time(0, 0, 0)
-
-    )
-    sun1 = Availability(
-        userId = 1,
-        dayOfWeek = 'Sunday',
-        startTime = time(0, 0, 0),
-        endTime = time(0, 0, 0)
-    )
 
     mon4 = Availability(
         userId = 4,
-        dayOfWeek = 'Monday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
-    tues4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Tuesday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
-    wed4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Wednesday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
-    thurs4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Thursday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
-    fri4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Friday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
 
-    sat4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Saturday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
-    )
-    sun4 = Availability(
-        userId = 4,
-        dayOfWeek = 'Sunday',
-        startTime = time(8, 0, 0),
-        endTime = time(16, 0, 0)
+        monStartTime = time(0, 0, 0),
+        monEndTime = time(0,0,0),
+
+        tueStartTime = time(8, 0, 0),
+        tueEndTime = time(16,0,0),
+
+        wedStartTime = time(8, 0, 0),
+        wedEndTime = time(16,0,0),
+
+        thuStartTime = time(8, 0, 0),
+        thuEndTime = time(16,0,0),
+
+        friStartTime = time(8, 0, 0),
+        friEndTime = time(16,0,0),
+
+        satStartTime = time(8, 0, 0),
+        satEndTime = time(16,0,0),
+
+        sunStartTime = time(0, 0, 0),
+        sunEndTime = time(0,0,0),
     )
 
 
     db.session.add(mon1)
-    db.session.add(tues1)
-    db.session.add(wed1)
-    db.session.add(thurs1)
-    db.session.add(fri1)
-    db.session.add(sat1)
-    db.session.add(sun1)
+
     db.session.add(mon4)
-    db.session.add(tues4)
-    db.session.add(wed4)
-    db.session.add(thurs4)
-    db.session.add(fri4)
-    db.session.add(sat4)
-    db.session.add(sun4)
+
 
     db.session.commit()
 

@@ -20,9 +20,9 @@ def getUsersAvaliability(userId):
     """
     Get the avaliability of a specific user
     """
-    availabilities = Availability.query.filter( Availability.userId == userId).all()
+    schedule = Availability.query.filter( Availability.userId == userId).first()
 
-    return [slot.to_dict() for slot in availabilities]
+    return schedule.to_dict()
 
 @availability_routes.route('/<id>', methods=['PUT'])
 @login_required
