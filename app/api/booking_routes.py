@@ -114,3 +114,58 @@ def bookAppt(userId):
         return appointment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 422
+
+
+@booking_routes.route('/<bookingId>', methods=['PUT'])
+@login_required
+def updateAppt(bookingId):
+    appt = Booking.query.get_or_404(bookingId)
+    form = BookingForm
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        # get the current appointments booked for both users on day and loop through all of them
+        bookings = Booking.query.filter(
+            (Booking.freelancerId == appt.freelancerId)  |
+             (Booking.clientId == appt.clientId)
+            ).filter(Booking.day == date.today())
+
+        newStartTime = form["time"]
+        newDuration = form["duration"]
+        newEndTime = setEndTime(newStartTime, newDuration)
+        #if newAppt starttime or endtime is after bookedAppt starttime and before bookedAppt endtime ERROR- Appointment slot not avaliable
+        for booking in bookings:
+            if (newStartTime > booking.startTime and newStartTime < booking.endTime) or (newEndTime > booking.startTime and newEndTime < booking.endTime):
+                if booking.id != appt.id:
+                    return {'errors': {'time': 'One or both users are unavaliable for an appointment at the requested time'}}
+        # make sure appt is in freelancers avaliability
+        freelancerSchedule = Availability.query.filter(Availability.userId == appt.freelancerId).first()
+        # match the day from form to a day on the avaliabilty
+        dayOfWeek = getDayOfWeek(form["day"])
+        schedArr = getAvaliableSchedule(dayOfWeek, freelancerSchedule)
+        # check that the time is after avaliability start time and before avaliability end time
+        if(form["time"] < schedArr[0] or form["time"] > schedArr[1]):
+            return {'errors': {'time': 'This start time is out of Freelancers avaliability to be booked'}}
+
+        form.populate_obj(appt)
+        appt.endTime = newEndTime
+        db.session.add(appt)
+        db.session.commit()
+        # return the instance in JSON formatt
+        return appt.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 422
+
+@booking_routes.route('/<booking_id>', methods=['DELETE'])
+@login_required
+def delete_booking(booking_id):
+    """
+    Deletes an existing Appointment
+    """
+    appt = Booking.query.get_or_404(booking_id)
+
+    if (appt.freelancerId != current_user.id) | (appt.clientId != current_user.id):
+        return {'errors': {'Unauthorized': 'Only the freelancer or client associated with this booking may delete it '}}, 401
+
+    db.session.delete(appt)
+    db.session.commit()
+
+    return {'message': 'Appointment deleted successfully!'}
