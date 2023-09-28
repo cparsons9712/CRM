@@ -1,11 +1,26 @@
 from flask_wtf import FlaskForm
 from wtforms import DateField, TimeField, StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
+from datetime import date, time
 
+def validDay(form, field):
+    day = field.data
+    today = date.today()
+    if day < today:
+        raise ValidationError('Day cannot be in the past')
+
+def validDuration(form, field):
+    duration = field.data
+    min_duration = time(hour=0, minute=15)  # 15 minutes
+    max_duration = time(hour=3)  # 3 hours
+    if duration < min_duration or duration > max_duration:
+        raise ValidationError('Duration must be between 15 minutes and 3 hours')
 
 
 class BookingForm(FlaskForm):
-    day = DateField('Day', validators=[DataRequired()])
+
+    day = DateField('Day', validators=[DataRequired(), validDay])
     time = TimeField('Time', validators=[DataRequired()])
-    title = StringField('Title', validators=[DataRequired()] )
-    location = StringField('Location')
+    duration = TimeField("Duration", validators=[DataRequired(), validDuration])
+    title = StringField('Title', validators=[DataRequired(), Length(min=3, max=30)] )
+    location = StringField('Location', validators=[ Length(min=2, max=30)] )

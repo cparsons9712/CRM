@@ -33,7 +33,7 @@ def updateSchedule(id):
     form = AvailabilityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if current_user.authLevel is not 1:
+    if current_user.authLevel != 1:
         return {'errors': {'Unauthorized': 'User is not a Freelancer and cannot set availibility'}}, 401
 
     slot = Availability.query.get_or_404(id)
@@ -57,7 +57,7 @@ def setSchedule():
     form = AvailabilityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if current_user.authLevel is not 1:
+    if current_user.authLevel != 1:
         return {'errors': {'Unauthorized': 'User is not a Freelancer and cannot set availibility'}}, 401
 
     slot = Availability()
@@ -65,7 +65,6 @@ def setSchedule():
 
     if form.validate_on_submit():
         slot.userId = current_user.id
-
         form.populate_obj(slot)
         db.session.add(slot)
         db.session.commit()

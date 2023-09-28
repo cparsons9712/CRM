@@ -8,43 +8,48 @@ def seed_bookings():
     one = Booking(
      freelancerId = 1,
      clientId = 2,
-     day = date(2023, 10, 15),
+     day = date(2023, 9, 30),
      time = time(20, 30, 00),
+     endTime = time(21,00,00),
+     duration = time(0, 30, 00),
      title = "Progress Meeting",
      location = "Zoom"
 
     )
-    two = Booking(
-     freelancerId = 1,
-     clientId = 3,
-     day = date(2023, 10, 15),
-     time = time(21, 30, 00),
-     title = "Initial consult",
-     location = "Zoom"
+    # two = Booking(
+    #  freelancerId = 1,
+    #  clientId = 3,
+    #  day = date(2023, 10, 15),
+    #  time = time(21, 30, 00),
+    #  duration = time(0, 30),
+    #  title = "Initial consult",
+    #  location = "Zoom"
 
-    )
-    three = Booking(
-     freelancerId = 1,
-     clientId = 5,
-     day = date(2023, 10, 15),
-     time = time(22, 30, 00),
-     title = "Approval Meeting",
-     location = "Zoom"
-    )
-    four = Booking(
-     freelancerId = 4,
-     clientId = 5,
-     day = date(2023, 10, 15),
-     time = time(10, 30, 00),
-     title = "Fix Sink",
-     location = "10 Main Street"
-    )
+    # )
+    # three = Booking(
+    #  freelancerId = 1,
+    #  clientId = 5,
+    #  day = date(2023, 10, 15),
+    #  time = time(22, 30, 00),
+    #  duration = time(1, 00),
+    #  title = "Approval Meeting",
+    #  location = "Zoom"
+    # )
+    # four = Booking(
+    #  freelancerId = 4,
+    #  clientId = 5,
+    #  day = date(2023, 10, 15),
+    #  time = time(10, 30, 00),
+    #  duration = time(2, 30),
+    #  title = "Fix Sink",
+    #  location = "10 Main Street"
+    # )
 
 
     db.session.add(one)
-    db.session.add(two)
-    db.session.add(three)
-    db.session.add(four)
+    # db.session.add(two)
+    # db.session.add(three)
+    # db.session.add(four)
 
     db.session.commit()
 
