@@ -1,6 +1,6 @@
 .componentTitle{
     font-family: 'Kirsty';
-    color:#91CCCE;
+    color:#DBDBDB;
     margin: 10px;
     font-size: x-large;
 
@@ -10,7 +10,7 @@
 .sliceCont{
     display: flex;
     flex-direction: row;
-    background-color:#91ccce77;
+    background-color:#54b6aa42;
     padding: 5px;
     margin: 5px;
     height: 160px;
@@ -27,6 +27,6 @@
 }
 .componentMenu{
     margin-top: 15px;
-    color:#91CCCE;
+    color:#DBDBDB;;
 
 }

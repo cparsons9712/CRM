@@ -20,13 +20,13 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: #393E51;
+  background-color: #163640;
 }
 
 .emptyBox{
   height: 150px;
   width: 98%;
-  background-color:#D8DBE4;
+  background-color:#e9e2e26f;
   padding: 5px;
   margin: 5px;
 }

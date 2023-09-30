@@ -13,27 +13,32 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #2F838E;
+  background-color: #61d4ca7d;
   justify-content: space-between;
+
 }
 .logo{
-  height:75px;
+  height:45px;
 }
 .bantam{
   font-family: 'Kirsty';
   color: #333333;
+ padding-left: 15px;
+  font-size: x-large;
+
 }
 
 .userIcon{
   color: #333333;
-  height: 45px;
+  height: 25px;
   cursor: pointer;
   margin: 15px;
+
 }
 
 .signedInBar{
   height: 50px;
-  background-color: #91CCCE;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -45,13 +50,13 @@
 .userBar {
     font-family: 'Kirsty';
     color: #333333;
-    padding: 16px;
+    padding: 20px;
     text-decoration: none;
 }
 
 .userBar.active{
-  background-color: #2F838E;
-  margin: 10px;
+  background-color: #174348;
+
   color: #DBDBDB;
   box-shadow: 2px 2px 10px rgb(72, 72, 72);
 

@@ -1,5 +1,5 @@
 .taskTile{
-    background-color:#393E51;
+    background-color:#12363a;
     width: 150px;
     min-width: 150px;
     height: 150px;
@@ -11,10 +11,10 @@
 }
 
 .taskHeader{
-    background-color: #58A4B1;
+    background-color: #61d4ca7d;
     display: flex;
     flex-direction: row;
-    color:#393E51;
+    color:#2e230c;
     gap:10px;
     align-items: center;
     justify-content: space-between;
@@ -43,13 +43,13 @@
 }
 
 .taskDescription{
-    color: #D8DBE4;
+    color: #DBDBDB;
     padding: 5px;
     overflow: hidden;
 }
 
 .taskClient{
     text-align: center;
-    color: #58A4B1
+    color: #c68607
 
 }

@@ -19,12 +19,11 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {sessionUser && (< MenuBar/>)}
+
 
       {isLoaded && (
         <Switch>
