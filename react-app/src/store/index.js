@@ -5,6 +5,7 @@ import notes from './notes'
 import relationships from './relationships'
 import task from './task'
 import schedule from './schedule'
+import bookings from './bookings'
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   relationships,
   task,
   notes,
-  schedule
+  schedule,
+  bookings
 
 });
 
