@@ -5,7 +5,7 @@
     padding: 10px;
     text-align: center;
     font-family: 'Kirsty';
-    background-color: #013358;
+    background-color: #163640;
     box-shadow: 2px 2px 10px rgb(6, 6, 6);
 }
 .loginForm{
@@ -14,20 +14,28 @@
     margin: 5px;
 }
 button{
-    color: rgb(210, 206, 206);
-    background-color: teal;
+    color: #163640;
+    background-color:#F26641;
     margin-top: 20px;
     font-family: 'Kirsty';
     height:25px;
     margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
 }
 button:hover{
-    background-color: rgb(3, 190, 190)
+    background-color: #f26741d3;
+    cursor: pointer;
+
 }
 input{
     height: 25px;
     margin: 5px;
-    background-color: #91CCCE
+    background-color: #163640;
+    color: #A9C3B8;
+    border: 1px solid #F26641;
+    padding: 5px;
+    border-radius: 2px;
 
 }
 
@@ -44,7 +52,7 @@ input{
 .radio-slider input[type="radio"] {
     position: absolute;
     opacity: 0;
-    pointer-events: none; /* Prevent clicks on hidden inputs */
+    pointer-events: none;
   }
 
   .radio-slider label {
@@ -52,14 +60,16 @@ input{
     text-align: center;
     cursor: pointer;
     padding: 5px;
-    background-color: #91CCCE;
-    transition: background-color 0.8s ease;
-    border: 1px solid #ccc;
-    position: relative; /* Create a stacking context */
+    background-color: #163640;
+    color: #A9C3B8;
+    border: 1px solid #F26641;
+    transition: background-color 0.4s ease;
+
+    position: relative;
   }
 
   .radio-slider input[type="radio"] + label::before {
-    content: ""; /* Create a pseudo-element for the label */
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -68,12 +78,11 @@ input{
   }
 
   .radio-slider label:hover {
-    background-color: #ccc;
+    background-color: #cccccc21;
   }
 
   .radio-slider input[type="radio"]:checked + label {
-    background-color: #03BEBE;
-    border: 1px solid #587574;
+    background-color: #F26641;
     color: #fff;
-    box-shadow: 2px 2px 2px white;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524) ;
   }

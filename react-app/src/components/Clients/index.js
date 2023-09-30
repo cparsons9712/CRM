@@ -22,7 +22,7 @@ function ClientPage (){
     const [clientNotes, setClientNotes] = useState(null)
 
     const Alltask = useSelector((state) => state.task);
-    console.log('ALLTASK SELCTED FROM STATE:: ', Alltask)
+
     const clients = useSelector((state)=> state.relationships.Clients)
     const allNotes = useSelector((state)=> state.notes)
 
@@ -69,19 +69,19 @@ function ClientPage (){
             <div className="clientNav">
                 {clients?(  Object.values(clients).map((client)=>{
                     return(
-                        <div className="clientOption" key={client.id}>
+                        <div className="clientOption" key={`client${client.id}`}>
                             <input
                             id={client.id}
                             type='radio'
                             name='client'
                             value={client.id}
-
+                            className="clientRadioInput"
                             onChange={(e)=>{
                                 setClient(e.target.value)
                             }}
 
                             />
-                            <label htmlFor={client.id}>{client.firstName} {client.lastName}</label>
+                            <label htmlFor={client.id} className="clientRadioLabel">{client.firstName} {client.lastName}</label>
                         </div>
 
                     )

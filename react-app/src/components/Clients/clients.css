@@ -11,35 +11,11 @@
 
 }
 
-.clientNav{
-    background-color: #2F838E;
-    grid-row: 1 / span 4;
-    height: 100%;
-    overflow-y: auto;
-
-}
-.clientOption{
-    border-bottom: 1px solid #333333;
-    height: 50px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Orbitron';
-    cursor: pointer;
-}
-.clientOption:hover{
-    background-color: rgba(128, 128, 128, 0.6);
-}
-.clientOption:active > label{
-    background-color: rgba(128, 128, 128)
-
-}
-
 .clientInfo{
     padding: 5px;
-    margin: 15px;
-    background-color:#91ccce77; ;
+    margin-right: 5px;
+    background-color:#a9c3b811;
+    color: #F26641;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -49,17 +25,19 @@
 .clientName{
     font-family: 'Kirsty';
     font-size: x-large;
-    color:#333333;
+    color:#F26641;
 
 }
 .clientContact{
-    color: #333333;
+    color: #A9C3B8;
     font-family: 'Orbitron';
     font-size: 12px;
-    font-weight: bold;
+
 }
 
 .upcomingAppt{
+    background-color:#a9c3b811;
+    color: #A9C3B8;
 
 }
 
@@ -88,12 +66,13 @@
     padding: 10px;
     text-align: center;
     font-family: 'Kirsty';
-    background-color: #013358;
-    box-shadow: 2px 2px 10px rgb(6, 6, 6);
+    background-color: #163640;
+    box-shadow: 2px 2px 5px black;
+
 
 }
 .formHeading{
-    color:#2F838E
+    color:#F26641;
 }
 .formTextArea{
     height: 150px;
@@ -101,5 +80,55 @@
     text-align: left;
     vertical-align: top;
     margin: 5px;
-    background-color: #91CCCE
+    background-color: #A9C3B8
+}
+
+
+
+.clientRadioInput {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .clientRadioInput:checked + .clientRadioLabel {
+    background-color: #F26641;
+    color: #163640;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524);
+  }
+
+  .clientRadioLabel {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    background-color: #163640;
+    grid-row: 1 / span 4;
+    height: 100%;
+    overflow-y: auto;
+    color: #A9C3B8;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .clientRadioLabel::before {
+    content: "";
+
+    margin-right: 10px;
+  }
+
+ 
+  .clientRadioInput:checked + .clientRadioLabel::before {
+    background-color: #F26641;
+  }
+
+.clientOption{
+    border-bottom: 1px solid #A9C3B8;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron';
+    cursor: pointer;
 }

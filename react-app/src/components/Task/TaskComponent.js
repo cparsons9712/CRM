@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { updateTask} from "../../store/task";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown} from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -43,11 +43,11 @@ function TaskComponent ({task}){
 
     const getColor = (priority) => {
         if (priority === 'High'){
-            return 'red'
+            return '#A90505'
         }else if (priority === 'Med'){
-            return 'yellow'
+            return '#F7CA41'
         }else{
-            return 'green'
+            return '#396031'
         }
 
     }
@@ -96,7 +96,7 @@ function TaskComponent ({task}){
                             style={{color: getColor(t.priority)}}
                             onClick={()=>{handleTaskClick(t)}}
                             >
-                               <FontAwesomeIcon icon={faCircleChevronDown} />
+                               <FontAwesomeIcon icon={faCircleQuestion} />
                             </div>
                        </div>
                        <div className="TaskBody">

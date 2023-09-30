@@ -9,9 +9,11 @@ import LandingPage from "./components/LandingPage";
 import MenuBar from "./components/Navigation/SignedInBar";
 import { useSelector } from 'react-redux';
 import Dashboard from "./components/Dashboard";
-import NotesComponent from "./components/Clients/notes";
+import BookingPage from "./components/Booking/mainpage";
 import TaskPage from "./components/Task";
 import ClientPage from "./components/Clients";
+import MessagePage from "./components/Messages/mainpage";
+import { Redirect } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
+  const sessionUser = useSelector(state => state.session.user)
 
   return (
     <>
@@ -28,7 +31,8 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
-            <LandingPage />
+            {sessionUser ? <Redirect to="/dashboard"/>: <LandingPage />}
+
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -44,6 +48,12 @@ function App() {
           </Route>
           <Route path="/task">
             <TaskPage />
+          </Route>
+          <Route path="/calender">
+            <BookingPage />
+          </Route>
+          <Route path="/messages">
+            <MessagePage />
           </Route>
 
         </Switch>

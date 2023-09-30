@@ -1,7 +1,7 @@
 .profile-dropdown {
   position: absolute;
   right: 10px;
-  top: 80px;
+  top: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #61d4ca7d;
+  background-color: #163640;
   justify-content: space-between;
 
 }
@@ -22,14 +22,14 @@
 }
 .bantam{
   font-family: 'Kirsty';
-  color: #333333;
+  color: #F26641;
  padding-left: 15px;
   font-size: x-large;
 
 }
 
 .userIcon{
-  color: #333333;
+  color: #A9C3B8;
   height: 25px;
   cursor: pointer;
   margin: 15px;
@@ -49,15 +49,22 @@
 
 .userBar {
     font-family: 'Kirsty';
-    color: #333333;
+    color: #A9C3B8;
     padding: 20px;
     text-decoration: none;
 }
 
 .userBar.active{
-  background-color: #174348;
+  background-color: #163640;
 
-  color: #DBDBDB;
-  box-shadow: 2px 2px 10px rgb(72, 72, 72);
+  color: #F26641;
 
+
+}
+
+.userMenu{
+  background-color: #A9C3B8;
+  text-align: center;
+  padding: 15px;
+  color: #163640;
 }
