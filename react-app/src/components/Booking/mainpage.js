@@ -23,7 +23,7 @@ function BookingPage (){
     return (
         <>
         <div className="componentTitle">BOOKINGS COMING SOON</div>
-        {bookings? ()}
+        
 
 
 
