@@ -53,8 +53,7 @@ function TaskComponent ({task}){
     }
 
     if( task.length){
-        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
-        console.log('COMPLETE TASK OBJECT:::', task)
+
         return (
             <div className="sliceCont">
 

@@ -1,6 +1,6 @@
-const GET_BOOKINGS = "task/GET_ALL"
-const CREATE_UPDATE_BOOKING = "task/CREATE_UPDATE"
-const DELETE_BOOKING = "task/DELETE"
+const GET_BOOKINGS = "booking/GET_ALL"
+const CREATE_UPDATE_BOOKING = "booking/CREATE_UPDATE"
+const DELETE_BOOKING = "booking/DELETE"
 
 const getBookings = (payload) => ({
     type: GET_BOOKINGS,
@@ -181,12 +181,12 @@ export default function reducer(state = initialState, action) {
 			const bookingId = action.id;
 			const ClientId = copyState.all[bookingId]?.clientId;
 
-			// Remove the task from the all object
+			// Remove the booking from the all object
 			if (bookingId in copyState.all) {
 			  delete copyState.all[bookingId];
 			}
 
-			// Remove the task from the byClient object
+			// Remove the booking from the byClient object
 			if (ClientId && Array.isArray(copyState.byClient[ClientId])) {
                 // get the array of ids
 			  const clientBookings = copyState.byClient[ClientId];

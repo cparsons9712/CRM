@@ -22,7 +22,7 @@ function BookingSlice ({clientId}){
     const clientBookings = []
 
     if (bookingsAll && bookingsIds) {
-        console.log('Loaded');
+        
         bookingsIds.forEach((id) => {
             if (bookingsAll[id]) {
                 clientBookings.push(bookingsAll[id]);

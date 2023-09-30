@@ -52,7 +52,7 @@ function ClientPage (){
                 return task.push(Alltask.all[id])
         })
         }
-        console.log('SELECTED TASK FOR CLIENT::::', task)
+
         setClientTask(task)
         setClientNotes(null)
         let notes = [];
@@ -142,7 +142,7 @@ function ClientPage (){
                 ) : (
                     <>
                         <div className="componentTitle">Notes</div>
-                        <div className="sliceCont"></div>
+                       <div className="sliceCont"></div>
                     </>
                 )}
             </div>
