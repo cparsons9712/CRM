@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
 from app.models import Booking, Client, Availability, db
 from app.forms import BookingForm
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta, datetime, time
 
 booking_routes = Blueprint('booking', __name__)
 
@@ -27,6 +27,12 @@ def setEndTime(starttime, duration):
     end_time = end_time_datetime.time()
 
     return end_time
+
+
+
+
+
+
 
 def getDayOfWeek(date):
     return date.strftime('%A')
@@ -104,6 +110,7 @@ def bookAppt(userId):
             ((Booking.freelancerId == current_user.id) & (Booking.clientId == userId)) |
             ((Booking.freelancerId == userId) & (Booking.clientId == current_user.id))
             ).filter(Booking.day == date.today())
+
         newStartTime = form["time"]
         newDuration = form["duration"]
         newEndTime = setEndTime(newStartTime, newDuration)
@@ -115,6 +122,7 @@ def bookAppt(userId):
 
         form.populate_obj(appointment)
         appointment.endTime = newEndTime
+
 
         #if the user is a freelancer
         if current_user.authLevel == 1:

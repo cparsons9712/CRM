@@ -10,6 +10,7 @@ import NotesComponent from "./notes";
 import EditCreateNote from "./edit_new";
 import EditCreateTask from "../Task/create_edit";
 import BookingSlice from "../Booking/component";
+import EditCreateBooking from "../Booking/createEdit";
 
 import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
@@ -110,8 +111,14 @@ function ClientPage (){
                         {clientInfo.email}
                     </div>
                     <div className="clientButtons">
-                        <button>Schedule</button>
-                        <button>Message</button>
+                        <button onClick={()=>{setModalContent(<EditCreateBooking clientInfo={clientInfo}/>)}}>
+                            Schedule
+                        </button>
+                        <button onClick={()=>{alert('Feature Coming Soon')}} >
+                            Message
+                        </button>
+
+
                         <button
                             onClick={() =>
                                 setModalContent(<EditCreateNote clientInfo={clientInfo}/>)
@@ -119,6 +126,8 @@ function ClientPage (){
                         >
                             Note
                         </button>
+
+
                         <button
                             onClick={() =>
                                 setModalContent(<EditCreateTask clientInfo={clientInfo}/>

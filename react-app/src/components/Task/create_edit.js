@@ -23,8 +23,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
         if (task) {
             typeForm.current = "Edit"
             clientId.current = task.Client.id;
-            console.log('TRIGGERED EDIT-----')
-            console.log('CLIENTID FROM TASK::: ', clientId.current)
+
             setDescription(task.description)
             setPriority(task.priority)
             if (task.due_date) {
@@ -36,8 +35,6 @@ function EditCreateTask({task, edit=true, clientInfo }){
         } else {
             typeForm.current = "Create"
             clientId.current = clientInfo.id
-            console.log('TRIGGERED CREATE-----')
-            console.log('CLIENTID FROM clientInfo::: ', clientId)
         }
     }, [task, clientInfo]);
 
@@ -46,12 +43,11 @@ function EditCreateTask({task, edit=true, clientInfo }){
 
 
     async function handleSubmit(e) {
-        console.log('%%%%%%%%%HANDLE SUBMIT%%%%%%%')
+
         e.preventDefault();
         const err = {};
         if (!description.length) {
           err.text = 'Text cannot be empty';
-          setErrors(err);
         }
         else if (priority !== 'High' && priority !== 'Med' && priority !== 'Low'){
             err.priority = 'Priority must be "High", "Med" or "Low'
@@ -72,21 +68,17 @@ function EditCreateTask({task, edit=true, clientInfo }){
           priority,
           due_date
         };
-        console.log('PAYLOAD: ', payload)
+
 
         if (task && task.id) {
-            console.log('SENDING TO UPDATETASK')
           dispatch(updateTask(task.id, payload));
         } else {
-            console.log('DISPATCHING CREATETASK')
             const response = await dispatch(createTask(payload));
-            console.log('RESPONSE::::: ', response)
             if (response && !response.errors) {
-                console.log('SUCCESSFULLY SUCCESS')
                 dispatch(loadAllTask());
             }
         }
-        console.log('CLOSING MODAL')
+        
         closeModal();
       }
 
