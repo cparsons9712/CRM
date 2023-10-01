@@ -48,10 +48,19 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         if(!day) err.day = 'Day is required'
         if(!time)err.time = 'Time is required'
         if(!duration) err.duration = 'Duration is required'
+        const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+        if(!regex.test(time)){
+            err.duration = "Time must be in a valid formatt"
+        }
+
+
         if(Object.values(err).length){
             setErrors(err)
             return;
         }
+
+
+
         const payload = {
             day,
             time,
@@ -59,6 +68,8 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             title,
             location,
         };
+
+
 
 
         let response = null
@@ -73,6 +84,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             closeModal()
         }
     }
+
 
     return (
         <div className="editCreateCont">
@@ -123,10 +135,11 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
                 {/* duration */}
                 <label>Duration</label>
                 <input
-                    type="time"
-
+                    type="text"
+                    id="timeInput"
                     value={duration}
                     onChange={(e)=>{setDuration(e.target.value)}}
+                    placeholder="HH:MM"
                 />
                 {errors.duration}
 
