@@ -192,3 +192,17 @@
 .small{
     width: 100px;
 }
+
+.userMenuLink{
+    cursor: pointer;
+    color: #163640;
+    font-family: 'Orbitron';
+}
+.userMenuLink:hover{
+    color:#F26641
+}
+.userGreeting{
+    color: #163640;
+    font-family: 'Kirsty';
+    font-size: 20px;
+}

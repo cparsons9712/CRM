@@ -7,7 +7,8 @@ import SignupFormModal from "../SignupFormModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-
+import AddClient from "../Clients/addClientUser";
+import { useModal } from "../../context/Modal";
 
 
 function ProfileButton({ user }) {
@@ -15,6 +16,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const history = useHistory()
+  const {setModalContent} = useModal()
 
   const openMenu = () => {
     if (showMenu) return;
@@ -53,8 +55,11 @@ function ProfileButton({ user }) {
         {user ? (
           <div className="userMenu">
 
-            <div>Hello {user.firstName}!</div>
-            <button onClick={handleLogout}>Log Out</button>
+            <div className="userGreeting">Hello {user.firstName}!</div>
+            <hr></hr>
+            <div onClick={()=>{setModalContent(<AddClient />)} } className="userMenuLink">Add Client</div>
+            <hr></hr>
+            <div onClick={handleLogout} className="userMenuLink">Log Out</div>
 
           </div>
         ) : (
