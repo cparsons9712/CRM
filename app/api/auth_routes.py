@@ -49,6 +49,8 @@ def login():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+
+
 @auth_routes.route('/logout')
 def logout():
     """
@@ -73,6 +75,23 @@ def sign_up():
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@auth_routes.route('/signup/other', methods=['POST'])
+def sign_up_other():
+    """
+    Creates a new user and logs them in
+    """
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User()
+        form.populate_obj(user)
+        db.session.add(user)
+        db.session.commit()
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 
 
 @auth_routes.route('/unauthorized')

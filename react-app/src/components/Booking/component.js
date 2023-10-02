@@ -2,12 +2,14 @@ import { loadFreelancerBookings } from "../../store/bookings";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import './booking.css'
-
+import SeeBookingDetails from "./details";
+import { useModal } from "../../context/Modal";
 
 
 
 function BookingSlice ({clientId}){
     const dispatch = useDispatch();
+    const { setModalContent } = useModal();
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
@@ -22,12 +24,16 @@ function BookingSlice ({clientId}){
     const clientBookings = []
 
     if (bookingsAll && bookingsIds) {
-        
+
         bookingsIds.forEach((id) => {
             if (bookingsAll[id]) {
                 clientBookings.push(bookingsAll[id]);
             }
         });
+    }
+
+    const handleBookingClick = (b) =>{
+        setModalContent(<SeeBookingDetails booking={b} />)
     }
     return <>
         <div className="componentTitle">
@@ -36,7 +42,7 @@ function BookingSlice ({clientId}){
         {clientBookings.length?
             <div>
                 { clientBookings.map((b)=>{return (
-                    <div className="bookingOverview">{b.day ? <>
+                    <div className="bookingOverview" onClick={()=>{handleBookingClick(b)}}>{b.day ? <>
                       <span className="overviewTitle">{ b.day.slice(5,11)} {b.time}</span>  {b.title} </>: <></>}
                     </div>)
                 })}

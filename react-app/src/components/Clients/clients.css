@@ -13,19 +13,22 @@
 
 .clientInfo{
     padding: 5px;
-    margin-right: 5px;
+    margin-left: 20px;
+    margin-right: 10px;
     background-color:#a9c3b811;
     color: #F26641;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 .clientName{
     font-family: 'Kirsty';
-    font-size: x-large;
+    font-size: 25px;
     color:#F26641;
+    margin-top: 15px;
 
 }
 .clientContact{
@@ -33,11 +36,13 @@
     font-family: 'Orbitron';
     font-size: 12px;
 
+
 }
 
 .upcomingAppt{
     background-color:#a9c3b811;
     color: #A9C3B8;
+    margin-right: 30px;
 
 }
 
@@ -82,7 +87,26 @@
     margin: 5px;
     background-color: #A9C3B8
 }
+.formBody{
+    color:#A9C3B8;
+    font-family: 'Orbitron';
+    display: flex;
+    flex-direction: column;
 
+}
+
+.orange{
+    color: #F26641
+}
+
+.simpleButton{
+    margin: 20px;
+    width: 150px;
+    background-color: #163640;
+    color: #A9C3B8;
+    border: 1px solid #F26641;
+
+}
 
 
 .clientRadioInput {
@@ -117,7 +141,7 @@
     margin-right: 10px;
   }
 
- 
+
   .clientRadioInput:checked + .clientRadioLabel::before {
     background-color: #F26641;
   }
@@ -131,4 +155,40 @@
     align-items: center;
     font-family: 'Orbitron';
     cursor: pointer;
+}
+
+
+.addClientContainer{
+    background-color: #163640;
+    color: #A9C3B8;
+    padding: 20px;
+    width: 400px;
+    align-items: center;
+
+
+}
+.search{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchItem{
+    margin-bottom: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.searchRes{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.small{
+    width: 100px;
 }

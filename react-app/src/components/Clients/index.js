@@ -16,6 +16,7 @@ import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
 import { loadClientNotes } from "../../store/notes";
 import { loadFreelancerBookings } from "../../store/bookings";
+import AddClient from "./addClientUser";
 
 function ClientPage (){
 
@@ -114,9 +115,6 @@ function ClientPage (){
                         <button onClick={()=>{setModalContent(<EditCreateBooking clientInfo={clientInfo}/>)}}>
                             Schedule
                         </button>
-                        <button onClick={()=>{alert('Feature Coming Soon')}} >
-                            Message
-                        </button>
 
 
                         <button
@@ -136,7 +134,16 @@ function ClientPage (){
                     </div>
                 </>
                 ) : (
-                <h2>Select a client to view details.</h2>
+                <>
+                    <h2>Select a client to view details.</h2>
+                    <button
+                        onClick={()=>{
+                            setModalContent(<AddClient/>)
+                        }}
+                    >
+                        Add New Client
+                        </button>
+                </>
                 )}
             </div>
             <div className="upcomingAppt">
@@ -170,11 +177,11 @@ function ClientPage (){
 
 
             </div>
-            <div className="messages">
+            {/* <div className="messages">
                 <div className="componentTitle">Messages</div>
                 <div className="sliceCont"></div>
 
-            </div>
+            </div> */}
         </div>
     )
 }

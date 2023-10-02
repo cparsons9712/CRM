@@ -25,7 +25,7 @@ function MenuBar(){
           <NavLink className="userBar" to="/clients">Clients</NavLink>
           <NavLink className="userBar" exact to="/task">Task</NavLink>
           <NavLink className="userBar" exact to="/calender">Calender</NavLink>
-          <NavLink className="userBar" exact to="/messages">Messages</NavLink>
+          {/* <NavLink className="userBar" exact to="/messages">Messages</NavLink> */}
         </nav>
       );
     };

@@ -23,9 +23,14 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         if(booking){
             typeForm.current = 'Edit'
             clientId.current = booking.clientId
-            setDay(booking.day)
+            // formatt the date so that it can be imported. without these steps date WILL NOT IMPORT
+            const inputDateString = booking.day
+            const inputDate = new Date(inputDateString);
+            const formattedDate = inputDate.toISOString().split('T')[0];
+            setDay(formattedDate)
             setTime(booking.time)
-            setDuration(booking.duration)
+            setDuration(String(booking.duration))
+
             setTitle(booking.title)
             if(booking.location){
                 setLocation(booking.location)
@@ -90,8 +95,8 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         <div className="editCreateCont">
 
             <div className="formHeading">
-                <div className="componentTitle">
-                    {typeForm.current} an Appointment
+                <div className="componentTitle orange">
+                    {typeForm.current? 'Edit' : 'Create'} an Appointment
                 </div>
                 <div className="formClient">
                     {client? `${client.firstName} ${client.lastName}`: ""}
@@ -101,7 +106,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             <div className="formBody">
 
                 {/* title */}
-                <label>Write a short descriptive title</label>
+                <label>Title</label>
                 <input
                     className="formStringInput"
                     placeholder="Title ..."
@@ -133,7 +138,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
                 {errors.title}
 
                 {/* duration */}
-                <label>Duration</label>
+                <label>Duration (HH:MM)</label>
                 <input
                     type="text"
                     id="timeInput"
@@ -144,7 +149,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
                 {errors.duration}
 
                 {/* location */}
-                <label>Where is this meeting happening?</label>
+                <label>Location</label>
                 <input
                     className="formStringInput"
                     placeholder="Location ..."

@@ -47,7 +47,7 @@ export function getUserRelationships(){
 
 export function getAllFreelancers(){
 	return async (dispatch) =>{
-	
+
 		const res = await fetch(`/api/users/freelancers`)
 
 		if(res.ok){
@@ -64,8 +64,12 @@ export function getAllFreelancers(){
 	}
 }
 
-export const createRelationship = (newRelationship) => async dispatch =>{
 
+
+export const createRelationship = (newRelationship) => async dispatch =>{
+	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+
+	console.log('IN THE CREATE RELATIONSHIP THUNK')
 
     const response = await fetch("/api/relationships/", {
 		method: "POST",
@@ -74,14 +78,19 @@ export const createRelationship = (newRelationship) => async dispatch =>{
 		},
 		body: JSON.stringify(newRelationship),
 	});
+	console.log(response)
 
 
 	if (response.ok) {
 		const data = await response.json();
+		console.log('SUCCESS!!!!!!!!!! DATA:')
+		console.log(data)
 		dispatch(makeRelationship(data));
 		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
+		console.log('FAILURE!!!!!!!!!! DATA:')
+		console.log(data)
 		if (data.errors) {
 			console.log(data.errors)
 			return data.errors;
@@ -90,6 +99,9 @@ export const createRelationship = (newRelationship) => async dispatch =>{
 		return ["An error occurred. Please try again."];
 	}
 }
+
+
+
 
 const initialState = {}
 

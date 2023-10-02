@@ -78,27 +78,21 @@ function EditCreateTask({task, edit=true, clientInfo }){
                 dispatch(loadAllTask());
             }
         }
-        
+
         closeModal();
       }
 
-      const handleDelete =() =>{
-        if (typeForm.current === "Edit"){
-            if(window.confirm('Are you sure you want to delete this task?')) {
-                dispatch(removeTask(task.id));
-        }}
-        closeModal();
-    }
 
     return (
     <div className="editCreateCont">
 
         <div className="formHeading">
-            <div className="componentTitle"> {typeForm.current} a Task</div>
+            <div className="componentTitle"> {typeForm.current? 'Edit' : 'Create'} a Task</div>
             <div className="formClient">{client?  `${client.firstName} ${client.lastName}`: ""} </div>
         </div>
 
         <div className="formBody">
+            <label>Description:</label>
             <textarea
             className="formTextArea"
                 placeholder= "Write a task here ..."
@@ -108,7 +102,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
             />
             {errors.description}
 
-            <label htmlFor="selectedPriority"></label>
+            <label htmlFor="selectedPriority"> Priority:</label>
             <select
                 name="priority"
                 id="selectedPriority"
@@ -121,6 +115,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
             </select>
             {errors.priority}
 
+            <label>Due Date:</label>
             <input
                 name="dueDate"
                 type="date"

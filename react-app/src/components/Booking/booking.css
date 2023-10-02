@@ -12,6 +12,13 @@
     flex-wrap: wrap;
     margin: 10px;
 }
+.bookingDetails{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    
+
+}
 
 .bookingTile{
     background-color: #A9C3B8;

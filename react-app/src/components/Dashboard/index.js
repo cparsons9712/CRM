@@ -33,7 +33,7 @@ function Dashboard (){
         <div className="componentTitle">Appointments</div>
 
 
-        <div className="componentTitle">Messages</div>
+        {/* <div className="componentTitle">Messages</div> */}
 
 
 
