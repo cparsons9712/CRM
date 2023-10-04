@@ -57,7 +57,7 @@ export const createTask = (payload) => async dispatch =>{
 		const data = await response.json();
 		if (data.errors) {
 			console.log('$$$$ create Task validation errors:', data.errors);
-			return data.errors;
+			return data.errors
 		}
 	} else {
 		console.error('create Task error. An error occurred while making the request.');

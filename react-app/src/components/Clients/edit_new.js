@@ -12,7 +12,7 @@ function EditCreateNote({note, edit=true, clientInfo }){
     let clientId;
 
     const [text, setText] = useState('');
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState([])
 
 
     let typeForm;
@@ -48,18 +48,18 @@ function EditCreateNote({note, edit=true, clientInfo }){
         const payload = {
           text
         };
+        let response;
         if (note && note.id) {
-          dispatch(updateNote(note.id, payload));
+          response = await dispatch(updateNote(note.id, payload));
         } else {
-          const response = await dispatch(createNote(clientId, payload));
-          // Check if the note creation was successful before reloading client notes.
-          if (response && !response.errors) {
-            // Note creation was successful, so reload the client's notes.
-            dispatch(loadClientNotes());
-          }
+          response = await dispatch(createNote(clientId, payload));
         }
-
-        closeModal();
+        if(response && response.length){
+          setErrors(response)
+        }else {
+          dispatch(loadClientNotes());
+          closeModal();
+        }
       }
 
     const handleDelete =() =>{
@@ -78,6 +78,9 @@ function EditCreateNote({note, edit=true, clientInfo }){
     </div>
 
     <div className="formBody">
+        { errors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
             <textarea
             className="formTextArea"
                 placeholder= "Write a note here ..."

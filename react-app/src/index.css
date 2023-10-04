@@ -23,4 +23,7 @@ body{
   background-color: #163640;
 }
 
-
+.errors{
+  color: rgb(231, 82, 82);
+  text-align: start;
+}

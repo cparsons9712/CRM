@@ -15,7 +15,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     const [duration, setDuration] = useState('')
     const [title, setTitle] = useState('')
     const [location, setLocation] = useState('')
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState([])
     const clientId = useRef(null)
     const typeForm = useRef(null)
 
@@ -48,18 +48,25 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        const err = {};
-        if (!title.length) err.title = 'Title is required'
-        if(!day) err.day = 'Day is required'
-        if(!time)err.time = 'Time is required'
-        if(!duration) err.duration = 'Duration is required'
+        const err = [];
         const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-        if(!regex.test(time)){
-            err.duration = "Time must be in a valid formatt"
+        const today = new Date()
+        let inputDate = new Date(day)
+
+
+        if (!title) err.push("Title is required")
+        if(title && (title.length < 2 || title.length > 35)) err.push("Title must be between 2 and 35 characters")
+        if(!day) err.push('Date is required')
+        if(day && (inputDate < today))err.push('Date must be in the future')
+        if(!time) err.push('Start time is required')
+        if(!duration){err.push("Duration is required")}
+        if(duration && !regex.test(duration)){
+            err.push("Duration must be in a valid format (HH:MM)")
         }
+        if(!location) err.push ('Location is required. ')
 
 
-        if(Object.values(err).length){
+        if(err.length){
             setErrors(err)
             return;
         }
@@ -84,8 +91,10 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         }else{
             response = await dispatch(createBooking(clientId.current ,payload))
         }
-        if(response && !response.errors){
-            dispatch(loadFreelancerBookings(user.id))
+        if(response && response.length){
+            setErrors(response)
+        }else{
+           dispatch(loadFreelancerBookings(user.id))
             closeModal()
         }
     }
@@ -104,6 +113,11 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             </div>
 
             <div className="formBody">
+                <div className="errors">
+                    {errors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
+                </div>
 
                 {/* title */}
                 <label>Title</label>

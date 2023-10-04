@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
+import { validateEmail } from "../../util";
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -12,32 +13,36 @@ function SignupFormModal() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-	const [authLevel, setAuthLevel]= useState(0)
+	// const [authLevel, setAuthLevel]= useState(0)
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
+		const err = []
+		if (!validateEmail(email)) err.push("Please enter a valid email.")
+		if(password !== confirmPassword) err.push("Password and confirm password must match")
 
-			const data = await dispatch(signUp({username, email, password, firstName, lastName, authLevel}));
+
+
+		if (password === confirmPassword && validateEmail(email) ) {
+
+			const data = await dispatch(signUp({username, email, password, firstName, lastName, authLevel: 1}));
 			if (data) {
 				setErrors(data);
 			} else {
 				closeModal();
 			}
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			setErrors(err);
 		}
 	};
 
-	const handleRoleChange = (event) => {
-		const newValue = parseInt(event.target.value, 10); // Parse the value as an integer
-		setAuthLevel(newValue);
-	  };
+	// const handleRoleChange = (event) => {
+	// 	const newValue = parseInt(event.target.value, 10); // Parse the value as an integer
+	// 	setAuthLevel(newValue);
+	//   };
 
 	return (
 		<div className="loginCont">
@@ -77,6 +82,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+
 				<label>
 
 					<input
@@ -107,7 +113,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<div className="radio-slider">
+				{/* <div className="radio-slider">
 					<input
 						type="radio"
 						name="role"
@@ -126,7 +132,7 @@ function SignupFormModal() {
 						id="freelancer"
 					/>
 					<label htmlFor="freelancer">Freelancer</label>
-				</div>
+				</div> */}
 				<button type="submit">Sign Up</button>
 			</form>
 		</div>

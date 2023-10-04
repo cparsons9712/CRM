@@ -17,7 +17,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
     const typeForm = useRef(null)
 
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState([])
 
     useEffect(() => {
         if (task) {
@@ -43,24 +43,12 @@ function EditCreateTask({task, edit=true, clientInfo }){
 
 
     async function handleSubmit(e) {
-
+        setErrors([])
+        const today = new Date()
+        const dueDateFormatted = new Date(due_date)
         e.preventDefault();
-        const err = {};
-        if (!description.length) {
-          err.text = 'Text cannot be empty';
-        }
-        else if (priority !== 'High' && priority !== 'Med' && priority !== 'Low'){
-            err.priority = 'Priority must be "High", "Med" or "Low'
-        }
-        else if (!due_date){
-            err.due_date = "NOT A VALID DUE DATE"
-        }
+        const err = [];
 
-        if (Object.values(err).length){
-            setErrors(err)
-            console.log('FRONTEND VALIDATION ERRORS ----- EXITING')
-            return;
-        }
 
         const payload = {
           clientId : clientId.current,
@@ -68,19 +56,20 @@ function EditCreateTask({task, edit=true, clientInfo }){
           priority,
           due_date
         };
-
+        let response;
 
         if (task && task.id) {
-          dispatch(updateTask(task.id, payload));
+           response = await dispatch(updateTask(task.id, payload));
         } else {
-            const response = await dispatch(createTask(payload));
-            if (response && !response.errors) {
-                dispatch(loadAllTask());
-            }
+            response = await dispatch(createTask(payload));
         }
-
-        closeModal();
-      }
+        if(response && response.length){
+            setErrors(response)
+        }else {
+            dispatch(loadAllTask());
+            closeModal();
+        }
+    }
 
 
     return (
@@ -92,6 +81,9 @@ function EditCreateTask({task, edit=true, clientInfo }){
         </div>
 
         <div className="formBody">
+        {errors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
             <label>Description:</label>
             <textarea
             className="formTextArea"
