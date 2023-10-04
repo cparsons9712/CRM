@@ -78,9 +78,10 @@ function EditCreateNote({note, edit=true, clientInfo }){
     </div>
 
     <div className="formBody">
+      <div className="errors">
         { errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
-					))}
+					))}</div>
             <textarea
             className="formTextArea"
                 placeholder= "Write a note here ..."

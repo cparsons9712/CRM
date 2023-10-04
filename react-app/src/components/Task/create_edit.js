@@ -81,9 +81,11 @@ function EditCreateTask({task, edit=true, clientInfo }){
         </div>
 
         <div className="formBody">
-        {errors.map((error, idx) => (
+            <div className="errors">
+         {errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
+            </div>
             <label>Description:</label>
             <textarea
             className="formTextArea"

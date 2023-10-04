@@ -48,11 +48,11 @@ function SignupFormModal() {
 		<div className="loginCont">
 			<h1>Sign Up</h1>
 			<form className="loginForm" onSubmit={handleSubmit}>
-
+				<div className="errors">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
-
+				</div>
 				<label>
 					<input
 						placeholder="First Name"
