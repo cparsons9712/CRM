@@ -16,21 +16,31 @@ function BookingSlice ({clientId}){
       dispatch(loadFreelancerBookings(user.id));
     }, [dispatch, user.id]);
 
+    const bookingsAll = useSelector((state) => state.bookings);
 
-    const bookingsAll = useSelector((state) => state.bookings.all);
-    console.log(bookingsAll)
-    const bookingsIds = useSelector((state)=> state.bookings.byClient[clientId])
-    console.log(bookingsIds)
-    const clientBookings = []
+    let bookings = []
 
-    if (bookingsAll && bookingsIds) {
-
-        bookingsIds.forEach((id) => {
-            if (bookingsAll[id]) {
-                clientBookings.push(bookingsAll[id]);
+    if (bookingsAll) {
+         if (clientId){
+            let bookingsIds = bookingsAll.byClient[clientId]
+            bookingsIds.forEach((id) => {
+            if (bookingsAll.all[id]) {
+                bookings.push(bookingsAll.all[id]);
             }
         });
+        }else{
+            Object.values(bookingsAll.all).forEach((b) => {
+                bookings.push(b)
+            })
+        }
     }
+
+
+
+
+
+
+
 
     const handleBookingClick = (b) =>{
         setModalContent(<SeeBookingDetails booking={b} />)
@@ -39,9 +49,9 @@ function BookingSlice ({clientId}){
         <div className="componentTitle">
             Upcoming Appointments
         </div>
-        {clientBookings.length?
+        {bookings.length?
             <div>
-                { clientBookings.map((b)=>{return (
+                { bookings.map((b)=>{return (
                     <div className="bookingOverview" onClick={()=>{handleBookingClick(b)}}>{b.day ? <>
                       <span className="overviewTitle">{ b.day.slice(5,11)} {b.time}</span>  {b.title} </>: <></>}
                     </div>)

@@ -22,7 +22,7 @@ function AddClient() {
       // Find the user by email
       const foundUser = userArr.find((user) => user.email === email);
 
-      if (foundUser) {
+      if (foundUser && foundUser.id !== currentUser.id) {
         setClient(foundUser);
         setShowSearch(false);
       } else {

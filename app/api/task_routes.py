@@ -81,21 +81,34 @@ def editTask(task_id):
     task = Task.query.get_or_404(task_id)
     if task.freelancerId != current_user.id:
         return {'errors': {'Unauthorized': 'Freelancer is not the author of this task.'}}, 401
+    print('Task from the form')
+    print(task)
 
     if form.validate_on_submit():
-        if 'completed' in form.data:
-            # Handle completion status change
-            task.completed = form.completed.data
-        else:
-            # Handle editing main task details
-            form.populate_obj(task)
-
+        form.populate_obj(task)
+        print(task)
         db.session.add(task)
         db.session.commit()
-
         return task.to_dict()
-
     return {'errors': validation_errors_to_error_messages(form.errors)}, 422
+
+@task_routes.route('/<task_id>/complete', methods=['PUT'])
+@login_required
+def completeTask(task_id):
+    """
+    Updates a task's completed status.
+    """
+    task = Task.query.get_or_404(task_id)
+    if task.freelancerId != current_user.id:
+        return {'errors': {'Unauthorized': 'Freelancer is not the author of this task.'}}, 401
+
+    task.completed = not task.completed
+
+    db.session.commit()
+
+    return task.to_dict()
+
+
 
 @task_routes.route('/<task_id>', methods=['DELETE'])
 @login_required

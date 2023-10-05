@@ -92,6 +92,7 @@ export const updateBooking = (bookingId, payload) => async dispatch =>{
 		},
 		body: JSON.stringify(payload),
 	});
+	console.log('THUNK RES:::', response)
 
 	if (response.ok) {
 		const data = await response.json();

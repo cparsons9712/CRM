@@ -66,8 +66,6 @@ export const createTask = (payload) => async dispatch =>{
 }
 
 export const updateTask = (taskId, payload) => async dispatch =>{
-    console.log('^^^^^^^^ updateTask Thunk ^^^^^^^^^^^')
-	console.log('Payload:::' , JSON.stringify(payload))
 
 	const response = await fetch(`/api/task/${taskId}`, {
 		method: "PUT",
@@ -79,19 +77,38 @@ export const updateTask = (taskId, payload) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('^^^ Edit Task success. Received data:', data);
-		 dispatch(createOrUpdateTask(data));
+		dispatch(createOrUpdateTask(data));
 		return data;
 
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('^^^ Edit Task Failed. Errors:', data.errors);
 			return data.errors;
 		}
-
 	} else {
-		console.error('$$$$ Unexpected Error');
+		return ["An error occurred. Please try again."];
+	}
+}
+export const completeTask = (taskId) => async dispatch =>{
+
+	const response = await fetch(`/api/task/${taskId}/complete`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(createOrUpdateTask(data));
+		return data;
+
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
 		return ["An error occurred. Please try again."];
 	}
 }

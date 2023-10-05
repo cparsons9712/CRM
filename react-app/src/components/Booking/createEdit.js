@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./booking.css"
+import { fixDate } from "../../util";
 
 
 
@@ -51,13 +52,14 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         const err = [];
         const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
         const today = new Date()
-        let inputDate = new Date(day)
+        let inputDate = fixDate(day)
+
 
 
         if (!title) err.push("Title is required")
         if(title && (title.length < 2 || title.length > 35)) err.push("Title must be between 2 and 35 characters")
         if(!day) err.push('Date is required')
-        if(day && (inputDate < today))err.push('Date must be in the future')
+        if(day && (inputDate.setHours(0,0,0,0) < today.setHours(0,0,0,0)))err.push('Date must be in the future')
         if(!time) err.push('Start time is required')
         if(!duration){err.push("Duration is required")}
         if(duration && !regex.test(duration)){
@@ -87,7 +89,10 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         let response = null
 
         if(booking && booking.id){
+            console.log('%%%%%%%%%%%%%%%%%% booking handleSubmit update %%%%%%%%%%%%')
+            console.log(booking.id, ':', payload )
             response = await dispatch(updateBooking( booking.id, payload))
+            console.log('RES: ', response)
         }else{
             response = await dispatch(createBooking(clientId.current ,payload))
         }

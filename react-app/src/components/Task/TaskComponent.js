@@ -3,7 +3,7 @@ import "./task.css"
 import TaskDetails from "./details";
 import { useModal } from "../../context/Modal";
 import { useEffect, useState } from "react";
-import { updateTask} from "../../store/task";
+import { updateTask, completeTask} from "../../store/task";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion} from '@fortawesome/free-solid-svg-icons';
@@ -58,7 +58,7 @@ function TaskComponent ({task}){
             <div className="sliceCont">
 
                 {task.map((t)=> {
-                    console.log('INDV TASK::::', t)
+
                     if(t && t.completed === false){
                     return (
                         <div className="taskTile" key={t.id}>
@@ -70,16 +70,7 @@ function TaskComponent ({task}){
                                 id={`complete_${t.completed}`}
                                 checked={t.completed}
                                 onChange={(e)=> {
-                                    alert('checkbox change')
-                                    console.log('$$$$$$$$$$')
-                                    console.log(`task::::`, t)
-                                    const checkedTask = {
-
-                                        ...t,
-                                        completed: !t.completed,
-                                        due_date: t.due_date ? new Date(t.due_date).toISOString().split('T')[0] : null,
-                                    }
-                                    dispatch(updateTask(t.id, checkedTask))
+                                    dispatch(completeTask(t.id))
                                 }}
                             />
 
@@ -97,19 +88,21 @@ function TaskComponent ({task}){
                             >
                                <FontAwesomeIcon icon={faCircleQuestion} />
                             </div>
-                       </div>
-                       <div className="TaskBody">
-                            <p className="taskDescription">
-                                {t.description}
-                            </p>
-                            <div className="taskClient" >
-                                {`${t.Client.firstName} ${t.Client.lastName}`}
-                            </div>
-                       </div>
+                        </div>
+                        <div className="TaskBody">
+                                <p className="taskDescription">
+                                    {t.description}
+                                </p>
+                                <div className="taskClient" >
+                                    {`${t.Client.firstName} ${t.Client.lastName}`}
+                                </div>
+                        </div>
 
 
                     </div>
-                )}
+                )}else {
+                    return null
+                }
 
             })}
 

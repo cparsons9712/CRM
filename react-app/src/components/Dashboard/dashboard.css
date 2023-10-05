@@ -30,3 +30,13 @@
     color:#A9C3B8;
 
 }
+
+.dashboard{
+    display: flex;
+    flex-direction: column;
+
+}
+.dashboardHeader{
+    display: flex;
+    flex-direction: row;
+}

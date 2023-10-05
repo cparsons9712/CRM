@@ -1,14 +1,18 @@
 .clientPageCont{
     display: grid;
     grid-template-columns: 20% 40% 40%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 150px 235px 235px;
 
     width: 100%;
-    height: 100%;
-    max-height: 85vh; /* Set a maximum height to fit within the viewport */
-    overflow-y: hidden;
+    height: 92%;
 
 
+
+
+}
+
+.clientNav{
+    grid-row: 1 /span 3
 }
 
 .clientInfo{
@@ -21,6 +25,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-height:  150px;
+    min-width: 40%;
 
 }
 
@@ -42,7 +48,9 @@
 .upcomingAppt{
     background-color:#a9c3b811;
     color: #A9C3B8;
+    width: 90%;
     margin-right: 30px;
+
 
 }
 
