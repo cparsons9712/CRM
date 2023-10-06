@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import './booking.css'
 import SeeBookingDetails from "./details";
 import { useModal } from "../../context/Modal";
+import { fixDate } from "../../util";
 
 
 
@@ -21,13 +22,15 @@ function BookingSlice ({clientId}){
     let bookings = []
 
     if (bookingsAll) {
-         if (clientId){
+        if (clientId){
             let bookingsIds = bookingsAll.byClient[clientId]
-            bookingsIds.forEach((id) => {
-            if (bookingsAll.all[id]) {
-                bookings.push(bookingsAll.all[id]);
+            if(bookingsIds && bookingsIds.length){
+                bookingsIds.forEach((id) => {
+                    if (bookingsAll.all[id]) {
+                        bookings.push(bookingsAll.all[id]);
+                    }
+                });
             }
-        });
         }else{
             Object.values(bookingsAll.all).forEach((b) => {
                 bookings.push(b)
@@ -36,9 +39,25 @@ function BookingSlice ({clientId}){
     }
 
 
+    const parseTime= (time) =>{
+        const [hours, minutes] = time.split(':');
+        return new Date(0, 0, 0, hours, minutes);
+    }
+    bookings.sort(function(a, b) {
+        const dateA = fixDate(a.day);
+        const dateB = fixDate(b.day);
+        const timeA = parseTime(a.time);
+        const timeB = parseTime(b.time);
 
 
-
+        if (dateA < dateB) {
+          return -1;
+        } else if (dateA > dateB) {
+          return 1;
+        } else {
+          return timeA - timeB;
+        }
+      });
 
 
 

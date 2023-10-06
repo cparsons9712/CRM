@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { Redirect } from 'react-router-dom';
 import "./LoginForm.css";
+import { useHistory } from 'react-router-dom';
 
 
 function LoginFormModal() {
@@ -12,6 +13,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const history = useHistory()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
+        history.push('/dashboard')
         closeModal()
     }
   };

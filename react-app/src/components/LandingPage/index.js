@@ -1,80 +1,117 @@
-import SignupFormPage from "../SignupFormPage"
-import './LandingPage.css'
+import React from "react";
+import './LandingPage.css';
+import notepadImage from "../../images/notepad.png"
+import calenderImage from "../../images/calendar.png"
+import taskImage from "../../images/to-do-list.png"
+import clientsImage from "../../images/clients.png"
+import SignupFormModal from "../SignupFormModal";
+import OpenModalButton from "../OpenModalButton";
 
 
-import { useDispatch } from "react-redux";
-import { createRelationship } from "../../store/relationships";
-import { useState } from "react";
-
-
-
-
-function LandingPage(){
-  const [otherId, setOtherId] = useState()
-  const dispatch = useDispatch();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const newRelationship = {otherId}
-    await dispatch(createRelationship(newRelationship))
-
-  }
-
-    return (
+const LandingPage = () => {
+  return (
     <div className="landingCont">
-      <form onSubmit={handleSubmit}>
-        <label>other Id</label>
-        <input
-          type= 'number'
-          value={otherId}
-          onChange={e => {setOtherId(e.target.value)}}
-        />
-        <button onClick={(e) => {handleSubmit(e)}}>
-        Submit
-        </button>
-
-
-      </form>
-
-
-        <div className="landingHeader">
-          <h1>Your Village Starts Here!</h1>
-          <p>Life is easier with support. Find the perfect person to help with any aspect of your life.</p>
+      <header className="landingHeader">
+        <div className="headerText">
+          <h1>Unlock Your Freelancing Potential</h1>
+          <p>Supercharge your workflow with our CRM designed exclusively for freelancers.</p>
+          <OpenModalButton
+              buttonText="Sign Up Today"
+              modalComponent={<SignupFormModal />}
+            />
         </div>
 
-        <div className="landingBenefits">
-          <h2>Why Choose Our Freelance Marketplace?</h2>
-          <ul>
-            <li>Access a diverse community of skilled freelancers.</li>
-            <li>Get help with any problem, big or small.</li>
-            <li>Effortlessly manage your projects and workloads.</li>
-            <li>Find support for any discipline or task.</li>
-          </ul>
-        </div>
+      </header>
 
-        <div className="landingSignUp">
-          <h3>Ready to Find Support?</h3>
-          <p>Sign up today and discover how easy it is to get the assistance you need.</p>
-          <SignupFormPage />
-        </div>
-
-        <div className="landingTestimonials">
-          <h2>What Our Users Say</h2>
-          <div className="testimonial">
-            <blockquote>
-              "I found an amazing freelancer here who transformed my project. Highly recommended!"
-            </blockquote>
-            <p>- Jane Doe, satisfied client</p>
+      <div className="landingFeatures">
+        <div className="landingSectionHead">Why Choose Bantam to handle your needs?</div>
+        <div className="feature">
+          <div className="featureImage">
+            <img src={notepadImage} alt="Notes" />
           </div>
-          <div className="testimonial">
-            <blockquote>
-              "As a freelancer, this platform has connected me with valuable clients and streamlined my workflow."
-            </blockquote>
-            <p>- John Smith, successful freelancer</p>
+          <div className="featureText">
+            <h3>Take Notes</h3>
+            <p>Take and organize notes specific to each client to remember important details.</p>
+          </div>
+        </div>
+        <div className="feature">
+          <div className="featureImage">
+            <img src={taskImage} alt="Tasks" />
+          </div>
+          <div className="featureText">
+            <h3>Task Management</h3>
+            <p>Set due dates, priorities, and specify clientsto keep track of your to-dos.</p>
+          </div>
+        </div>
+        <div className="feature">
+          <div className="featureImage">
+            <img src={calenderImage} alt="Booking" />
+          </div>
+          <div className="featureText">
+            <h3>Booking & Scheduling</h3>
+            <p>Effortlessly book appointments and manage your schedule.</p>
+          </div>
+        </div>
+        <div className="feature">
+          <div className="featureImage">
+            <img  src={clientsImage} alt="Clients" />
+          </div>
+          <div className="featureText">
+            <h3>Client Management</h3>
+            <p>Add clients, track contact info, and see an overview of client-related data.</p>
           </div>
         </div>
       </div>
-    )
-}
 
-export default LandingPage
+      <div className="landingTestimonials">
+        <div className="landingSectionHead review">What Our Users Say:</div>
+        <div className="testimonial">
+          <blockquote>
+            "Before I struggled to keep track of everything, now I come into each day prepared!"
+          </blockquote>
+          <p>- Ches Pinn</p>
+        </div>
+        <div className="testimonial">
+          <blockquote>
+            "This platform has connected me with valuable clients and streamlined my workflow."
+          </blockquote>
+          <p>- Pica Chu</p>
+        </div>
+        <div className="testimonial">
+          <blockquote>
+            "My life is infinitely easier thanks to Bantam. "
+          </blockquote>
+          <p>- Sandy Shru</p>
+        </div>
+        <div className="testimonial">
+          <blockquote>
+            "My productivity has gone THROUGH the roof!"
+          </blockquote>
+          <p>- Charlie Zard</p>
+        </div>
+        <div className="testimonial">
+          <blockquote>
+            "Thanks to the note feature my clients are consisitently impressed when I remember things "
+          </blockquote>
+          <p>- Luke Cario</p>
+        </div>
+      </div>
+
+      <div className="landingCTA">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of freelancers who have already transformed their work with our CRM.</p>
+        <OpenModalButton
+              buttonText="Sign Up Now!"
+              modalComponent={<SignupFormModal />}
+            />
+      </div>
+
+      <footer className="landingFooter">
+
+        <a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Notepad icons created by Smashicons - Flaticon</a>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

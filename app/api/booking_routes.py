@@ -57,7 +57,7 @@ def getAvaliableSchedule(dayOfWeek, freelancerId):
 def is_time_between(start_time, end_time, target_time):
     start_time_str = start_time.strftime('%H:%M')
     end_time_str = end_time.strftime('%H:%M')
-    target_time_str = target_time.data.strftime('%H:%M')
+    target_time_str = target_time.strftime('%H:%M')
 
     return start_time_str <= target_time_str <= end_time_str
 
@@ -108,18 +108,26 @@ def bookAppt(userId):
 
         # get the current appointments booked for both users on day and loop through all of them
         bookings = Booking.query.filter(
-            ((Booking.freelancerId == current_user.id) & (Booking.clientId == userId)) |
-            ((Booking.freelancerId == userId) & (Booking.clientId == current_user.id))
-            ).filter(Booking.day == date.today())
+            (Booking.freelancerId == current_user.id) | (Booking.clientId == userId) |
+            (Booking.freelancerId == userId) | (Booking.clientId == current_user.id)
+            ).filter(Booking.day == form["day"].data)
 
         newStartTime = form["time"]
         newDuration = form["duration"]
         newEndTime = setEndTime(newStartTime, newDuration)
 
-        #if newAppt starttime or endtime is after bookedAppt starttime and before bookedAppt endtime ERROR- Appointment slot not avaliable
+        #if newAppt starttime or endtime is after bookedAppt starttime and before bookedAppt endtime ERROR- Appointment slot not avaliable\
+        print('^^^^^^^^^^^^^^^^^^^^ Checking double booking function^^^^^^^^^^^^^^^^^^^^^^^^^^')
+
         for booking in bookings:
-            if (newStartTime > booking.startTime and newStartTime < booking.endTime) or (newEndTime > booking.startTime and newEndTime < booking.endTime):
-                return {'errors': {'time': 'One or both users are unavaliable for an appointment at the requested time'}}, 422
+            print('!!!! Booking Loop !!!!!!!!')
+            print('OG Booking time:', booking.time)
+            print('OG Booking endTime:', booking.endTime)
+            print('New time: ', newStartTime.data)
+            print('New endTime: ', newEndTime)
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            if is_time_between(booking.time, booking.endTime, newStartTime.data) or is_time_between(booking.time, booking.endTime, newEndTime):
+                return {'errors':[ 'One or both users are unavaliable for an appointment at the requested time']}, 422
 
         form.populate_obj(appointment)
         appointment.endTime = newEndTime
@@ -136,7 +144,7 @@ def bookAppt(userId):
             schedArr = getAvaliableSchedule(dayOfWeek, userId)
             # check that the time is after avaliability start time and before avaliability end time
             if not is_time_between(schedArr[0], schedArr[1],newStartTime ):
-                return {'errors': {'time': 'This start time is out of Freelancers avaliability to be booked'}}, 422
+                return {'errors':[ 'This start time is out of Freelancers avaliability to be booked']}, 422
             # set freelancerId to passedin UserId
             appointment.freelancerId = userId
             # set clientId to current users id
@@ -170,10 +178,10 @@ def updateAppt(bookingId):
 
         for booking in bookings:
             # check that the new start time or new end time are not within an existing appointment
-            if is_time_between(booking.startTime, booking.endTime,newStartTime) or is_time_between(booking.startTime, booking.endTime,newEndTime):
+            if is_time_between(booking.time, booking.endTime, newStartTime) or is_time_between(booking.startTime, booking.endTime,newEndTime):
                 # make sure we are not looking at an old version of the booking we are updating
                 if booking.id != appt.id:
-                    return {'errors': {'time': 'One or both users are unavaliable for an appointment at the requested time'}}, 422
+                    return {'errors': [ 'One or both users are unavaliable for an appointment at the requested time']}, 422
 
         if(current_user.authLevel == 0):
             # get freelancers avaliability by calling a function that will return an array with two values- a start time and an end time
@@ -182,7 +190,7 @@ def updateAppt(bookingId):
 
             # check that the time is after avaliability start time and before avaliability end time
             if not is_time_between(schedArr[0], schedArr[1],newStartTime ):
-                return {'errors': {'time': 'This start time is out of Freelancers avaliability to be booked'}}, 422
+                return {'errors': ['This start time is out of Freelancers avaliability to be booked']}, 422
 
         form.populate_obj(appt)
         appt.endTime = newEndTime
@@ -201,7 +209,7 @@ def delete_booking(booking_id):
     appt = Booking.query.get_or_404(booking_id)
 
     if (appt.freelancerId != current_user.id) and (appt.clientId != current_user.id):
-        return {'errors': {'Unauthorized': 'Only the freelancer or client associated with this booking may delete it '}}, 401
+        return {'errors': ['Unauthorized']}, 401
 
     db.session.delete(appt)
     db.session.commit()

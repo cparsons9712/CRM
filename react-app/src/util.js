@@ -16,3 +16,5 @@ export const fixDate = (date) => {
   date = new Date(date)
   return date
 }
+
+

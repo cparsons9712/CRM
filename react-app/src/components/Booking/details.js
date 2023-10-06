@@ -10,10 +10,10 @@ function SeeBookingDetails({booking}){
 
     const user = useSelector((state) => state.session.user)
 
-    const handleDelete =() =>{
+    const handleDelete = async() =>{
         if(window.confirm('Are you sure you want to delete this appointment?')) {
-            dispatch(removeBooking(booking.id));
-            dispatch(loadFreelancerBookings(user.id));
+            await dispatch(removeBooking(booking.id));
+            await dispatch(loadFreelancerBookings(user.id));
         }
         closeModal()
     }

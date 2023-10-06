@@ -2,14 +2,81 @@
 
     padding: 20px;
     text-align: center;
-    color: #020202; /* Text color on the background image */
+    color: #A9C3B8; /* Text color on the background image */
     text-shadow: 2px 2px 5px black;
     height: 200px;
     display: flex;
     flex-direction: column;
+    background-image: url('../../images/river.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.headerText{
+    background-color: #163640b9;
+    border-radius: 10px;
+    margin: auto;
+    padding: 25px;
+}
+.featureImage img{
+    /* max-width: 30%; */
+    height: 50px;
 
 }
-.landingCont{
-    background-image: url('../../images/TealBackground.png');
-    background-size: cover;
+.landingFeatures{
+    background-color: #d7e1dd86;
+    display: flex;
+    margin: 25px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.landingSectionHead{
+    font-size: xx-large;
+    margin: auto;
+    color: #163640;
+}
+
+.feature{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #0b1c21;
+    width: 375px;
+
+}
+
+.landingTestimonials{
+    display: flex;
+    margin: 45px;
+    padding: 15px;
+    color: #7B9092;
+    border: 1px solid #F26641;
+    border-radius: 10px;
+    height: 150px;
+    gap: 20px;
+}
+.review {
+    color: #7B9092;
+
+}
+.testimonial{
+    background-color: #7B9092 ;
+    color: #163640;
+    text-align: center;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #0b1c21;
+}
+.landingCTA{
+    width: 650px;
+    background-color: #7B9092;
+    border-radius: 10px;
+    padding: 25px;
+    margin: auto;
+    text-align: center;
+    color: #163640;
+    box-shadow: 2px 2px 2px 2px #0b1c21;
 }

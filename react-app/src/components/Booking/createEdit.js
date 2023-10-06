@@ -94,7 +94,9 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             response = await dispatch(updateBooking( booking.id, payload))
             console.log('RES: ', response)
         }else{
+            console.log('%%%%%%%%%%%%%%%%%% booking handleSubmit CREATE %%%%%%%%%%%%')
             response = await dispatch(createBooking(clientId.current ,payload))
+            console.log(response)
         }
         if(response && response.length){
             setErrors(response)
