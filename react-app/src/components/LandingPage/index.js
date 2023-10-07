@@ -69,14 +69,9 @@ const LandingPage = () => {
           <blockquote>
             "Before I struggled to keep track of everything, now I come into each day prepared!"
           </blockquote>
-          <p>- Ches Pinn</p>
+          <p>- Jess Pinn</p>
         </div>
-        <div className="testimonial">
-          <blockquote>
-            "This platform has connected me with valuable clients and streamlined my workflow."
-          </blockquote>
-          <p>- Pica Chu</p>
-        </div>
+
         <div className="testimonial">
           <blockquote>
             "My life is infinitely easier thanks to Bantam. "
@@ -91,7 +86,7 @@ const LandingPage = () => {
         </div>
         <div className="testimonial">
           <blockquote>
-            "Thanks to the note feature my clients are consisitently impressed when I remember things "
+            "Thanks to the note feature my clients are impressed when I remember things "
           </blockquote>
           <p>- Luke Cario</p>
         </div>

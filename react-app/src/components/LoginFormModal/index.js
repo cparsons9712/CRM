@@ -25,6 +25,16 @@ function LoginFormModal() {
         closeModal()
     }
   };
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    } else {
+        history.push('/dashboard')
+        closeModal()
+    }
+  }
 
   return (
     <div className="loginCont">
@@ -55,6 +65,7 @@ function LoginFormModal() {
             placeholder="Password"
           />
         </label>
+        <div className="demoUser" onClick={loginDemo}>Demo User</div>
         <button type="submit" className="submitButton">Log In</button>
       </form>
     </div>
