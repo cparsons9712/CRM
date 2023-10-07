@@ -28,8 +28,11 @@ button{
     border-radius: 2px;
 }
 button:hover{
-    background-color: #f26741d3;
+    background-color: #c75030;
     cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+    color:#A9C3B8
+
 
 }
 input{

@@ -4,11 +4,12 @@ import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { validateEmail } from "../../util";
+import { useHistory } from 'react-router-dom';
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
-	const [username, setUsername] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [firstName, setFirstName] = useState("");
@@ -16,6 +17,7 @@ function SignupFormModal() {
 	// const [authLevel, setAuthLevel]= useState(0)
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+	const history = useHistory()
 
 
 	const handleSubmit = async (e) => {
@@ -23,15 +25,17 @@ function SignupFormModal() {
 		const err = []
 		if (!validateEmail(email)) err.push("Please enter a valid email.")
 		if(password !== confirmPassword) err.push("Password and confirm password must match")
+		if(phoneNumber.length !== 10)err.push("Please enter a 10 digit phone number")
 
 
 
 		if (password === confirmPassword && validateEmail(email) ) {
 
-			const data = await dispatch(signUp({username, email, password, firstName, lastName, authLevel: 1}));
+			const data = await dispatch(signUp({phoneNumber, email, password, firstName, lastName, authLevel: 1}));
 			if (data) {
 				setErrors(data);
 			} else {
+				history.push('/dashboard')
 				closeModal();
 			}
 		} else {
@@ -94,10 +98,10 @@ function SignupFormModal() {
 					<label>
 
 						<input
-						placeholder="Username"
+						placeholder="Phone Number"
 							type="text"
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
+							value={phoneNumber}
+							onChange={(e) => setPhoneNumber(e.target.value)}
 							required
 						/>
 					</label>

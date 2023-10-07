@@ -27,8 +27,12 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
+      if (ulRef.current && e.target) {
+        if (!ulRef.current.contains(e.target)) {
+          setShowMenu(false);
+        }
+      } else {
+        console.error("ulRef.current or e.target is null or undefined");
       }
     };
 

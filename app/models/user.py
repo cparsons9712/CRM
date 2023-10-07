@@ -13,7 +13,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(25), nullable=False)
     lastName = db.Column(db.String(25), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     phoneNumber = db.Column(db.String(10))
     authLevel = db.Column(db.Integer, nullable=False)
@@ -35,7 +34,6 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
             'firstName': self.firstName,
             'lastName': self.lastName,
             'email': self.email,
