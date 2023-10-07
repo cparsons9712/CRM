@@ -5,6 +5,7 @@ import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { validateEmail } from "../../util";
 import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -12,14 +13,15 @@ function SignupFormModal() {
 	const { closeModal } = useModal();
 
 	const [email, setEmail] = useState("");
-	const [username, setUsername] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	// const [authLevel, setAuthLevel]= useState(0)
 	const [errors, setErrors] = useState([]);
-
+	const { closeModal } = useModal();
+	const history = useHistory()
 
 
 	const handleSubmit = async (e) => {
@@ -27,15 +29,17 @@ function SignupFormModal() {
 		const err = []
 		if (!validateEmail(email)) err.push("Please enter a valid email.")
 		if(password !== confirmPassword) err.push("Password and confirm password must match")
+		if(phoneNumber.length !== 10)err.push("Please enter a 10 digit phone number")
 
 
 
 		if (password === confirmPassword && validateEmail(email) ) {
 
-			const data = await dispatch(signUp({username, email, password, firstName, lastName, authLevel: 1}));
+			const data = await dispatch(signUp({phoneNumber, email, password, firstName, lastName, authLevel: 1}));
 			if (data) {
 				setErrors(data);
 			} else {
+				history.push('/dashboard')
 				history.push('/dashboard')
 				closeModal();
 			}
@@ -50,74 +54,89 @@ function SignupFormModal() {
 	//   };
 
 	return (
-		<div className="loginCont">
-			<h1>Sign Up</h1>
+
+		<div className="signUpCont">
+			<div className="signUpTitle">Nice to meet you!</div>
+
 			<form className="loginForm" onSubmit={handleSubmit}>
 				<div className="errors">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</div>
-				<label>
-					<input
-						placeholder="First Name"
-						type="text"
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-						required
-					/>
-				</label>
 
-				<label>
-					<input
-						placeholder="Last Name"
-						type="text"
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-						required
-					/>
-				</label>
+				<div className="signUpSecHead">Whats your Name?</div>
+				<div className="signUpSect">
+					<label>
+						<input
+							placeholder="First Name"
+							type="text"
+							value={firstName}
+							onChange={(e) => setFirstName(e.target.value)}
+							required
+						/>
+					</label>
 
-				<label>
-					<input
-					placeholder="Email"
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
+					<label>
+						<input
+							placeholder="Last Name"
+							type="text"
+							value={lastName}
+							onChange={(e) => setLastName(e.target.value)}
+							required
+						/>
+					</label>
+				</div>
 
-				<label>
+				<div className="signUpSecHead">How can we contact you?</div>
+				<div className="signUpSect">
+					<label>
+						<input
+						placeholder="Email"
+							type="text"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+					</label>
 
-					<input
-					placeholder="Username"
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
+					<label>
 
-					<input
-					placeholder="Password"
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
+						<input
+						placeholder="Phone Number"
+							type="text"
+							value={phoneNumber}
+							onChange={(e) => setPhoneNumber(e.target.value)}
+							required
+						/>
+					</label>
+				</div>
 
-					<input
-					placeholder="Confirm Password"
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
+				<div className="signUpSecHead">Set a super secret password!</div>
+				<div className="signUpSect">
+					<label>
+
+						<input
+						placeholder="Password"
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</label>
+					<label>
+
+						<input
+						placeholder="Confirm Password"
+							type="password"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required
+						/>
+					</label>
+				</div>
+
+
 				{/* <div className="radio-slider">
 					<input
 						type="radio"
@@ -138,7 +157,7 @@ function SignupFormModal() {
 					/>
 					<label htmlFor="freelancer">Freelancer</label>
 				</div> */}
-				<button type="submit">Sign Up</button>
+				<button type="submit" className="simpleButton" id="submitSignup">Sign Up</button>
 			</form>
 		</div>
 	);

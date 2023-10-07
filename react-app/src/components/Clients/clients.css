@@ -43,12 +43,15 @@
 .upcomingAppt{
     background-color:#a9c3b811;
     color: #A9C3B8;
-    width: 90%;
+    width: 95%;
     margin-right: 30px;
     max-height: 200px;
     overflow: hidden;
 
 
+}
+.add{
+    text-align: center;
 }
 
 .notes{
@@ -111,6 +114,11 @@
     color: #A9C3B8;
     border: 1px solid #F26641;
 
+}
+
+.simpleButton:hover{
+    box-shadow: 2px 2px 2px black;
+    color:#163640;
 }
 
 

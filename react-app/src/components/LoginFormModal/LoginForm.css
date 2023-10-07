@@ -7,7 +7,10 @@
   font-family: 'Kirsty';
   background-color: #163640;
   box-shadow: 5px 5px 10px rgb(6, 6, 6);
+  width: 200px;
 }
+
+
 .loginForm{
     display: flex;
     flex-direction: column;
@@ -25,8 +28,11 @@ button{
     border-radius: 2px;
 }
 button:hover{
-    background-color: #f26741d3;
+    background-color: #c75030;
     cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+    color:#A9C3B8
+
 
 }
 input{
@@ -105,4 +111,44 @@ input{
 
 h1{
   color: #A9C3B8;
+}
+
+.loginbtnCont{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+}
+
+.signUpTitle{
+  color:#F26641;
+  font-size: xx-large;
+  margin: 10px;
+}
+
+
+.signUpCont{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Kirsty';
+  background-color: #163640;
+  box-shadow: 5px 5px 10px rgb(6, 6, 6);
+  width: 400px;
+}
+
+.signUpSect{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+.signUpSecHead{
+  color:#A9C3B8;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#submitSignup{
+  width:auto
 }

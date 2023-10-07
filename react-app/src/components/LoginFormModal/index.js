@@ -37,7 +37,7 @@ function LoginFormModal() {
 
   return (
     <div className="loginCont">
-      <h1>Log In</h1>
+      <h1>Welcome Back!</h1>
       <form onSubmit={handleSubmit} className="loginForm">
 
           {errors.map((error, idx) => (

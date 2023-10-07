@@ -38,13 +38,13 @@ function EditCreateNote({note, edit=true, clientInfo }){
 
 
     async function handleSubmit(e) {
-        e.preventDefault();
-        const err = {};
-        if (!text.length) {
-          err.text = 'Text cannot be empty';
-          setErrors(err);
-          return;
-        }
+      e.preventDefault();
+      const err = [];
+      if (!text.length) {
+        err.push('Text cannot be empty');
+        setErrors(err);
+        return;
+      }
         const payload = {
           text
         };
@@ -89,7 +89,7 @@ function EditCreateNote({note, edit=true, clientInfo }){
                 value={text}
                 onChange={(e)=> setText(e.target.value)}
             />
-            {errors.text}
+          
     </div>
 
     <div className="formFooter">

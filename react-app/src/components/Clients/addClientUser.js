@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createRelationship } from "../../store/relationships";
 import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -7,11 +7,17 @@ import { useDispatch } from "react-redux";
 
 function AddClient() {
   const { closeModal } = useModal();
+  const dispatch = useDispatch()
+
   const [showSearch, setShowSearch] = useState(true);
   const [email, setEmail] = useState('');
-  const currentUser = useSelector((state) => state.session.user);
   const [client, setClient] = useState(null);
-  const dispatch = useDispatch()
+  const [exist, setExist] = useState(false)
+
+  useEffect(()=>{dispatch(getUserRelationships())},[dispatch])
+
+  const currentUser = useSelector((state) => state.session.user);
+  const currentClientList = useSelector((state) => state.relationships.Clients)
 
   const handleSearch = async () => {
     try {
@@ -22,9 +28,16 @@ function AddClient() {
       // Find the user by email
       const foundUser = userArr.find((user) => user.email === email);
 
-      if (foundUser && foundUser.id !== currentUser.id) {
+      const isCurrent = Object.values(currentClientList).find((user) => user.email === email)
+
+
+
+      if (foundUser) {
         setClient(foundUser);
         setShowSearch(false);
+        if(isCurrent || foundUser.id === currentUser.id){
+          setExist(true)
+        }
       } else {
         setShowSearch(false);
       }
@@ -37,39 +50,23 @@ function AddClient() {
   }
 
     const addClient = async () => {
-        console.log('^^^^^^^^^^^addClient function^^^^^^^^^^^')
       const payload = {
         otherId: client.id
       };
-      console.log('PAYLOAD::::::::::::')
-      console.log(payload)
       try{
         const res = await dispatch(createRelationship(payload));
-        console.log('RES:::::::::')
-        console.log(res)
         await dispatch(getUserRelationships())
         closeModal();
-        console.log('IT SHOULD HAVE WENT TO THUNK NOW')
       }catch{
         alert('there was an issue creating the relationship :(')
       }
     };
 
-//   const foundUser = (user) => {
 
-
-//     return (
-//       <div className="foundClientCont">
-//         <div>An account associated with that email address has been found! Would you like to add this client to your client list?</div>
-//         <div>{user.firstName} {user.lastName}</div>
-//         <button onClick={addClient}>Add Client</button>
-//         <button onClick={() => closeModal()}>Cancel</button>
-//       </div>
-//     );
-//   };
 
   return (
     <div className="addClientContainer">
+      <div className="clientName add">Add a Client</div>
       <div className={showSearch ? "search" : "hidden"}>
 
         <div className="searchItem">Lets check if an account already exists for this client. Search using the client's email address:</div>
@@ -82,7 +79,7 @@ function AddClient() {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-      {client && !showSearch ? (
+      {client && !showSearch  && !exist ? (
         <div className="searchRes">
         <div>An account associated with that email address has been found! Would you like to add this client to your client list?</div>
         <div className="orange clientName ">{client.firstName} {client.lastName}</div>
@@ -104,6 +101,17 @@ function AddClient() {
             </div>
         </div>
       ) : null}
+
+      {client && !showSearch && exist ? (
+        <div className="searchRes">
+          <div>This account is already associated with you!</div>
+          <div>Result:</div>
+          <div className="orange clientName ">{client.firstName} {client.lastName}</div>
+          <div>
+          <button onClick={() => closeModal() }className="simpleButton">Close</button>
+          </div>
+      </div>
+      ): null}
     </div>
   );
 }

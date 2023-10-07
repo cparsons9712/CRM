@@ -27,8 +27,12 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
+      if (ulRef.current && e.target) {
+        if (!ulRef.current.contains(e.target)) {
+          setShowMenu(false);
+        }
+      } else {
+        console.error("ulRef.current or e.target is null or undefined");
       }
     };
 
@@ -49,12 +53,13 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
+    <>{user ? (
     <>
       <div onClick={openMenu}>
        <FontAwesomeIcon icon={faUser} className="userIcon"  />
       </div>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
+      <div className={ulClassName} ref={ulRef}>
+
           <div className="userMenu">
 
             <div className="userGreeting">Hello {user.firstName}!</div>
@@ -64,22 +69,19 @@ function ProfileButton({ user }) {
             <div onClick={handleLogout} className="userMenuLink">Log Out</div>
 
           </div>
+        </div>
+    </>
         ) : (
-          <>
+          <div className="loginbtnCont">
             <OpenModalButton
+              id="loginBtn"
               buttonText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
+          </div>
         )}
-      </ul>
+
     </>
   );
 }
