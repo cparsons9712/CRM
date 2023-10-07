@@ -30,13 +30,14 @@ function AddClient() {
 
       const isCurrent = Object.values(currentClientList).find((user) => user.email === email)
 
-      if(isCurrent || foundUser.id === currentUser.id){
-        setExist(true)
-      }
+
 
       if (foundUser) {
         setClient(foundUser);
         setShowSearch(false);
+        if(isCurrent || foundUser.id === currentUser.id){
+          setExist(true)
+        }
       } else {
         setShowSearch(false);
       }
