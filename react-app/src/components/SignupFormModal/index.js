@@ -4,9 +4,13 @@ import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { validateEmail } from "../../util";
+import { useHistory } from 'react-router-dom';
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
+	const history = useHistory()
+	const { closeModal } = useModal();
+
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -15,7 +19,7 @@ function SignupFormModal() {
 	const [lastName, setLastName] = useState("");
 	// const [authLevel, setAuthLevel]= useState(0)
 	const [errors, setErrors] = useState([]);
-	const { closeModal } = useModal();
+
 
 
 	const handleSubmit = async (e) => {
@@ -32,6 +36,7 @@ function SignupFormModal() {
 			if (data) {
 				setErrors(data);
 			} else {
+				history.push('/dashboard')
 				closeModal();
 			}
 		} else {
