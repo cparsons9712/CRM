@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import './booking.css'
 import SeeBookingDetails from "./details";
 import { useModal } from "../../context/Modal";
-import { fixDate } from "../../util";
+import { fixDate, convertTime, convertDate } from "../../util";
 
 
 
@@ -72,7 +72,8 @@ function BookingSlice ({clientId}){
             <div>
                 { bookings.map((b)=>{return (
                     <div className="bookingOverview" onClick={()=>{handleBookingClick(b)}}>{b.day ? <>
-                      <span className="overviewTitle">{ b.day.slice(5,11)} {b.time}</span>  {b.title} </>: <></>}
+                    
+                      <span className="overviewTitle">{ convertDate(b.day)} {convertTime(b.time)}</span>  {b.title} </>: <></>}
                     </div>)
                 })}
             </div>

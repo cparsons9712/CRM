@@ -7,7 +7,7 @@ import { updateTask, completeTask} from "../../store/task";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion} from '@fortawesome/free-solid-svg-icons';
-
+import { convertDate } from "../../util";
 
 
 function TaskComponent ({task}){
@@ -16,25 +16,6 @@ function TaskComponent ({task}){
     const { setModalContent } = useModal();
 
 
-    const convertDate = (date) => {
-        let day = date.slice(5, 7)
-        const months = {
-            Jan: '01',
-            Feb: '02',
-            Mar: '03',
-            Apr: '04',
-            May: '05',
-            Jun: '06',
-            Jul: '07',
-            Aug: '08',
-            Sep: '09',
-            Oct: '10',
-            Nov: '11',
-            Dec: '12',
-          };
-        let month = months[date.slice(8,11)]
-        return `${month}/${day}`
-    }
     const handleTaskClick = (t) => {
         setModalContent(<TaskDetails task={t} />);
     }

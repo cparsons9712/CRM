@@ -18,6 +18,8 @@ import { loadClientNotes } from "../../store/notes";
 import { loadFreelancerBookings } from "../../store/bookings";
 import AddClient from "./addClientUser";
 
+import { convertPhone } from "../../util";
+
 function ClientPage (){
 
     const [selectedClient, setClient] = useState("")
@@ -105,7 +107,8 @@ function ClientPage (){
                     </div>
 
                     <div className="clientContact">
-                        {`(${clientInfo.phoneNumber.slice(0,3)}) ${clientInfo.phoneNumber.slice(3,6)} - ${clientInfo.phoneNumber.slice(6)}`}
+                        {convertPhone(clientInfo.phoneNumber)}
+
                     </div>
 
                     <div className="clientContact">

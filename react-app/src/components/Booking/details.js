@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeBooking, loadFreelancerBookings } from "../../store/bookings";
 import { useSelector } from "react-redux";
 import EditCreateBooking from "./createEdit";
+import { convertDate, convertTime, convertPhone } from "../../util";
 
 function SeeBookingDetails({booking}){
     const dispatch = useDispatch();
@@ -30,10 +31,10 @@ function SeeBookingDetails({booking}){
 
         </div>
         <div className="formBody">
-            <div>{booking.day} {booking.time}</div>
+            <div>{convertDate(booking.day)} {convertTime(booking.time)}</div>
             <div className="componentTitle orange">Client:</div>
             <div className="formClient">{booking.Client.firstName} {booking.Client.lastName}</div>
-            <div >{booking.Client.phoneNumber} </div>
+            <div >{convertPhone(booking.Client.phoneNumber)} </div>
             <div> {booking.Client.email} </div>
             <div className="componentTitle orange">Location:</div>
             <div>{booking.location}</div>

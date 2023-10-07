@@ -17,4 +17,43 @@ export const fixDate = (date) => {
   return date
 }
 
+export const convertDate = (date) => {
+  let day = date.slice(5, 7)
+  const months = {
+      Jan: '01',
+      Feb: '02',
+      Mar: '03',
+      Apr: '04',
+      May: '05',
+      Jun: '06',
+      Jul: '07',
+      Aug: '08',
+      Sep: '09',
+      Oct: '10',
+      Nov: '11',
+      Dec: '12',
+    };
+  let month = months[date.slice(8,11)]
+  return `${month}/${day}`
+}
 
+export const convertTime = (time) =>{
+
+  time = time.split(":")
+  let frame;
+  if(+time[0] > 12 ){
+    time[0] = String(+time[0] - 12)
+    frame = 'PM'
+  }
+  else{
+    frame = 'AM'
+  }
+  time = time.join(":")
+  time += ` ${frame}`
+  return time
+
+}
+
+export const convertPhone = (phoneNumber) =>{
+  return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(3,6)} - ${phoneNumber.slice(6)}`
+}

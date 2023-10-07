@@ -66,15 +66,10 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             err.push("Duration must be in a valid format (HH:MM)")
         }
         if(!location) err.push ('Location is required. ')
-
-
         if(err.length){
             setErrors(err)
             return;
         }
-
-
-
         const payload = {
             day,
             time,
@@ -82,27 +77,18 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             title,
             location,
         };
-
-
-
-
         let response = null
-
         if(booking && booking.id){
-            console.log('%%%%%%%%%%%%%%%%%% booking handleSubmit update %%%%%%%%%%%%')
-            console.log(booking.id, ':', payload )
             response = await dispatch(updateBooking( booking.id, payload))
-            console.log('RES: ', response)
         }else{
-            console.log('%%%%%%%%%%%%%%%%%% booking handleSubmit CREATE %%%%%%%%%%%%')
             response = await dispatch(createBooking(clientId.current ,payload))
-            console.log(response)
         }
         if(response && response.length){
             setErrors(response)
         }else{
-           dispatch(loadFreelancerBookings(user.id))
+            dispatch(loadFreelancerBookings(user.id))
             closeModal()
+            alert('Appointments Updated Successfully!')
         }
     }
 

@@ -2,6 +2,7 @@ import EditCreateTask from "./create_edit"
 import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
 import { removeTask , loadAllTask} from "../../store/task";
+import { convertDate, convertPhone, convertTime } from "../../util";
 
 
 
@@ -28,10 +29,10 @@ function TaskDetails ({task}){
             </div>
             <div className="formBody">
 
-                <div> Before {task?.due_date?.slice(0,16)}</div>
+                <div> Before {convertDate(task.due_date)}</div>
                 <div className="componentTitle orange">Client</div>
                 <div >{task?.Client.firstName} {task?.Client.lastName}</div>
-                <div>{task?.Client.phoneNumber}</div>
+                <div>{convertPhone(task.Client.phoneNumber)}</div>
                 <div>{task.Client.email}</div>
 
 

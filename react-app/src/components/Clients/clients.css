@@ -211,3 +211,10 @@
     font-family: 'Kirsty';
     font-size: 20px;
 }
+
+.noteHeader{
+    text-align: center;
+    background-color: #F26641;
+    color:#163640;
+    height: 25px;
+}

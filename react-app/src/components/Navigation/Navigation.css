@@ -29,11 +29,13 @@
 }
 
 .userIcon{
-  color: #A9C3B8;
+  color: #F26641;
   height: 25px;
   cursor: pointer;
   margin: 15px;
-
+}
+.userIcon:hover{
+  color:#f28364;
 }
 
 .signedInBar{

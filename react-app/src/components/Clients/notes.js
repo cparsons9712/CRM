@@ -1,24 +1,17 @@
 // notes component
 import { useState , useEffect, useRef} from "react";
 import { useDispatch } from "react-redux";
-
 import { useModal } from "../../context/Modal";
+
 import EditCreateNote from "./edit_new";
+
+import { convertDate } from "../../util";
 
 
 
 function NotesComponent ({notes}){
-
-
     const { setModalContent } = useModal();
 
-
-
-    const formattDate = (date) =>{
-        const day = date.slice(4, 16)
-
-        return day
-    }
     const handleNoteClick = (note) => {
         setModalContent(<EditCreateNote note={note} />);
       };
@@ -34,10 +27,11 @@ function NotesComponent ({notes}){
                         onClick={() => handleNoteClick(note)}
                     >
 
-                       <div className="taskHeader">
+                       <div className="noteHeader">
                             <div
-                            className="taskDueDate">
-                                {formattDate(note.createdAt)}
+                            className="noteCreated">
+                                {convertDate(note.createdAt)}
+
                             </div>
                        </div>
 
