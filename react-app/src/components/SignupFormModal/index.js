@@ -5,7 +5,7 @@ import { signUp } from "../../store/session";
 import "./SignupForm.css";
 import { validateEmail } from "../../util";
 import { useHistory } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -20,8 +20,7 @@ function SignupFormModal() {
 	const [lastName, setLastName] = useState("");
 	// const [authLevel, setAuthLevel]= useState(0)
 	const [errors, setErrors] = useState([]);
-	const { closeModal } = useModal();
-	const history = useHistory()
+
 
 
 	const handleSubmit = async (e) => {
