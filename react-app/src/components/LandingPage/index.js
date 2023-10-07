@@ -103,7 +103,7 @@ const LandingPage = () => {
 
       <footer className="landingFooter">
 
-        <a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Notepad icons created by Smashicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Icons created by Smashicons - Flaticon</a>
       </footer>
     </div>
   );
