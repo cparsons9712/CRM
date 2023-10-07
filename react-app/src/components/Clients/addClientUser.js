@@ -65,6 +65,7 @@ function AddClient() {
 
   return (
     <div className="addClientContainer">
+      <div className="clientName add">Add a Client</div>
       <div className={showSearch ? "search" : "hidden"}>
 
         <div className="searchItem">Lets check if an account already exists for this client. Search using the client's email address:</div>

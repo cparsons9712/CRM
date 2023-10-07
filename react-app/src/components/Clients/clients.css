@@ -50,6 +50,9 @@
 
 
 }
+.add{
+    text-align: center;
+}
 
 .notes{
     grid-column: 2/ span 2;
