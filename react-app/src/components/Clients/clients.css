@@ -81,6 +81,7 @@
     font-family: 'Kirsty';
     background-color: #163640;
     box-shadow: 2px 2px 5px black;
+    width: 300px;
 
 
 }
@@ -152,6 +153,13 @@
     content: "";
 
     margin-right: 10px;
+  }
+  .clientRadioLabel:hover{
+    background-color: #F26641;
+    box-shadow: 2px 2px 10px 2px black;
+    z-index: 500;
+    color:#163640;
+    font-weight: bolder;
   }
 
 

@@ -41,7 +41,11 @@ function Dashboard (){
             let due_date = fixDate(appt.day)
             if(today.setHours(0,0,0,0) === due_date.setHours(0,0,0,0)) appointments ++
         }
-        return appointments
+
+        if (appointments ===1){
+            return <>1 appointment</>
+        }
+        return <>{appointments} appointments</>
     }
 
 
@@ -53,7 +57,7 @@ function Dashboard (){
                     <div className="clientName">Hey There {user.firstName}</div>
                     <div className="clientContact"> Today you have: </div>
                     <div className="clientContact"> {getTaskDue()} task due</div>
-                    <div className="clientContact"> {getBookingsDue()} appointments</div>
+                    <div className="clientContact"> {getBookingsDue()}</div>
                 </div>
 
                 <div className="upcomingAppt">
