@@ -1,0 +1,70 @@
+.rbc-header{
+    background-color: #A9C3B8;
+    color:#163640;
+}
+
+.rbc-btn-group > button:first-child:not(:last-child) {
+    background-color: #A9C3B8;
+    color:#163640;
+}
+
+.rbc-btn-group button + button{
+    background-color: #A9C3B8;
+    color:#163640;
+}
+.rbc-toolbar .rbc-toolbar-label{
+    color: #F26641;
+    font-family: 'Kirsty';
+}
+
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+    color: #F26641 !important;
+    background-color: #1d4d4d !important;
+}
+
+.rbc-time-content > .rbc-time-gutter{
+    color: #A9C3B8;
+
+}
+
+.rbc-today{
+    background-color: #1d4d4d !important;
+}
+
+.rbc-event{
+    background-color: #F26641 !important;
+    color: #163640;
+}
+
+.rbc-off-range-bg{
+    background-color: #122a32 !important;
+    color:#163640 !important;
+}
+
+.rbc-button-link{
+    color:#3f6f74 !important;
+
+}
+
+.rbc-day-slot .rbc-time-slot{
+    border: 1px solid #3F6F74 !important;
+}
+
+.rbc-timeslot-group{
+    border-bottom: 0px solid #3F6F74 !important;
+}
+
+.rbc-agenda-view table.rbc-agenda-table tbody > tr > td{
+    color: #A9C3B8;
+}
+.rbc-time-content > * + * > *{
+    border-left: #2c4e52 !important;
+}
+
+.rbc-day-bg + .rbc-day-bg{
+    border-left: 1px solid #3F6F74 !important;
+}
+
+.rbc-month-view{
+    border: 1px solid #2c4e52 !important;
+}

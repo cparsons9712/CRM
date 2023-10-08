@@ -10,6 +10,7 @@ import * as relationshipActions from "./store/relationships";
 import App from "./App";
 
 import "./index.css";
+import "react-big-calendar/lib/css/react-big-calendar.css"
 
 const store = configureStore();
 

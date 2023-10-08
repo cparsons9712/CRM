@@ -14,6 +14,7 @@ import TaskPage from "./components/Task";
 import ClientPage from "./components/Clients";
 import MessagePage from "./components/Messages/mainpage";
 import { Redirect } from 'react-router-dom';
+import Calender from "./components/Booking/calender";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function App() {
             <TaskPage />
           </Route>
           <Route path="/calender">
-            <BookingPage />
+            <Calender />
           </Route>
           <Route path="/messages">
             <MessagePage />

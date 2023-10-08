@@ -18,8 +18,6 @@ function BookingPage (){
 
     const bookings = useSelector((state) => state.bookings.all);
 
-
-
     return (
     <div className="bookingPage">
 

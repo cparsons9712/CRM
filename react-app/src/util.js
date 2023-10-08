@@ -57,3 +57,29 @@ export const convertTime = (time) =>{
 export const convertPhone = (phoneNumber) =>{
   return `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(3,6)} - ${phoneNumber.slice(6)}`
 }
+
+export const convertMonth = (str) =>{
+  const months = {
+    "Jan": "01",
+    "Feb": "02",
+    "Mar": "03",
+    "Apr" : "04",
+    "May": "05",
+    "Jun": "06",
+    "Jul": "07",
+    "Aug": "08",
+    "Sep": "09",
+    "Oct": "10",
+    "Nov": "11",
+    "Dec": "12",
+  }
+  return months[str]
+}
+
+export const convertDateTime = (date, time) =>{
+    let year = date.slice(12,16)
+    let monthstr = date.slice(8,11)
+    let month = convertMonth(monthstr)
+    let day = date.slice(5,7)
+    return `${year}-${month}-${day}T${time}:00`
+}
