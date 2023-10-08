@@ -4,6 +4,7 @@ import { useDispatch, useSelector  } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./booking.css"
 import { fixDate } from "../../util";
+import { getUserRelationships } from "../../store/relationships";
 
 
 
@@ -19,6 +20,10 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     const [errors, setErrors] = useState([])
     const clientId = useRef(null)
     const typeForm = useRef(null)
+
+    useEffect(()=>{
+        dispatch(getUserRelationships())
+    },[dispatch])
 
     useEffect(()=>{
         if(booking){

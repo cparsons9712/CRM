@@ -4,10 +4,16 @@ import { removeBooking, loadFreelancerBookings } from "../../store/bookings";
 import { useSelector } from "react-redux";
 import EditCreateBooking from "./createEdit";
 import { convertDate, convertTime, convertPhone } from "../../util";
+import { useEffect } from "react";
+import { getUserRelationships } from "../../store/relationships";
+
 
 function SeeBookingDetails({booking}){
     const dispatch = useDispatch();
     const { setModalContent, closeModal } = useModal();
+    useEffect(()=>{
+        dispatch(getUserRelationships())
+    },[dispatch])
 
     const user = useSelector((state) => state.session.user)
 
@@ -20,7 +26,7 @@ function SeeBookingDetails({booking}){
     }
 
     const handleEdit = () =>{
-        setModalContent(<EditCreateBooking booking = {booking}/>)
+        setModalContent(<EditCreateBooking booking = {booking} clientInfo={booking.Client}/>)
     }
 
 

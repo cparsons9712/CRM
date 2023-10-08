@@ -117,15 +117,9 @@ def bookAppt(userId):
         newEndTime = setEndTime(newStartTime, newDuration)
 
         #if newAppt starttime or endtime is after bookedAppt starttime and before bookedAppt endtime ERROR- Appointment slot not avaliable\
-        print('^^^^^^^^^^^^^^^^^^^^ Checking double booking function^^^^^^^^^^^^^^^^^^^^^^^^^^')
 
         for booking in bookings:
-            print('!!!! Booking Loop !!!!!!!!')
-            print('OG Booking time:', booking.time)
-            print('OG Booking endTime:', booking.endTime)
-            print('New time: ', newStartTime.data)
-            print('New endTime: ', newEndTime)
-            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
             if is_time_between(booking.time, booking.endTime, newStartTime.data) or is_time_between(booking.time, booking.endTime, newEndTime):
                 return {'errors':[ 'One or both users are unavaliable for an appointment at the requested time']}, 422
 
@@ -178,7 +172,7 @@ def updateAppt(bookingId):
 
         for booking in bookings:
             # check that the new start time or new end time are not within an existing appointment
-            if is_time_between(booking.time, booking.endTime, newStartTime) or is_time_between(booking.startTime, booking.endTime,newEndTime):
+            if is_time_between(booking.time, booking.endTime, newStartTime.data) or is_time_between(booking.time, booking.endTime,newEndTime):
                 # make sure we are not looking at an old version of the booking we are updating
                 if booking.id != appt.id:
                     return {'errors': [ 'One or both users are unavaliable for an appointment at the requested time']}, 422
