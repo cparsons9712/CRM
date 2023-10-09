@@ -90,7 +90,7 @@
 }
 .formTextArea{
     height: 150px;
-    width: 150px;
+    width: auto;
     text-align: left;
     vertical-align: top;
     margin: 5px;

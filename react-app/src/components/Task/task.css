@@ -10,6 +10,15 @@
 
 }
 
+.taskTile:hover{
+    box-shadow: 4px 4px 5px 5px rgba(0, 0, 0, 0.713);
+    z-index: 500;
+}
+
+.markComplete{
+    cursor: pointer;
+}
+
 .taskHeader{
     background-color: #F26641;
     display: flex;

@@ -48,10 +48,14 @@ function TaskComponent ({task}){
                             <input
                                 name="complete"
                                 type="checkbox"
+                                className="markComplete"
                                 id={`complete_${t.completed}`}
                                 checked={t.completed}
                                 onChange={(e)=> {
-                                    dispatch(completeTask(t.id))
+                                    let check = window.confirm("Do you want to mark this task completed and hide from view? \nNote: Task will not be deleted, just hidden")
+                                    if (check){
+                                        dispatch(completeTask(t.id))
+                                    }
                                 }}
                             />
 

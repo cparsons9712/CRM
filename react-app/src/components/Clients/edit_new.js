@@ -40,9 +40,15 @@ function EditCreateNote({note, edit=true, clientInfo }){
     async function handleSubmit(e) {
       e.preventDefault();
       const err = [];
-      if (!text.length) {
-        err.push('Text cannot be empty');
-        setErrors(err);
+      if (text.length < 2) {
+        err.push('Text must be at least 2 characters long.');
+      }
+      if(text.length > 255){
+        err.push('Text must be shorter than 255 characters')
+      }
+
+      if(err.length){
+        setErrors(err)
         return;
       }
         const payload = {
@@ -89,7 +95,7 @@ function EditCreateNote({note, edit=true, clientInfo }){
                 value={text}
                 onChange={(e)=> setText(e.target.value)}
             />
-          
+
     </div>
 
     <div className="formFooter">
