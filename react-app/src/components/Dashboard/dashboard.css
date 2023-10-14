@@ -1,8 +1,11 @@
 .componentTitle{
     font-family: 'Kirsty';
     color:#A9C3B8;
-    margin: 10px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
     font-size: x-large;
+
 
 
 }
@@ -12,18 +15,21 @@
     flex-direction: row;
     background-color:#a9c3b811;
     padding: 5px;
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
     height: 160px;
     width: 95%;
     overflow-x: auto;
     overflow-y: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.293)
 
 
 }
 .componentHeader{
-    gap: 15px;
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    justify-content: space-between;
 }
 .componentMenu{
     margin-top: 15px;

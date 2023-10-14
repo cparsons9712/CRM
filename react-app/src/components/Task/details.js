@@ -1,7 +1,7 @@
 import EditCreateTask from "./create_edit"
 import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
-import { removeTask , loadAllTask} from "../../store/task";
+import { removeTask , loadAllTask, completeTask} from "../../store/task";
 import { convertDate, convertPhone, convertTime } from "../../util";
 
 
@@ -17,6 +17,11 @@ function TaskDetails ({task}){
             dispatch(loadAllTask());
         }
         closeModal()
+    }
+
+    const handleComplete = () =>{
+        dispatch(completeTask(task.id));
+        dispatch(loadAllTask());
     }
 
 
@@ -56,6 +61,12 @@ function TaskDetails ({task}){
                 <button onClick={handleDelete} className="simpleButton" >
                     Delete
                 </button>
+
+                <button onClick={handleComplete} className="simpleButton" >
+                    {task?.completed?   "Mark Uncompleted" : "Mark Complete"}
+                </button>
+
+
 
 
             </div>

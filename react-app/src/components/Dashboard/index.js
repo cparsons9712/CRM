@@ -1,17 +1,15 @@
-import TaskComponent from "../Task/TaskComponent"
 import './dashboard.css'
 import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareCaretDown} from '@fortawesome/free-solid-svg-icons';
 import { fixDate } from "../../util";
-import BookingPage from "../Booking/mainpage";
 import BookingSlice from "../Booking/component";
+import TaskContainer from "../Task/container";
 
 function Dashboard (){
     const dispatch = useDispatch();
+
 
     useEffect(() => {
       dispatch(loadAllTask());
@@ -30,10 +28,17 @@ function Dashboard (){
         let taskDueCount = 0
         for (let task of taskArray){
             let due_date = fixDate(task.due_date)
-            if(today.setHours(0,0,0,0) === due_date.setHours(0,0,0,0)) taskDueCount ++
+            if((today.setHours(0,0,0,0) >= due_date.setHours(0,0,0,0)) && !task.completed) taskDueCount ++
         }
-        return taskDueCount
+        if (taskDueCount === 1){
+            return "1 task due"
+        }
+        return  `${taskDueCount} tasks due`
     }
+
+
+
+
     const getBookingsDue = () =>{
         let today = new Date()
         let appointments = 0
@@ -56,8 +61,14 @@ function Dashboard (){
                 <div className="clientInfo">
                     <div className="clientName">Hey There {user.firstName}</div>
                     <div className="clientContact"> Today you have: </div>
-                    <div className="clientContact"> {getTaskDue()} task due</div>
+                    <div className="clientContact"> {getTaskDue()}</div>
                     <div className="clientContact"> {getBookingsDue()}</div>
+
+                    <div className='clientButtons'>
+                        <button>Add Task</button>
+                        <button>Add Appointment</button>
+                        <button>Add Client</button>
+                    </div>
                 </div>
 
                 <div className="upcomingAppt">
@@ -65,10 +76,9 @@ function Dashboard (){
                 </div>
             </div>
 
-            <div className="componentSlice">
-                    <div className="componentTitle">Task</div>
-                    {task?< TaskComponent task={taskArray}/>: <div className="empty">LOADING</div> }
-            </div>
+
+            {task?< TaskContainer task={task}/>: <div className="empty">LOADING</div> }
+
 
             {/* <div className="componentTitle">Messages</div> */}
 

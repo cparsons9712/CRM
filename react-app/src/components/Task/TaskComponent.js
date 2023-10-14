@@ -23,12 +23,15 @@ function TaskComponent ({task}){
 
 
     const getColor = (priority) => {
+
         if (priority === 'High'){
-            return '#A90505'
+            return '#CC0033'
         }else if (priority === 'Med'){
-            return '#F7CA41'
-        }else{
-            return '#396031'
+            return '#CC9900'
+        }else if (priority === 'Low'){
+            return '#006633'
+        } else{
+            return 'grey'
         }
 
     }
@@ -40,40 +43,24 @@ function TaskComponent ({task}){
 
                 {task.map((t)=> {
 
-                    if(t && t.completed === false){
+                    if(t){
                     return (
-                        <div className="taskTile" key={t.id}>
+                        <div className="taskTile" key={t.id} onClick={()=>{handleTaskClick(t)}}>
                             <div
-                            className="taskHeader">
-                            <input
-                                name="complete"
-                                type="checkbox"
-                                className="markComplete"
-                                id={`complete_${t.completed}`}
-                                checked={t.completed}
-                                onChange={(e)=> {
-                                    let check = window.confirm("Do you want to mark this task completed and hide from view? \nNote: Task will not be deleted, just hidden")
-                                    if (check){
-                                        dispatch(completeTask(t.id))
-                                    }
-                                }}
-                            />
-
-                            <div
-                            className="taskDueDate">
-                                {t?.due_date ? convertDate(t.due_date) : "none"}
-
-
-                            </div>
-
-                            <div
-                            className="priorityCircle"
-                            style={{color: getColor(t.priority)}}
-                            onClick={()=>{handleTaskClick(t)}}
+                            className="taskHeader"
+                            style={{backgroundColor: getColor(t.priority), color: 'white'}}
                             >
-                               <FontAwesomeIcon icon={faCircleQuestion} />
+
+
+                                <div
+                                className="taskDueDate">
+                                    {t?.due_date ? convertDate(t.due_date) : "none"}
+
+
+                                </div>
+
+    
                             </div>
-                        </div>
                         <div className="TaskBody">
                                 <p className="taskDescription">
                                     {t.description}

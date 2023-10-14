@@ -11,6 +11,7 @@ import EditCreateNote from "./edit_new";
 import EditCreateTask from "../Task/create_edit";
 import BookingSlice from "../Booking/component";
 import EditCreateBooking from "../Booking/createEdit";
+import TaskContainer from "../Task/container";
 
 import { loadAllTask } from "../../store/task"
 import { getUserRelationships } from "../../store/relationships"
@@ -73,8 +74,9 @@ function ClientPage (){
 
 
     return (
-        <div className="clientPageCont">
+        <div className="clientPageCont"> 
             <div className="clientNav">
+                <div className="componentTitle">Client List:</div>
                 {clients?(  Object.values(clients).map((client)=>{
                     return(
                         <div className="clientOption" key={`client${client.id}`}>
@@ -167,14 +169,14 @@ function ClientPage (){
             </div>
             <div className="task">
 
-            {clientTask && clientTask.length ? (
+            {clientTask  ? (
                 <>
-                <div className="componentTitle">Task</div>
-                <TaskComponent task={clientTask} />
+
+                <TaskContainer task={clientTask} />
                 </>
                 ) : (<>
-                    <div className="componentTitle">Task</div>
-                    <div className="sliceCont"></div>
+
+                    <div className="sliceCont"> Loading</div>
                     </>
             )}
 

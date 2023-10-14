@@ -3,6 +3,7 @@ import { loadAllTask } from "../../store/task"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import TaskComponent from "../Task/TaskComponent"
+import TaskContainer from "./container";
 import './task.css'
 
 
@@ -31,14 +32,10 @@ function TaskPage (){
 
     return (
         <>
-        <div className="componentTitle">High</div>
-        <TaskComponent task={highTask} />
+        
+        <TaskContainer task={task} />
 
-        <div className="componentTitle">Medium</div>
-        <TaskComponent task={medTask} />
 
-        <div className="componentTitle">Low</div>
-        <TaskComponent task={lowTask} />
         </>
     )
 }

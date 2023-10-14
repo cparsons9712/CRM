@@ -36,7 +36,7 @@ function NotesComponent ({notes}){
                        </div>
 
                        <div className="TaskBody">
-                            <div className="taskDescription">
+                            <div className="noteDescription">
                                 {note.text}
                             </div>
 
