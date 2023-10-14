@@ -79,7 +79,7 @@ function TaskComponent ({task}){
                                     {t.description}
                                 </p>
                                 <div className="taskClient" >
-                                    {`${t.Client.firstName} ${t.Client.lastName}`}
+                                    {`${t.Client.firstName} ${t.Client.lastName.slice(0,1)}.`}
                                 </div>
                         </div>
 
