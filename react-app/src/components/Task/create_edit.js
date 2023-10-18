@@ -13,7 +13,8 @@ function EditCreateTask({task, edit=true, clientInfo }){
     const [description, setDescription] = useState('')
     const [priority, setPriority] = useState('Med')
     const [due_date, setDueDate] = useState('')
-    const clientId = useRef(null)
+    const [clientId, setClientId] = useState("")
+
     const typeForm = useRef(null)
 
 
@@ -22,8 +23,9 @@ function EditCreateTask({task, edit=true, clientInfo }){
     useEffect(() => {
         if (task) {
             typeForm.current = "Edit"
-            clientId.current = task.Client.id;
-
+            if (task.Client){
+                setClientId(task.Client.id)
+            }
             setDescription(task.description)
             setPriority(task.priority)
             if (task.due_date) {
@@ -34,28 +36,28 @@ function EditCreateTask({task, edit=true, clientInfo }){
             }
         } else {
             typeForm.current = "Create"
-            clientId.current = clientInfo.id
+            if(clientInfo){
+                setClientId(clientInfo.id)
+            }
+
         }
-    }, [task, clientInfo]);
+    }, [task, clientInfo, clientId]);
 
-    const client = useSelector((state)=> state.relationships.Clients[clientId])
-
+    const clients = useSelector((state)=> state.relationships.Clients)
 
 
     async function handleSubmit(e) {
         setErrors([])
-        const today = new Date()
-        const dueDateFormatted = new Date(due_date)
         e.preventDefault();
-        const err = [];
-
 
         const payload = {
-          clientId : clientId.current,
           description,
           priority,
           due_date
         };
+        if(clientId){
+            payload.clientId = clientId
+        }
         let response;
 
         if (task && task.id) {
@@ -77,7 +79,8 @@ function EditCreateTask({task, edit=true, clientInfo }){
 
         <div className="formHeading">
             <div className="componentTitle"> {typeForm.current? 'Edit' : 'Create'} a Task</div>
-            <div className="formClient">{client?  `${client.firstName} ${client.lastName}`: ""} </div>
+            {/* <div className="formClient">{client?  `${client.firstName} ${client.lastName}`: ""} </div> */}
+
         </div>
 
         <div className="formBody">
@@ -86,6 +89,24 @@ function EditCreateTask({task, edit=true, clientInfo }){
 						<li key={idx}>{error}</li>
 					))}
             </div>
+
+            <label>Client: </label>
+            <select
+                name="client"
+                id="selectedClient"
+                value={clientId || ''}
+                onChange={e => setClientId(e.target.value)}
+            >
+                <option key={0} value={""}></option>
+                {Object.values(clients).map((client) => (
+                    <option key={client.id} value={client.id}>
+                    {client.firstName} {client.lastName}
+                    </option>
+                ))}
+            </select>
+
+
+
             <label>Description:</label>
             <textarea
             className="formTextArea"

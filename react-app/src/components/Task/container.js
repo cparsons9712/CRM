@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import TaskComponent from "./TaskComponent"
 
-function TaskContainer({task}){
+function TaskContainer({task, type='task'}){
 
     const [taskSet, setTaskSet] = useState('due')
     const [taskArray, setTaskArray] = useState([])
+
 
 
     useEffect(()=>{
@@ -37,7 +38,7 @@ function TaskContainer({task}){
     <div className="componentSlice">
 
         <div className="componentTitle">
-            Task
+            {type}
         </div>
 
         <div className="optionsBar">
@@ -46,12 +47,12 @@ function TaskContainer({task}){
                 <input
                     type="radio"
                     value="due"
-                    id="due"
-                    name="task"
+                    id={`due${type}`}
+                    name={type}
                     checked={taskSet === 'due'}
                     onChange={(e) =>{ setTaskSet(e.target.value)}}
                 />
-                <label htmlFor="due">
+                <label htmlFor={`due${type}`}>
                     Due
                 </label>
 
@@ -59,12 +60,12 @@ function TaskContainer({task}){
                 <input
                     type="radio"
                     value="complete"
-                    id="complete"
-                    name="task"
+                    id={`complete${type}`}
+                    name={type}
                     checked={taskSet === 'complete'}
                     onChange={(e) =>{ setTaskSet(e.target.value)}}
                 />
-                <label htmlFor="complete">
+                <label htmlFor={`complete${type}`}>
                     Completed
                 </label>
 
@@ -72,12 +73,12 @@ function TaskContainer({task}){
                 <input
                     type="radio"
                     value="all"
-                    id="all"
-                    name="task"
+                    id={`all${type}`}
+                    name={type}
                     checked={taskSet === 'all'}
                     onChange={(e) =>{ setTaskSet(e.target.value)}}
                 />
-                <label htmlFor="all">
+                <label htmlFor={`all${type}`}>
                     All
                 </label>
             </div>

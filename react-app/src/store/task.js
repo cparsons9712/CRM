@@ -28,7 +28,6 @@ export const loadAllTask = () => async dispatch => {
     } else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('!!!!!!!!!!!!!!', data.errors)
 			return data.errors;
 		}
 	} else {
@@ -37,8 +36,7 @@ export const loadAllTask = () => async dispatch => {
 }
 
 export const createTask = (payload) => async dispatch =>{
-	console.log('********thunk*********')
-	console.log('payload: ', payload)
+
 
     const response = await fetch(`/api/task/`, {
 		method: "POST",
@@ -141,7 +139,13 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_TASK:
 			action.payload.forEach((task) => {
-				let clientId = task.Client.id
+				let clientId
+				if (task.Client){
+					clientId= task.Client.id
+				}else{
+					clientId = 0
+				}
+
 				cleanState.all[task.id] = task;
 				if (!cleanState.byClient[clientId]) {
 					cleanState.byClient[clientId] = [];
@@ -152,7 +156,12 @@ export default function reducer(state = initialState, action) {
 
 		case CREATE_UPDATE_TASK:
 			const task = action.payload;
-			const clientId = task.Client.id;
+			let clientId
+			if (task.Client){
+				clientId= task.Client.id
+			}else{
+				clientId = 0
+			}
 
 			// Check if the task already exists in the all object
 			if (copyState.all[task.id]) {

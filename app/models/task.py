@@ -30,12 +30,18 @@ class Task(db.Model):
         return value
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "Client": self.clientRef.to_dict(),
-            "description": self.description,
-            "priority": self.priority,
-            "completed": self.completed,
-            "due_date": self.due_date,
-            "createdAt": self.createdAt,
-        }
+        task_dict = {
+                "id": self.id,
+                "description": self.description,
+                "priority": self.priority,
+                "completed": self.completed,
+                "due_date": self.due_date,
+                "createdAt": self.createdAt,
+            }
+
+        if hasattr(self, 'clientRef') and hasattr(self.clientRef, 'to_dict') and callable(self.clientRef.to_dict):
+            task_dict["Client"] = self.clientRef.to_dict()
+        else:
+            task_dict["Client"] = None
+
+        return task_dict

@@ -19,7 +19,7 @@ function TaskComponent ({task}){
     const handleTaskClick = (t) => {
         setModalContent(<TaskDetails task={t} />);
     }
-
+    task.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
 
 
     const getColor = (priority) => {
@@ -59,14 +59,14 @@ function TaskComponent ({task}){
 
                                 </div>
 
-    
+
                             </div>
                         <div className="TaskBody">
                                 <p className="taskDescription">
                                     {t.description}
                                 </p>
                                 <div className="taskClient" >
-                                    {`${t.Client.firstName} ${t.Client.lastName.slice(0,1)}.`}
+                                    {t.Client? `${t.Client.firstName} ${t.Client.lastName.slice(0,1)}.`: ''}
                                 </div>
                         </div>
 

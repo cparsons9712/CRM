@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fixDate } from "../../util";
 import BookingSlice from "../Booking/component";
 import TaskContainer from "../Task/container";
+import EditCreateTask from '../Task/create_edit';
+import { useModal } from '../../context/Modal';
+
 
 function Dashboard (){
     const dispatch = useDispatch();
-
+    const { setModalContent} = useModal();
 
     useEffect(() => {
       dispatch(loadAllTask());
@@ -65,7 +68,7 @@ function Dashboard (){
                     <div className="clientContact"> {getBookingsDue()}</div>
 
                     <div className='clientButtons'>
-                        <button>Add Task</button>
+                        <button onClick={(e)=>{setModalContent(<EditCreateTask />)}}>Add Task</button>
                         <button>Add Appointment</button>
                         <button>Add Client</button>
                     </div>

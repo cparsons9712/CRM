@@ -21,7 +21,8 @@ function TaskDetails ({task}){
 
     const handleComplete = () =>{
         dispatch(completeTask(task.id));
-        dispatch(loadAllTask());
+        // dispatch(loadAllTask());
+        closeModal()
     }
 
 
@@ -35,10 +36,11 @@ function TaskDetails ({task}){
             <div className="formBody">
 
                 <div> Before {convertDate(task.due_date)}</div>
-                <div className="componentTitle orange">Client</div>
-                <div >{task?.Client.firstName} {task?.Client.lastName}</div>
-                <div>{convertPhone(task.Client.phoneNumber)}</div>
-                <div>{task.Client.email}</div>
+
+                {task.Client ?    <>            <div className="componentTitle orange">Client</div>
+                <div >{task?.Client?.firstName} {task?.Client?.lastName}</div>
+                <div>{convertPhone(task.Client?.phoneNumber)}</div>
+                <div>{task.Client?.email}</div></>  : <></> }
 
 
 

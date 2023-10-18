@@ -56,6 +56,9 @@ def newTask():
 
                 if relationship is None:
                     return {'errors': {'Unauthorized': 'Freelancer does not have an existing client relationship with this user.'}}, 401
+        else:
+            clientId = None
+
         # Create the new Task with proper info
         newTask = Task()
         form.populate_obj(newTask)

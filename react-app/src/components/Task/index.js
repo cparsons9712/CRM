@@ -32,8 +32,12 @@ function TaskPage (){
 
     return (
         <>
-        
-        <TaskContainer task={task} />
+
+        <TaskContainer task={highTask} type={'High'} />
+
+        <TaskContainer task={medTask} type={'Medium'}/>
+
+        <TaskContainer task={lowTask} type={'Low'}/>
 
 
         </>
