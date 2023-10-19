@@ -138,3 +138,53 @@
     margin-top: 20px;
     margin-right: 50px;
 }
+
+
+select {
+    background-color: #163640;
+    color:#A9C3B8;
+    border: 1px solid #F26641;
+    margin: 5px;
+    padding: 5px;
+}
+
+.dateInput{
+    background-color: #163640;
+    color:#A9C3B8;
+    border: 1px solid #F26641;
+    padding: 5px;
+    margin: 5px;
+}
+.taskDetailsCont{
+    background-color: #163640;
+    height: auto;
+    width: 650px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.formFooter{
+    display: flex;
+    flex-direction: row;
+}
+.formFooter button{
+    width: 25%
+}
+
+.detailsContent{
+    display: flex;
+    flex-direction: row;
+    color:#A9C3B8;
+    text-align:center;
+}
+
+.taskSection{
+    margin: 10px;
+    width: 20%;
+    overflow-wrap: break-word;
+}
+
+.icon{
+    font-size: xx-large;
+    margin: 10px;
+}

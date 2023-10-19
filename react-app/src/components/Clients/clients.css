@@ -89,12 +89,14 @@
     color:#F26641;
 }
 .formTextArea{
-    height: 150px;
-    width: auto;
+    height: 75px;
     text-align: left;
     vertical-align: top;
     margin: 5px;
-    background-color: #A9C3B8
+    padding: 5px;
+    background-color:#163640;
+    border: 1px solid #F26641;
+    color:#A9C3B8;
 }
 .formBody{
     color:#A9C3B8;

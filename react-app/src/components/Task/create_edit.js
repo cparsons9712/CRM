@@ -78,7 +78,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
     <div className="editCreateCont">
 
         <div className="formHeading">
-            <div className="componentTitle"> {typeForm.current? 'Edit' : 'Create'} a Task</div>
+            <div className="componentTitle orange"> {task? 'Edit' : 'Create'} a Task</div>
             {/* <div className="formClient">{client?  `${client.firstName} ${client.lastName}`: ""} </div> */}
 
         </div>
@@ -90,20 +90,22 @@ function EditCreateTask({task, edit=true, clientInfo }){
 					))}
             </div>
 
-            <label>Client: </label>
-            <select
-                name="client"
-                id="selectedClient"
-                value={clientId || ''}
-                onChange={e => setClientId(e.target.value)}
-            >
-                <option key={0} value={""}></option>
-                {Object.values(clients).map((client) => (
-                    <option key={client.id} value={client.id}>
-                    {client.firstName} {client.lastName}
-                    </option>
-                ))}
-            </select>
+
+
+                <label>Client: </label>
+                <select
+                    name="client"
+                    id="selectedClient"
+                    value={clientId || ''}
+                    onChange={e => setClientId(e.target.value)}
+                >
+                    <option key={0} value={""}></option>
+                    {Object.values(clients).map((client) => (
+                        <option key={client.id} value={client.id}>
+                        {client.firstName} {client.lastName}
+                        </option>
+                    ))}
+                </select>
 
 
 
@@ -133,6 +135,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
             <label>Due Date:</label>
             <input
                 name="dueDate"
+                className="dateInput"
                 type="date"
                 value={due_date}
                 onChange={(e) => {

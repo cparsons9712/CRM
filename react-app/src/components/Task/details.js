@@ -3,7 +3,8 @@ import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
 import { removeTask , loadAllTask, completeTask} from "../../store/task";
 import { convertDate, convertPhone, convertTime } from "../../util";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileSignature, faImagePortrait, faTriangleExclamation, faListCheck, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 
 
 function TaskDetails ({task}){
@@ -28,48 +29,59 @@ function TaskDetails ({task}){
 
 
     return(
-        <div className="editCreateCont">
+        <div className="taskDetailsCont">
             <div className="formHeading">
-                <div className="componentTitle orange">{task?.description}</div>
+                <div className="componentTitle orange">To Do:</div>
+            </div>
+
+            <div className="detailsContent">
+                <div className="taskSection">
+                    <FontAwesomeIcon icon={faFileSignature} className="icon" />
+
+                    <div>{task?.description}</div>
+                </div>
+
+                <div className="taskSection">
+                    <FontAwesomeIcon icon={faImagePortrait} className="icon"/>
+                    {task.Client ?    <>
+                    <div >{task?.Client?.firstName} {task?.Client?.lastName}</div>
+                    <div >{task?.Client?.email} </div>
+                        <div>{convertPhone(task.Client.phoneNumber) }</div>
+                  </>  : <> No Client</> }
+                </div>
+
+                <div className="taskSection">
+                <FontAwesomeIcon icon={faTriangleExclamation} className="icon" />
+                    <div>{task?.priority} Priority</div>
+                </div>
+
+                <div className="taskSection">
+                <FontAwesomeIcon icon={faListCheck} className="icon"/>
+                    <div>{task?.completed? "Completed": "In Progress"}</div>
+                </div>
+
+                <div className="taskSection">
+                <FontAwesomeIcon icon={faCalendarDays} className="icon"/>
+                    <div>{convertDate(task.due_date)}</div>
+                </div>
 
             </div>
-            <div className="formBody">
-
-                <div> Before {convertDate(task.due_date)}</div>
-
-                {task.Client ?    <>            <div className="componentTitle orange">Client</div>
-                <div >{task?.Client?.firstName} {task?.Client?.lastName}</div>
-                <div>{convertPhone(task.Client?.phoneNumber)}</div>
-                <div>{task.Client?.email}</div></>  : <></> }
 
 
-
-                <div className="componentTitle orange"> Priority: </div>
-                <div>{task?.priority}</div>
-
-
-                <div className="componentTitle orange"> Status: </div>
-                <div> {task?.completed? "Completed": "Not completed"}</div>
-
-                <div className="componentTitle orange"> Created at: </div>
-                <div> {task?.createdAt?.slice(0,16)}</div>
-            </div>
             <div className="formFooter">
+
+                <button onClick={handleComplete} className="simpleButton" >
+                        {task?.completed?   "Mark Uncompleted" : "Mark Complete"}
+                </button>
+
                 <button onClick={(e)=>{setModalContent(<EditCreateTask task={task}/>)}}
-                className="simpleButton">
-                    Edit
+                    className="simpleButton">
+                        Edit
                 </button>
 
                 <button onClick={handleDelete} className="simpleButton" >
-                    Delete
+                        Delete
                 </button>
-
-                <button onClick={handleComplete} className="simpleButton" >
-                    {task?.completed?   "Mark Uncompleted" : "Mark Complete"}
-                </button>
-
-
-
 
             </div>
 
