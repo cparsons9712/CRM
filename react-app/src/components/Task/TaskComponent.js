@@ -13,6 +13,8 @@ import { convertDate } from "../../util";
 function TaskComponent ({task}){
     const dispatch = useDispatch()
     const contentRef = useRef(null);
+    const [showLeftButton, setShowLeftButton] = useState(false);
+    const [showRightButton, setShowRightButton] = useState(false);
 
     const { setModalContent } = useModal();
 
@@ -25,20 +27,19 @@ function TaskComponent ({task}){
     const scrollLeft = () => {
         const content = contentRef.current;
         if (content) {
-          content.scrollLeft -= 150; // Adjust the scroll distance as needed
+          content.scrollLeft -= 160; // Adjust the scroll distance as needed
         }
       };
 
       const scrollRight = () => {
         const content = contentRef.current;
         if (content) {
-          content.scrollLeft += 150; // Adjust the scroll distance as needed
+          content.scrollLeft += 160; // Adjust the scroll distance as needed
         }
       };
 
 
     const getColor = (priority) => {
-
         if (priority === 'High'){
             return '#CC0033'
         }else if (priority === 'Med'){
@@ -48,14 +49,40 @@ function TaskComponent ({task}){
         } else{
             return 'grey'
         }
-
     }
+
+    useEffect(() => {
+        const handleResize = () => {
+          const content = contentRef.current;
+          if (content) {
+            const hasOverflow = content.scrollWidth > content.offsetWidth;
+            setShowLeftButton(hasOverflow);
+            setShowRightButton(hasOverflow);
+          }
+        };
+
+        // Add a window resize event listener
+        window.addEventListener("resize", handleResize);
+
+        // Initial calculation when the component mounts
+        handleResize();
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, [task]);
+
 
     if( task.length){
 
         return (
             <div className="sliceCont">
-                <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
+                {showLeftButton && (
+          <button className="scroll-button left" onClick={scrollLeft}>
+            &lt;
+          </button>
+        )}
                 <div className="scrollable-content" ref={contentRef}>
                         {task.map((t)=> {
 
@@ -94,7 +121,11 @@ function TaskComponent ({task}){
                         }
                     })}
                 </div>
-                <button class="scroll-button right" onClick={scrollRight}>&gt;</button>
+                {showRightButton && (
+          <button className="scroll-button right" onClick={scrollRight}>
+            &gt;
+          </button>
+        )}
             </div>
     )}else{return <div className="sliceCont"></div>}
 }
