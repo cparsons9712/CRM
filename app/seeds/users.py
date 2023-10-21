@@ -5,13 +5,13 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-      email='demo@aa.io', password='password', firstName="Tristan", lastName="Huckabee", phoneNumber="5551234567", authLevel=1, aboutMe= "I like to code so much I teach it!!! ohh noo sunlight my nemesis", title="Web Developer"
+      email='demo@aa.io', password='password', firstName="Demo", lastName="User", phoneNumber="5551234567", authLevel=1, aboutMe= "I am a professional developer making cool websites", title="Web Developer"
     )
     marnie = User(
          email='christmas@gmail.com', password='password', firstName="Karry", lastName="Wilson", phoneNumber="5551234567", authLevel=0
     )
     jerry = User(
-         email='fishingLife@email.com', password='password', firstName="Jerry", lastName="Bolden", phoneNumber="5551234567", authLevel=0
+         email='fishinglife@email.com', password='password', firstName="Jerry", lastName="Bolden", phoneNumber="5551234567", authLevel=0
     )
 
 
@@ -20,10 +20,19 @@ def seed_users():
     )
 
     marie = User(
-         email='easyNightmares@gmail.com', password='password', firstName="Marie", lastName="Goldeen", phoneNumber="5551234567", authLevel=0
+         email='dreaminggirl@gmail.com', password='password', firstName="Marie", lastName="Goldeen", phoneNumber="5551234567", authLevel=0
     )
     joe = User(
-         email='saltLyfe@email.com', password='password', firstName="Joe", lastName="White", phoneNumber="5551234567", authLevel=0
+         email='saltlyfe@email.com', password='password', firstName="Joe", lastName="White", phoneNumber="5551234567", authLevel=0
+    )
+    amanda = User(
+        email='kitkat@email.com', password='password', firstName="Amanda", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
+    )
+    bobby = User(
+        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
+    )
+    bobby = User(
+        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
     )
 
     a = Client(freelancerId = 1, clientId = 2)

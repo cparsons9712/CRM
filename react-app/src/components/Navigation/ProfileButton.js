@@ -9,6 +9,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import AddClient from "../Clients/addClientUser";
 import { useModal } from "../../context/Modal";
+import ProfileModal from "../Profile/userProfileModal";
 
 
 function ProfileButton({ user }) {
@@ -19,8 +20,7 @@ function ProfileButton({ user }) {
   const {setModalContent} = useModal()
 
   const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+    setModalContent(<ProfileModal userInfo={user} />)
   };
 
   useEffect(() => {
@@ -54,11 +54,15 @@ function ProfileButton({ user }) {
 
   return (
     <>{user ? (
-    <>
-      <div onClick={openMenu}>
+
+
+    <div className="loginbtnCont" >
+      <FontAwesomeIcon icon={faUser} className="userIcon" onClick={openMenu} />
+
+      {/* <div onClick={openMenu}>onClick={setModalContent(<ProfileModal userInfo={user} />)}
        <FontAwesomeIcon icon={faUser} className="userIcon"  />
-      </div>
-      <div className={ulClassName} ref={ulRef}>
+      </div> */}
+      {/* <div className={ulClassName} ref={ulRef}>
 
           <div className="userMenu">
 
@@ -69,21 +73,22 @@ function ProfileButton({ user }) {
             <div onClick={handleLogout} className="userMenuLink">Log Out</div>
 
           </div>
-        </div>
-    </>
-        ) : (
-          <div className="loginbtnCont">
-            <OpenModalButton
-              id="loginBtn"
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-          </div>
-        )}
+        </div> */}
+    </div>
 
-    </>
-  );
-}
+
+  ) : (
+    <div className="loginbtnCont">
+      <OpenModalButton
+        id="loginBtn"
+        buttonText="Log In"
+        onItemClick={closeMenu}
+        modalComponent={<LoginFormModal />}
+      />
+    </div>
+  )}
+
+  </>
+);}
 
 export default ProfileButton;
