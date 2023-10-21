@@ -53,6 +53,7 @@ function ProfileModal ({userInfo}){
                     <div className="contentBlock">
                         <h3>Contact Me:</h3>
                         <p>{userInfo.email}</p>
+                        {/* Change to test if render is resetting data each deploy */}
                         <p>{convertPhone(userInfo.phoneNumber)}</p>
                     </div>
 
