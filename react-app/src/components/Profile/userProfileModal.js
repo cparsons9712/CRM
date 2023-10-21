@@ -3,6 +3,7 @@ import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
+import { convertPhone } from '../../util';
 
 function ProfileModal ({userInfo}){
     const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function ProfileModal ({userInfo}){
                     <div className="contentBlock">
                         <h3>Contact Me:</h3>
                         <p>{userInfo.email}</p>
-                        <p>{userInfo.phoneNumber}</p>
+                        <p>{convertPhone(userInfo.phoneNumber)}</p>
                     </div>
 
                     <div className="contentBlock">
