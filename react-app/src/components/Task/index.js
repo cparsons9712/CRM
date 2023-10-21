@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import TaskComponent from "../Task/TaskComponent"
 import TaskContainer from "./container";
 import './task.css'
+import { getUserRelationships } from "../../store/relationships";
 
 
 function TaskPage (){
@@ -12,6 +13,7 @@ function TaskPage (){
 
     useEffect(() => {
       dispatch(loadAllTask());
+
     }, [dispatch]);
 
     const task = useSelector((state) => state.task.all);

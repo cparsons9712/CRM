@@ -1,15 +1,17 @@
 import EditCreateTask from "./create_edit"
 import { useModal } from "../../context/Modal"
-import { useDispatch } from "react-redux";
+import { useDispatch, useEffect } from "react-redux";
 import { removeTask , loadAllTask, completeTask} from "../../store/task";
 import { convertDate, convertPhone } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileSignature, faImagePortrait, faTriangleExclamation, faListCheck, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import { getUserRelationships } from "../../store/relationships";
 
 
 function TaskDetails ({task}){
     const dispatch = useDispatch();
     const { setModalContent, closeModal } = useModal();
+
 
 
     const handleDelete = async() =>{
@@ -22,6 +24,8 @@ function TaskDetails ({task}){
         closeModal()
     }
 
+
+
     const handleComplete = () =>{
         dispatch(completeTask(task.id));
         // dispatch(loadAllTask());
@@ -32,16 +36,17 @@ function TaskDetails ({task}){
 
     return(
         <div className="taskDetailsCont">
-            <div className="formHeading">
-                <div className="componentTitle orange">To Do:</div>
-            </div>
-
-            <div className="detailsContent">
-                <div className="taskSection">
-                    <FontAwesomeIcon icon={faFileSignature} className="icon" />
+            <div className="taskHeading">
+                <div className="componentTitle dark">{task?.title}</div>
+                <div className="taskDesc">
+                    {/* <FontAwesomeIcon icon={faFileSignature} className="icon" /> */}
 
                     <div>{task?.description}</div>
                 </div>
+            </div>
+
+            <div className="detailsContent">
+
 
                 <div className="taskSection">
                     <FontAwesomeIcon icon={faImagePortrait} className="icon"/>

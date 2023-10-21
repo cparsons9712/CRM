@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion} from '@fortawesome/free-solid-svg-icons';
 import { convertDate } from "../../util";
+import { getUserRelationships } from "../../store/relationships";
 
 
 function TaskComponent ({task}){
@@ -17,6 +18,10 @@ function TaskComponent ({task}){
     const [showRightButton, setShowRightButton] = useState(false);
 
     const { setModalContent } = useModal();
+
+    useEffect(() => {
+      dispatch(getUserRelationships())
+    }, [dispatch]);
 
 
     const handleTaskClick = (t) => {
@@ -106,7 +111,7 @@ function TaskComponent ({task}){
                                     </div>
                                 <div className="TaskBody">
                                         <p className="taskDescription">
-                                            {t.description}
+                                            {t.title}
                                         </p>
                                         <div className="taskClient" >
                                             {t.Client? `${t.Client.firstName} ${t.Client.lastName.slice(0,1)}.`: ''}

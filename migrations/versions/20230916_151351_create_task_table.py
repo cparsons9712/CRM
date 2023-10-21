@@ -22,12 +22,13 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('freelancerId', sa.Integer(), nullable=False),
     sa.Column('clientId', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=50), nullable=False),
+    sa.Column('title', sa.String(length=50), nullable=False),
+    sa.Column('description', sa.String(length=250)),
     sa.Column('priority', sa.String(length=5), nullable=False),
     sa.Column('completed', sa.Boolean(), nullable=True),
     sa.Column('due_date', sa.Date(), nullable=True),
     sa.Column('createdAt', sa.DateTime(), nullable=True),
-   
+
     sa.ForeignKeyConstraint(['clientId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['freelancerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

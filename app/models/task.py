@@ -11,7 +11,8 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     freelancerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     clientId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    description = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(250))
+    title = db.Column(db.String(50),nullable=False )
     priority = db.Column(db.String(5), nullable=False)
     completed = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.Date)
@@ -32,6 +33,7 @@ class Task(db.Model):
     def to_dict(self):
         task_dict = {
                 "id": self.id,
+                "title": self.title,
                 "description": self.description,
                 "priority": self.priority,
                 "completed": self.completed,

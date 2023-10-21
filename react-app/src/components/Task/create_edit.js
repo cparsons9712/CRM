@@ -1,4 +1,5 @@
 import { loadAllTask, createTask, updateTask, removeTask } from "../../store/task";
+import { getUserRelationships } from "../../store/relationships";
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -9,24 +10,33 @@ function EditCreateTask({task, edit=true, clientInfo }){
     const { closeModal } = useModal();
     const dispatch = useDispatch();
 
-
+    const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [priority, setPriority] = useState('Med')
     const [due_date, setDueDate] = useState('')
-    const [clientId, setClientId] = useState("")
+    const [clientId, setClientId] = useState('')
 
     const typeForm = useRef(null)
 
 
     const [errors, setErrors] = useState([])
 
+
+    useEffect(() => {
+        dispatch(getUserRelationships())
+      }, [dispatch]);
+
     useEffect(() => {
         if (task) {
             typeForm.current = "Edit"
             if (task.Client){
                 setClientId(task.Client.id)
+                console.log(`$$$$ task.Client`)
             }
-            setDescription(task.description)
+            setTitle(task.title)
+            if(task.description) {
+                setDescription(task.description)
+            }
             setPriority(task.priority)
             if (task.due_date) {
                 const inputDateString = task.due_date
@@ -44,6 +54,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
     }, [task, clientInfo, clientId]);
 
     const clients = useSelector((state)=> state.relationships.Clients)
+    console.log('%%%%%', clients)
 
 
     async function handleSubmit(e) {
@@ -53,7 +64,8 @@ function EditCreateTask({task, edit=true, clientInfo }){
         const payload = {
           description,
           priority,
-          due_date
+          due_date,
+          title
         };
         if(clientId){
             payload.clientId = clientId
@@ -99,20 +111,28 @@ function EditCreateTask({task, edit=true, clientInfo }){
                     value={clientId || ''}
                     onChange={e => setClientId(e.target.value)}
                 >
-                    <option key={0} value={""}></option>
-                    {Object.values(clients).map((client) => (
+                     <option key={0} value={""}></option>
+                    {clients? Object.values(clients).map((client) => (
                         <option key={client.id} value={client.id}>
                         {client.firstName} {client.lastName}
                         </option>
-                    ))}
+                    )) : ""}
                 </select>
 
-
+            <label>Title:</label>
+            <input
+                className="formInput"
+                placeholder= "Write a title here ..."
+                type="text"
+                value={title}
+                onChange={(e)=> setTitle(e.target.value)}
+            />
+            {errors.title}
 
             <label>Description:</label>
             <textarea
             className="formTextArea"
-                placeholder= "Write a task here ..."
+                placeholder= "Add additional details ..."
                 type="text"
                 value={description}
                 onChange={(e)=> setDescription(e.target.value)}

@@ -8,34 +8,38 @@ def seed_tasks():
     one = Task(
         freelancerId = 1,
         clientId = 2,
-        description = "Finish seeding database",
+        title = "Finish seeding database",
+        description = "Make 5 seed data objects for users, task, appointments, and notes",
         priority = "Med",
         completed = False,
-        due_date=datetime.strptime('2023-10-15', '%Y-%m-%d')
+        due_date=datetime.strptime('2023-11-15', '%Y-%m-%d')
     )
     two = Task(
         freelancerId = 1,
-        clientId = 3,
-        description = "Send invoice",
+        clientId = 5,
+        title = "Send invoice",
+        description = "Invoice should be for creating the GoBabby site- A medium level ecommerence site completed on Sept 3 2023",
         priority = "High",
         completed = True,
-        due_date=datetime.strptime('2023-09-15', '%Y-%m-%d')
+        due_date=datetime.strptime('2023-11-15', '%Y-%m-%d')
     )
     three = Task(
         freelancerId = 1,
-        clientId = 5,
-        description = "Feed dogs",
+        clientId = 3,
+        title = "Make chart component",
+        description = "Need a pie chart that can take a lead dataset and break down how many resulted in different dollar amount percent wise. Like 0-$5/ 6-25/ 25-50/ 50+",
         priority = "Low",
         completed = False,
-        due_date=datetime.strptime('2023-10-10', '%Y-%m-%d')
+        due_date=datetime.strptime('2023-11-10', '%Y-%m-%d')
     )
     four = Task(
-        freelancerId = 4,
+        freelancerId = 1,
         clientId = 5,
-        description = "Commit Arson",
+        title = "Commit Arson",
+        description= "The user's account is past due. If the bills not paid by this date burn his house down! (not really!! just send him to collections)",
         priority = "Med",
         completed = False,
-        due_date = datetime.strptime('2023-10-31', '%Y-%m-%d')
+        due_date = datetime.strptime('2023-11-30', '%Y-%m-%d')
     )
 
 

@@ -159,7 +159,7 @@ select {
     background-color: #163640;
     height: auto;
     width: 650px;
-    padding: 15px;
+
     border-radius: 5px;
 }
 
@@ -168,7 +168,7 @@ select {
     flex-direction: row;
 }
 .formFooter button{
-    width: 25%
+    width: 33%
 }
 
 .detailsContent{
@@ -180,11 +180,31 @@ select {
 
 .taskSection{
     margin: 10px;
-    width: 20%;
+    width: 25%;
     overflow-wrap: break-word;
 }
 
 .icon{
     font-size: xx-large;
     margin: 10px;
+}
+
+.taskDesc{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex start;
+    align-items: center;
+    padding-left: 50px;
+    padding-right:50px;
+}
+
+.dark{
+    color:#163640;
+}
+.taskHeading{
+    background-color: #F26641;
+    color:#163640;
+    padding: 15px;
+    border-radius: 5px 5px 0px 0px;
 }
