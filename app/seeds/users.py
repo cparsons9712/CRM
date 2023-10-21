@@ -38,11 +38,11 @@ def seed_users():
         email='landentower@email.com', password='password', firstName="Landen", lastName="Townsend", phoneNumber="5551234567", authLevel=1, aboutMe= "Want a memior? I'll write it for you.", title="Copywriter"
     )
 
-    a = Client(freelancerId = 6, clientId = 5)
-    b = Client(freelancerId = 6, clientId = 3)
-    c = Client(freelancerId = 7, clientId = 5)
-    d = Client(freelancerId = 8, clientId = 5)
-    e = Client(freelancerId = 6, clientId = 5)
+    a = Client(freelancerId = 1, clientId = 2)
+    b = Client(freelancerId = 1, clientId = 3)
+    c = Client(freelancerId = 1, clientId = 5)
+    d = Client(freelancerId = 8, clientId = 6)
+    e = Client(freelancerId = 6, clientId = 10)
 
 
     db.session.add(demo)
