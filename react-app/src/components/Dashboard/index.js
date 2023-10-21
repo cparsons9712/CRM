@@ -8,6 +8,8 @@ import BookingSlice from "../Booking/component";
 import TaskContainer from "../Task/container";
 import EditCreateTask from '../Task/create_edit';
 import { useModal } from '../../context/Modal';
+import AddClient from '../Clients/addClientUser';
+import EditCreateBooking from '../Booking/createEdit';
 
 
 function Dashboard (){
@@ -39,9 +41,6 @@ function Dashboard (){
         return  `${taskDueCount} tasks due`
     }
 
-
-
-
     const getBookingsDue = () =>{
         let today = new Date()
         let appointments = 0
@@ -58,6 +57,8 @@ function Dashboard (){
 
 
 
+
+
     return (
         <div className="dashboard">
             <div className="dashboardHeader">
@@ -68,9 +69,9 @@ function Dashboard (){
                     <div className="clientContact"> {getBookingsDue()}</div>
 
                     <div className='clientButtons'>
-                        <button onClick={(e)=>{setModalContent(<EditCreateTask />)}}>Add Task</button>
-                        <button>Add Appointment</button>
-                        <button>Add Client</button>
+                        <button onClick={()=>{setModalContent(<EditCreateTask />)}}>Add Task</button>
+                        <button onClick={()=>{setModalContent(<EditCreateBooking />)}}>Add Appointment</button>
+                        <button onClick={()=>{setModalContent(<AddClient />)}}>Add Client</button>
                     </div>
                 </div>
 

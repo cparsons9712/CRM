@@ -12,22 +12,28 @@ function TaskContainer({task, type='task'}){
         let arr = []
         if(taskSet === 'due'){
            Object.values(task).forEach(t => {
-                if(t.completed === false){
+                if(t?.completed === false){
                     arr.push(t)
                 }
            })
         }
         if(taskSet === 'complete'){
             Object.values(task).forEach(t => {
-                if(t.completed === true){
+                if(t?.completed === true){
                     arr.push(t)
                 }
            })
         }
         if(taskSet === 'all'){
-            Object.values(task).forEach(t => {
-                arr.push(t)
-            })
+
+               Object.values(task).forEach(t => {
+                if(t){
+                   arr.push(t)
+                }
+                })
+
+
+
         }
         setTaskArray(arr)
     }, [taskSet, task])

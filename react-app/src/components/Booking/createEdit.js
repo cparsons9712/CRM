@@ -18,7 +18,8 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     const [title, setTitle] = useState('')
     const [location, setLocation] = useState('')
     const [errors, setErrors] = useState([])
-    const clientId = useRef(null)
+
+    const [clientId, setClientId] = useState("")
     const typeForm = useRef(null)
 
     useEffect(()=>{
@@ -28,7 +29,8 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     useEffect(()=>{
         if(booking){
             typeForm.current = 'Edit'
-            clientId.current = booking.clientId
+            setClientId(booking.clientId)
+
             // formatt the date so that it can be imported. without these steps date WILL NOT IMPORT
             const inputDateString = booking.day
             const inputDate = new Date(inputDateString);
@@ -43,11 +45,15 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
             }
         } else{
             typeForm.current = 'Create'
-            clientId.current = clientInfo.id
+            if(clientInfo){
+                setClientId(clientInfo.id)
+            }
+
         }
     }, [booking, clientInfo])
 
-    const client = useSelector((state)=> state.relationships.Clients[clientId])
+
+    const clients = useSelector((state)=> state.relationships.Clients)
     const user = useSelector((state)=> state.session.user)
 
 
@@ -62,6 +68,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
 
 
         if (!title) err.push("Title is required")
+        if(!clientId) err.push("Please select a client")
         if(title && (title.length < 2 || title.length > 35)) err.push("Title must be between 2 and 35 characters")
         if(!day) err.push('Date is required')
         if(day && (inputDate.setHours(0,0,0,0) < today.setHours(0,0,0,0)))err.push('Date must be in the future')
@@ -86,7 +93,7 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
         if(booking && booking.id){
             response = await dispatch(updateBooking( booking.id, payload))
         }else{
-            response = await dispatch(createBooking(clientId.current ,payload))
+            response = await dispatch(createBooking(clientId ,payload))
         }
         if(response && response.length){
             setErrors(response)
@@ -103,10 +110,10 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
 
             <div className="formHeading">
                 <div className="componentTitle orange">
-                    {typeForm.current? 'Edit' : 'Create'} an Appointment
+                    {booking? 'Edit' : 'Create'} an Appointment
                 </div>
                 <div className="formClient">
-                    {client? `${client.firstName} ${client.lastName}`: ""}
+
                 </div>
             </div>
 
@@ -116,6 +123,21 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
 						<li key={idx}>{error}</li>
 					))}
                 </div>
+
+                <label>Client: </label>
+                <select
+                    name="client"
+                    id="selectedClient"
+                    value={clientId || ''}
+                    onChange={(e) => setClientId(e.target.value)}
+                >
+                    <option key={0} value={""}></option>
+                    {Object.values(clients).map((client) => (
+                        <option key={client.id} value={client.id}>
+                        {client.firstName} {client.lastName}
+                        </option>
+                    ))}
+                </select>
 
                 {/* title */}
                 <label>Title</label>

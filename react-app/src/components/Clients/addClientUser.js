@@ -74,7 +74,7 @@ function AddClient() {
           type="text"
           placeholder="Enter email here"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.toLowerCase())}
           required
         />
         <button onClick={handleSearch}>Search</button>

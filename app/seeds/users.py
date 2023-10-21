@@ -4,42 +4,46 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-      email='demo@aa.io', password='password', firstName="Demo", lastName="User", phoneNumber="5551234567", authLevel=1, aboutMe= "I am a professional developer making cool websites", title="Web Developer"
-    )
+
     marnie = User(
-         email='christmas@gmail.com', password='password', firstName="Karry", lastName="Wilson", phoneNumber="5551234567", authLevel=0
+         email='client1@email.com', password='password', firstName="Karry", lastName="Wilson", phoneNumber="5551234567", authLevel=0
     )
     jerry = User(
-         email='fishinglife@email.com', password='password', firstName="Jerry", lastName="Bolden", phoneNumber="5551234567", authLevel=0
+         email='client2@email.com', password='password', firstName="Jerry", lastName="Bolden", phoneNumber="5551234567", authLevel=0
     )
-
-
-    bobby = User(
-        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
-    )
-
     marie = User(
-         email='dreaminggirl@gmail.com', password='password', firstName="Marie", lastName="Goldeen", phoneNumber="5551234567", authLevel=0
+         email='client3@email.com', password='password', firstName="Marie", lastName="Goldeen", phoneNumber="5551234567", authLevel=0
     )
     joe = User(
-         email='saltlyfe@email.com', password='password', firstName="Joe", lastName="White", phoneNumber="5551234567", authLevel=0
+         email='client4@email.com', password='password', firstName="Joe", lastName="White", phoneNumber="5551234567", authLevel=0
     )
-    amanda = User(
-        email='kitkat@email.com', password='password', firstName="Amanda", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
-    )
-    bobby = User(
-        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
-    )
-    bobby = User(
-        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
+    demoClient = User(
+        email='demo@email.com', password='password', firstName="Guest", lastName="Client", phoneNumber="0001234567", authLevel=0
     )
 
-    a = Client(freelancerId = 1, clientId = 2)
-    b = Client(freelancerId = 1, clientId = 3)
-    c = Client(freelancerId = 4, clientId = 5)
-    d = Client(freelancerId = 4, clientId = 6)
-    e = Client(freelancerId = 1, clientId = 5)
+
+    demo = User(
+      email='demo@aa.io', password='password', firstName="Guest", lastName="User", phoneNumber="5551234567", authLevel=1, aboutMe= "I am a professional developer making cool websites", title="Web Developer"
+    )
+    bobby = User(
+        email='bobbyboi@email.com', password='password', firstName="Bobby", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "Give me duck tape and I can fix the world", title="Handy Man"
+    )
+    amanda = User(
+        email='kitkat@email.com', password='password', firstName="Amanda", lastName="Jones", phoneNumber="5551234567", authLevel=1, aboutMe= "I can make your dollars stretch further than you would ever believe", title="Accountant"
+    )
+    nancy = User(
+        email='nancyf@email.com', password='password', firstName="Nancy", lastName="Freeman", phoneNumber="5551234567", authLevel=1, aboutMe= "I can turn your yard into the garden of Edan", title="Landscaper"
+    )
+    landen = User(
+        email='landentower@email.com', password='password', firstName="Landen", lastName="Townsend", phoneNumber="5551234567", authLevel=1, aboutMe= "Want a memior? I'll write it for you.", title="Copywriter"
+    )
+
+    a = Client(freelancerId = 6, clientId = 5)
+    b = Client(freelancerId = 6, clientId = 3)
+    c = Client(freelancerId = 7, clientId = 5)
+    d = Client(freelancerId = 8, clientId = 5)
+    e = Client(freelancerId = 6, clientId = 5)
+
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -47,6 +51,10 @@ def seed_users():
     db.session.add(bobby)
     db.session.add(marie)
     db.session.add(joe)
+    db.session.add(amanda)
+    db.session.add(nancy)
+    db.session.add(landen)
+    db.session.add(demoClient)
 
     db.session.add(a)
     db.session.add(b)

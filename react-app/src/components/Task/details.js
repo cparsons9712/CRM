@@ -2,7 +2,7 @@ import EditCreateTask from "./create_edit"
 import { useModal } from "../../context/Modal"
 import { useDispatch } from "react-redux";
 import { removeTask , loadAllTask, completeTask} from "../../store/task";
-import { convertDate, convertPhone, convertTime } from "../../util";
+import { convertDate, convertPhone } from "../../util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileSignature, faImagePortrait, faTriangleExclamation, faListCheck, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,10 +12,12 @@ function TaskDetails ({task}){
     const { setModalContent, closeModal } = useModal();
 
 
-    const handleDelete =() =>{
+    const handleDelete = async() =>{
         if(window.confirm('Are you sure you want to delete this task?')) {
-            dispatch(removeTask(task.id));
-            dispatch(loadAllTask());
+            console.log('!!!!!! Delete Initialized')
+            await dispatch(removeTask(task.id));
+            console.log(`!!!!!! task ${task.id} removed`)
+            await dispatch(loadAllTask());
         }
         closeModal()
     }
