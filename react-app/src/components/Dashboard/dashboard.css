@@ -20,8 +20,7 @@
     margin-bottom: 0px;
     height: 160px;
     width: 95%;
-    overflow-x: auto;
-    overflow-y: hidden;
+
     border: 1px solid rgba(0, 0, 0, 0.293)
 }
 .scrollable-content{
@@ -29,6 +28,7 @@
     display:flex;
     flex-direction: row;
     overflow: hidden;
+
 }
 .scroll-button {
 

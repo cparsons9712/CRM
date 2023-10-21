@@ -54,6 +54,12 @@ function App() {
 
         </Switch>
       )}
+      <div>
+        <div className="componentTitle">Christine Parsons</div>
+          <a href="https://github.com/cparsons9712/">GitHub Profile</a>
+
+          <div> <a href="https://www.linkedin.com/in/christine-parsons-498b046a/">LinkedIn Profile</a></div>
+        </div>
     </>
   );
 }

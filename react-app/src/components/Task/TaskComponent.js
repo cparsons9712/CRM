@@ -79,10 +79,10 @@ function TaskComponent ({task}){
         return (
             <div className="sliceCont">
                 {showLeftButton && (
-          <button className="scroll-button left" onClick={scrollLeft}>
-            &lt;
-          </button>
-        )}
+                  <button className="scroll-button left" onClick={scrollLeft}>
+                     &lt;
+                  </button>
+                )}
                 <div className="scrollable-content" ref={contentRef}>
                         {task.map((t)=> {
 
