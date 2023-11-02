@@ -16,9 +16,9 @@ function TaskDetails ({task}){
 
     const handleDelete = async() =>{
         if(window.confirm('Are you sure you want to delete this task?')) {
-            console.log('!!!!!! Delete Initialized')
+
             await dispatch(removeTask(task.id));
-            console.log(`!!!!!! task ${task.id} removed`)
+           
             await dispatch(loadAllTask());
         }
         closeModal()

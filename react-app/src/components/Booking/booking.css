@@ -43,3 +43,9 @@
 .overviewTitle{
     color: #F26641
 }
+
+.rbc-agenda-event-cell:hover{
+    background-color: #F26641;
+    cursor: pointer;
+    color:black !important;
+}

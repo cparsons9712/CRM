@@ -18,8 +18,8 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     const [title, setTitle] = useState('')
     const [location, setLocation] = useState('')
     const [errors, setErrors] = useState([])
-
     const [clientId, setClientId] = useState("")
+
     const typeForm = useRef(null)
 
     useEffect(()=>{
@@ -29,7 +29,11 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
     useEffect(()=>{
         if(booking){
             typeForm.current = 'Edit'
-            setClientId(booking.clientId)
+
+            if (booking.Client){
+                setClientId(booking.Client.id)
+
+            }
 
             // formatt the date so that it can be imported. without these steps date WILL NOT IMPORT
             const inputDateString = booking.day
@@ -132,11 +136,11 @@ function EditCreateBooking({booking, edit=true, clientInfo}){
                     onChange={(e) => setClientId(e.target.value)}
                 >
                     <option key={0} value={""}></option>
-                    {Object.values(clients).map((client) => (
+                    {clients? Object.values(clients).map((client) => (
                         <option key={client.id} value={client.id}>
                         {client.firstName} {client.lastName}
                         </option>
-                    ))}
+                    )): ""}
                 </select>
 
                 {/* title */}
