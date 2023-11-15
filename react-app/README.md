@@ -1,8 +1,21 @@
 # Bantam CRM
+![Alt text](image-5.png)
 
 Click here for the live site:  https://bantam-crm.onrender.com/
 
-Bantam is a customer management system designed for freelancers or other single party small business operations. The backend was built using Python and Flask and the frontend was built using Javascript and React.
+Bantam is a client management system designed for freelancers or other single party small business operations. The backend was built using Python and Flask and the frontend was built using Javascript and React.
+
+## Table Of Contents
+
+- [Features](#features)
+    - [Task](#task)
+    - [Bookings](#bookings)
+    - [Notes](#notes)
+    - [Relationships](#relationships-clients)
+- [DB Schema](#sqlitepostgress-schema)
+- [Redux Store](#redux-store)
+
+
 
 
 ## Features
@@ -38,7 +51,11 @@ Clients are also a subclass of user. When a Freelancer connects to a client acco
 *CRUD*: freelancers can GET relationships and POST relationships
 
 
-## React Components
+## SQLite/POSTgress Schema
+![Alt text](image-6.png)
+
+## Redux Store
+
 
 
 
