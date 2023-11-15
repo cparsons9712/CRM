@@ -49,3 +49,21 @@
     cursor: pointer;
     color:black !important;
 }
+
+.bookingDetailsFooter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.BookingsDet{
+    width: 450px !important;
+}
+
+.bookingContentDet{
+   display: flex;
+   justify-content: space-between;
+}
+
+.bookingSect{
+    width: 33% !important;
+}

@@ -6,6 +6,8 @@ import EditCreateBooking from "./createEdit";
 import { convertDate, convertTime, convertPhone } from "../../util";
 import { useEffect } from "react";
 import { getUserRelationships } from "../../store/relationships";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileSignature, faImagePortrait, faTriangleExclamation, faListCheck, faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 
 function SeeBookingDetails({booking}){
@@ -31,21 +33,37 @@ function SeeBookingDetails({booking}){
 
 
     return(
-    <div className="editCreateCont">
-        <div className="formHeading">
-            <div className="componentTitle orange">{booking.title}</div>
+    <div className="taskDetailsCont BookingsDet">
+        <div className="taskHeading">
+
+            <div className="componentTitle dark">{booking.title}</div>
 
         </div>
-        <div className="formBody">
-            <div>{convertDate(booking.day)} {convertTime(booking.time)}</div>
-            <div className="componentTitle orange">Client:</div>
-            <div className="formClient">{booking.Client.firstName} {booking.Client.lastName}</div>
-            <div >{convertPhone(booking.Client.phoneNumber)} </div>
-            <div> {booking.Client.email} </div>
-            <div className="componentTitle orange">Location:</div>
-            <div>{booking.location}</div>
+        <div className="detailsContent bookingContentDet">
+
+            <div className="taskSection bookingSect">
+                <FontAwesomeIcon icon={faCalendarDays} className="icon"/>
+                    <div>{convertDate(booking.day)} <br></br>{convertTime(booking.time)}</div>
+            </div>
+
+            <div className="taskSection bookingSect">
+                <FontAwesomeIcon icon={faImagePortrait} className="icon" />
+                <br></br>
+                {booking.Client.firstName} {booking.Client.lastName}
+                <br></br>
+                {convertPhone(booking.Client.phoneNumber)}
+                <br></br>
+                {booking.Client.email}
+            </div>
+
+            <div className="taskSection bookingSect">
+                <FontAwesomeIcon icon={faLocationDot} className="icon" />
+                <br></br>
+                {booking.location}
+
+            </div>
         </div>
-            <div>
+            <div className="bookingDetailsFooter">
                 <button onClick={handleEdit} className="simpleButton">Edit</button>
                 <button onClick={handleDelete} className="simpleButton">Delete</button>
             </div>
