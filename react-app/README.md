@@ -55,7 +55,7 @@ Clients are also a subclass of user. When a Freelancer connects to a client acco
 ![Alt text](image-6.png)
 
 ## Redux Store
-
+![Alt text](image-7.png)
 
 
 
