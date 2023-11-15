@@ -28,7 +28,7 @@ Task are to do items that a user wants to remember to get done by a specific dat
 *CRUD*: Users are able to Create, Read, Update and Delete task. They also can mark a task complete/ in progress.
 
 ### Bookings
-![Alt text](image-3.png)
+![Alt text](image-8.png)
 Bookings are scheduled appointments a user has with a client. There are booking specific restrictions when creating, such as the user nor the client can have something scheduled during the chosen time frame or a client can only schedule within a freelancers avaliability window. The end time is not inputed by the user, it will be automatically calulated based on start time and duration and will be used to determine if a user is avaliable during a time slot and to display the appointments in the calender <br>
 *Table Columns*:  `id`, `freelancerId`, `clientId`, `day`, `time`, `duration`, `endTime`, `title`, `location`, `createdAt`
 <br>
