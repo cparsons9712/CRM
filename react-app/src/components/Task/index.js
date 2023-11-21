@@ -33,16 +33,16 @@ function TaskPage (){
     });
 
     return (
-        <>
+        <div className="page">
+            <div>
+                <TaskContainer task={highTask} type={'High'} />
 
-        <TaskContainer task={highTask} type={'High'} />
+                <TaskContainer task={medTask} type={'Medium'}/>
 
-        <TaskContainer task={medTask} type={'Medium'}/>
+                <TaskContainer task={lowTask} type={'Low'}/>
 
-        <TaskContainer task={lowTask} type={'Low'}/>
-
-
-        </>
+            </div>
+        </div>
     )
 }
 export default TaskPage

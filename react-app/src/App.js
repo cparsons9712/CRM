@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormModal from "./components/SignupFormModal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Footer from "./components/footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import { authenticate } from "./store/session";
@@ -59,23 +58,8 @@ function App() {
 
         </Switch>
       )}
-        <footer className="landingFooter">
-          <p className="componentTitle"> Christine Parsons
-          &nbsp; &nbsp;
-            <a href="https://github.com/cparsons9712/" target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faGithub} />
+      <Footer/>
 
-            </a>
-            &nbsp; &nbsp;
-            <a href="https://www.linkedin.com/in/christine-parsons-498b046a/" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon icon={faLinkedin}
-            />
-            </a>
-          </p>
-
-          <div className="alignRight"><a href="https://www.flaticon.com/free-icons/notepad" target="_blank" rel="noreferrer" title="notepad icons" >Icons created by Smashicons</a></div>
-
-</footer>
 
     </>
   );

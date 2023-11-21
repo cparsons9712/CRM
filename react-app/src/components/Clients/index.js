@@ -74,7 +74,7 @@ function ClientPage (){
 
 
     return (
-        <div className="clientPageCont"> 
+        <div className="clientPageCont page">
             <div className="clientNav">
                 <div className="componentTitle">Client List:</div>
                 {clients?(  Object.values(clients).map((client)=>{

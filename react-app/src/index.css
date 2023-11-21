@@ -25,19 +25,20 @@ body{
   text-align: start;
 }
 
-.alignRight{
+.page{
+height: 720px;
 
-  position: fixed;
-  bottom: 15px;
-  right: 10px;
 }
 
 .landingFooter{
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 10px;
-  width: 95%;
-  margin: 10px;
+  position: static;
+  bottom: 0px;
+
+  padding-right: 20px;
+
+
+  background-color: #163640;
 
 }

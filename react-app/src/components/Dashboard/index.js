@@ -60,7 +60,7 @@ function Dashboard (){
 
 
     return (
-        <div className="dashboard">
+        <div className="dashboard page">
             <div className="dashboardHeader">
                 <div className="clientInfo">
                     <div className="clientName">Hey There {user.firstName}</div>
