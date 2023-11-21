@@ -101,10 +101,7 @@ const LandingPage = () => {
             />
       </div>
 
-      <footer className="landingFooter">
 
-        <a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Icons created by Smashicons - Flaticon</a>
-      </footer>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { faFileSignature, faImagePortrait, faTriangleExclamation, faListCheck, f
 import { getUserRelationships } from "../../store/relationships";
 
 
+
 function TaskDetails ({task}){
     const dispatch = useDispatch();
     const { setModalContent, closeModal } = useModal();
@@ -18,7 +19,7 @@ function TaskDetails ({task}){
         if(window.confirm('Are you sure you want to delete this task?')) {
 
             await dispatch(removeTask(task.id));
-           
+
             await dispatch(loadAllTask());
         }
         closeModal()

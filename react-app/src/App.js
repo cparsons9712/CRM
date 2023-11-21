@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormModal from "./components/SignupFormModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -54,12 +57,22 @@ function App() {
 
         </Switch>
       )}
-      <div>
-        <div className="componentTitle">Christine Parsons</div>
-          <a href="https://github.com/cparsons9712/">GitHub Profile</a>
+        <footer className="landingFooter">
+          <p className="componentTitle"> Christine Parsons
+          &nbsp; &nbsp;
+            <a href="https://github.com/cparsons9712/">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            &nbsp; &nbsp;
+            <a href="https://www.linkedin.com/in/christine-parsons-498b046a/">
+            <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </p>
 
-          <div> <a href="https://www.linkedin.com/in/christine-parsons-498b046a/">LinkedIn Profile</a></div>
-        </div>
+          <div className="alignRight"><a href="https://www.flaticon.com/free-icons/notepad" title="notepad icons">Icons created by Smashicons</a></div>
+
+</footer>
+
     </>
   );
 }
