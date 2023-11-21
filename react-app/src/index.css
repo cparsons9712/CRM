@@ -10,7 +10,7 @@
 
 #root{
   height: 100vb;
-  overflow: scroll;
+
 }
 
 
@@ -26,7 +26,10 @@ body{
 }
 
 .alignRight{
-  margin-right: 5px
+
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
 }
 
 .landingFooter{
@@ -36,4 +39,5 @@ body{
   bottom: 10px;
   width: 95%;
   margin: 10px;
+
 }
