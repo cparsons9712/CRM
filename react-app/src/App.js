@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormModal from "./components/SignupFormModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -39,21 +39,23 @@ function App() {
           </Route>
 
 
-          <Route path="/dashboard">
+          <ProtectedRoute path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/clients">
+          </ProtectedRoute>
+
+          <ProtectedRoute path="/clients">
             <ClientPage />
-          </Route>
-          <Route path="/task">
+          </ProtectedRoute>
+
+          <ProtectedRoute path="/task">
             <TaskPage />
-          </Route>
-          <Route path="/calender">
+          </ProtectedRoute>
+
+          <ProtectedRoute path="/calender">
             <Calender />
-          </Route>
-          <Route path="/messages">
-            <MessagePage />
-          </Route>
+          </ProtectedRoute>
+
+
 
         </Switch>
       )}
