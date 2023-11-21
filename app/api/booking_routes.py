@@ -100,7 +100,7 @@ def bookAppt(userId):
     """
     Books an appointment for the signed in user and another specified user
     """
-    print('********** API RT FOR BOOKING ******************')
+    # print('********** API RT FOR BOOKING ******************')
     form = BookingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     appointment = Booking()

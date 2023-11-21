@@ -84,12 +84,12 @@ def editTask(task_id):
     task = Task.query.get_or_404(task_id)
     if task.freelancerId != current_user.id:
         return {'errors': {'Unauthorized': 'Freelancer is not the author of this task.'}}, 401
-    print('Task from the form')
-    print(task)
+    #print('Task from the form')
+    #print(task)
 
     if form.validate_on_submit():
         form.populate_obj(task)
-        print(task)
+        #print(task)
         db.session.add(task)
         db.session.commit()
         return task.to_dict()

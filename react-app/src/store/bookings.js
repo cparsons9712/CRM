@@ -27,7 +27,7 @@ export const loadFreelancerBookings = (userId) => async dispatch => {
     } else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('!!!!!!!!!!!!!!', data.errors)
+			//console.log('!!!!!!!!!!!!!!', data.errors)
 			return data.errors;
 		}
 	} else {
@@ -45,7 +45,7 @@ export const loadBookingsWithUser = (userId) => async dispatch => {
     } else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('!!!!!!!!!!!!!!', data.errors)
+			//console.log('!!!!!!!!!!!!!!', data.errors)
 			return data.errors;
 		}
 	} else {
@@ -66,13 +66,13 @@ export const createBooking = (userId, payload) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('$$$$ create Booking success. Received data:', data);
+		//console.log('$$$$ create Booking success. Received data:', data);
 		dispatch(createOrUpdateBooking(data));
 		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('$$$$ create Booking validation errors:', data.errors);
+			//console.log('$$$$ create Booking validation errors:', data.errors);
 			return data.errors;
 		}
 	} else {
@@ -82,8 +82,8 @@ export const createBooking = (userId, payload) => async dispatch =>{
 }
 
 export const updateBooking = (bookingId, payload) => async dispatch =>{
-    console.log('^^^^^^^^ update Booking Thunk ^^^^^^^^^^^')
-	console.log('Payload:::' , JSON.stringify(payload))
+    //console.log('^^^^^^^^ update Booking Thunk ^^^^^^^^^^^')
+	//console.log('Payload:::' , JSON.stringify(payload))
 
 	const response = await fetch(`/api/booking/${bookingId}`, {
 		method: "PUT",
@@ -92,18 +92,18 @@ export const updateBooking = (bookingId, payload) => async dispatch =>{
 		},
 		body: JSON.stringify(payload),
 	});
-	console.log('THUNK RES:::', response)
+	//console.log('THUNK RES:::', response)
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('^^^ Edit Booking success. Received data:', data);
+		//console.log('^^^ Edit Booking success. Received data:', data);
 		 dispatch(createOrUpdateBooking(data));
 		return data;
 
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('^^^ Edit Booking Failed. Errors:', data.errors);
+			//console.log('^^^ Edit Booking Failed. Errors:', data.errors);
 			return data.errors;
 		}
 
@@ -119,12 +119,12 @@ export const removeBooking = bookingId => async dispatch => {
     })
     if (response.ok){
         await dispatch(deleteBooking(bookingId))
-		console.log(`Booking ${bookingId} deleted`)
+		//console.log(`Booking ${bookingId} deleted`)
         return {"message": "Booking Deleted Successfully"}
     }else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log("Booking NOT DELETED. REASON:", data.errors)
+			//console.log("Booking NOT DELETED. REASON:", data.errors)
 			return data.errors;
 		}
 	} else {

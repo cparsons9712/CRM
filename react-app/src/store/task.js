@@ -48,13 +48,13 @@ export const createTask = (payload) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('$$$$ create Task success. Received data:', data);
+		//console.log('$$$$ create Task success. Received data:', data);
 		dispatch(createOrUpdateTask(data));
 		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('$$$$ create Task validation errors:', data.errors);
+			//console.log('$$$$ create Task validation errors:', data.errors);
 			return data.errors
 		}
 	} else {
@@ -118,12 +118,12 @@ export const removeTask = taskId => async dispatch => {
     if (response.ok){
         await dispatch(deleteTask(taskId))
 		await dispatch(loadAllTask());
-		console.log(`Task ${taskId} deleted`)
+		//console.log(`Task ${taskId} deleted`)
         return {"message": "Task Deleted Successfully"}
     }else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log("TASK NOT DELETED. REASON:", data.errors)
+			//console.log("TASK NOT DELETED. REASON:", data.errors)
 			return data.errors;
 		}
 	} else {

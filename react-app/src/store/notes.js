@@ -44,13 +44,13 @@ export const createNote = (client_id, payload ) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('$$$$ createNote success. Received data:', data);
+		//console.log('$$$$ createNote success. Received data:', data);
 		dispatch(createOrUpdateNote(data));
 		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('$$$$ createNote validation errors:', data.errors);
+			//console.log('$$$$ createNote validation errors:', data.errors);
 			return data.errors;
 		}
 	} else {
@@ -70,14 +70,14 @@ export const updateNote = (note_id, payload) => async dispatch =>{
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('$$$$ Edit Note success. Received data:', data);
+		//console.log('$$$$ Edit Note success. Received data:', data);
 		dispatch(createOrUpdateNote(data));
 		return data;
 
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log('$$$$ Edit Note Failed. Errors:', data.errors);
+			//console.log('$$$$ Edit Note Failed. Errors:', data.errors);
 			return data.errors;
 		}
 

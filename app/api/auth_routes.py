@@ -13,10 +13,10 @@ def validation_errors_to_error_messages(validation_errors):
     """
     errorMessages = []
     for field in validation_errors:
-        print('In validation Error handler')
+        # print('In validation Error handler')
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
-            print(f'{field} : {error}')
+           # print(f'{field} : {error}')
     return errorMessages
 
 
@@ -26,9 +26,9 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        print('User is authenticated to be logged in')
+         #print('User is authenticated to be logged in')
         return current_user.to_dict()
-    print('User is not authenticated')
+    # print('User is not authenticated')
     return {'errors': ['Unauthorized']}
 
 

@@ -45,11 +45,11 @@ def newRelationship():
     form = ClientForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print('!!!!!!!!!!!!!!!!!!!!!!!')
-    print(form.data)
+    # print('!!!!!!!!!!!!!!!!!!!!!!!')
+    # print(form.data)
     if form.validate_on_submit():
-        print('!!!!!!!!!!!!!!!!!!!!!!!')
-        print(form.data)
+        #print('!!!!!!!!!!!!!!!!!!!!!!!')
+        #print(form.data)
 
         if current_user.authLevel == 1:
             relationship = Client(

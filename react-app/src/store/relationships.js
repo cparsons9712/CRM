@@ -67,9 +67,9 @@ export function getAllFreelancers(){
 
 
 export const createRelationship = (newRelationship) => async dispatch =>{
-	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+	//console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-	console.log('IN THE CREATE RELATIONSHIP THUNK')
+	//console.log('IN THE CREATE RELATIONSHIP THUNK')
 
     const response = await fetch("/api/relationships/", {
 		method: "POST",
@@ -78,21 +78,21 @@ export const createRelationship = (newRelationship) => async dispatch =>{
 		},
 		body: JSON.stringify(newRelationship),
 	});
-	console.log(response)
+	//console.log(response)
 
 
 	if (response.ok) {
 		const data = await response.json();
-		console.log('SUCCESS!!!!!!!!!! DATA:')
-		console.log(data)
+		//console.log('SUCCESS!!!!!!!!!! DATA:')
+		//console.log(data)
 		dispatch(makeRelationship(data));
 		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
-		console.log('FAILURE!!!!!!!!!! DATA:')
-		console.log(data)
+		//console.log('FAILURE!!!!!!!!!! DATA:')
+		//console.log(data)
 		if (data.errors) {
-			console.log(data.errors)
+			//console.log(data.errors)
 			return data.errors;
 		}
 	} else {
@@ -134,7 +134,7 @@ export default function reducer(state = initialState, action) {
 			}
 		case GET_FREELANCERS:
 			const allFreelancers = action.payload
-			console.log(allFreelancers)
+			//console.log(allFreelancers)
 
 			if("Freelancers" in allFreelancers){
 				const freelancerArray = allFreelancers.Freelancers

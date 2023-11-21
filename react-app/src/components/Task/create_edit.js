@@ -31,7 +31,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
             typeForm.current = "Edit"
             if (task.Client){
                 setClientId(task.Client.id)
-                console.log(`$$$$ task.Client`)
+                //console.log(`$$$$ task.Client`)
             }
             setTitle(task.title)
             if(task.description) {
@@ -54,7 +54,7 @@ function EditCreateTask({task, edit=true, clientInfo }){
     }, [task, clientInfo, clientId]);
 
     const clients = useSelector((state)=> state.relationships.Clients)
-    console.log('%%%%%', clients)
+    //console.log('%%%%%', clients)
 
 
     async function handleSubmit(e) {
