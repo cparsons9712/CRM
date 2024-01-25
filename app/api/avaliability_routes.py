@@ -1,3 +1,9 @@
+"""
+Avaliability feature is not currently implemimented 
+
+"""
+
+
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
 from app.models import Booking, Client, Availability, db

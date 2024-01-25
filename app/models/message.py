@@ -2,6 +2,10 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 from sqlalchemy.orm import validates
 
+"""
+Messages are not currently in use
+"""
+
 class Message(db.Model):
     __tablename__ = 'messages'
 

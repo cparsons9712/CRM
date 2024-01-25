@@ -1,6 +1,9 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import validates
 
+"""
+Service is not currently in use
+"""
 
 class Service(db.Model):
     __tablename__ = 'services'

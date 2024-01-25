@@ -2,6 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import DateField, TimeField, StringField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError
 
+"""
+This form is not currently in use in the application as the feature isnt in use at the moment
+"""
 
 
 class AvailabilityForm(FlaskForm):
@@ -19,5 +22,3 @@ class AvailabilityForm(FlaskForm):
     satEndTime = TimeField('End Time', validators=[DataRequired()])
     sunStartTime = TimeField('Start Time', validators=[DataRequired()] )
     sunEndTime = TimeField('End Time', validators=[DataRequired()])
-
-

@@ -1,7 +1,9 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import validates
 
-
+"""
+Avaliability is not currently in use
+"""
 class Availability(db.Model):
     __tablename__ = 'availability'
 

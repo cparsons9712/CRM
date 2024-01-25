@@ -2,6 +2,10 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import validates
 from datetime import datetime
 
+"""
+Reviews are not currently in use
+"""
+
 class Review(db.Model):
     __tablename__ = 'reviews'
 
