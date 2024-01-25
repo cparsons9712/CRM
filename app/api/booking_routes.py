@@ -17,7 +17,9 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 def setEndTime(starttime, duration):
-    # Calculate the end time as a timedelta
+    """
+    Calculates the endtime as timedelta from a starttime and duration time inputs
+    """
     start_time = starttime.data
     duration_time = duration.data
     end_time_timedelta = timedelta(hours=start_time.hour, minutes=start_time.minute) + timedelta(hours=duration_time.hour, minutes=duration_time.minute)
@@ -29,12 +31,10 @@ def setEndTime(starttime, duration):
     return end_time
 
 
-
-
-
-
-
 def getDayOfWeek(date):
+    """
+    Takes a full date and returns only what day of week that day falls on
+    """
     return date.strftime('%A')
 
 
