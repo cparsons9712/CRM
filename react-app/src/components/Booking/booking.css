@@ -21,7 +21,7 @@
 }
 
 .bookingTile{
-    background-color: #A9C3B8;
+    background-color: #71DADA;
     margin: 2px;
     padding: 10px;
     width: fit-content;
@@ -29,7 +29,7 @@
 }
 
 .bookingOverview{
-    background-color: #16364075;
+    background-color: #0A4740;
     margin: 10px;
     padding: 5px;
     cursor: pointer;
@@ -41,11 +41,11 @@
 }
 
 .overviewTitle{
-    color: #F26641
+    color: #DADF60
 }
 
 .rbc-agenda-event-cell:hover{
-    background-color: #F26641;
+    background-color: #DADF60;
     cursor: pointer;
     color:black !important;
 }

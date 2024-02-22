@@ -14,8 +14,8 @@
     padding: 5px;
     margin-left: 20px;
     margin-right: 10px;
-    background-color:#a9c3b811;
-    color: #F26641;
+    background-color:#0d3f36b7;
+    color: #dadf60;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -28,12 +28,12 @@
 .clientName{
     font-family: 'Kirsty';
     font-size: 25px;
-    color:#F26641;
+    color:#dadf60;
     margin-top: 15px;
 
 }
 .clientContact{
-    color: #A9C3B8;
+    color: #71DADA;
     font-family: 'Orbitron';
     font-size: 16px;
 
@@ -41,8 +41,8 @@
 }
 
 .upcomingAppt{
-    background-color:#a9c3b811;
-    color: #A9C3B8;
+    background-color:#0d3f36b7;
+    color: #71DADA;
     width: 95%;
     margin-right: 30px;
     max-height: 200px;
@@ -86,7 +86,7 @@
 
 }
 .formHeading{
-    color:#F26641;
+    color:#dadf60;
 }
 .formTextArea{
     height: 75px;
@@ -95,11 +95,11 @@
     margin: 5px;
     padding: 5px;
     background-color:#163640;
-    border: 1px solid #F26641;
-    color:#A9C3B8;
+    border: 1px solid #dadf60;
+    color:#71DADA;
 }
 .formBody{
-    color:#A9C3B8;
+    color:#71DADA;
     font-family: 'Orbitron';
     display: flex;
     flex-direction: column;
@@ -107,15 +107,15 @@
 }
 
 .orange{
-    color: #F26641
+    color: #dadf60
 }
 
 .simpleButton{
     margin: 20px;
     width: 150px;
     background-color: #163640;
-    color: #A9C3B8;
-    border: 1px solid #F26641;
+    color: #71DADA;
+    border: 1px solid #dadf60;
 
 }
 
@@ -132,7 +132,7 @@
   }
 
   .clientRadioInput:checked + .clientRadioLabel {
-    background-color: #F26641;
+    background-color: #dadf60;
     color: #163640;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524);
   }
@@ -145,7 +145,7 @@
     grid-row: 1 / span 4;
     height: 100%;
     overflow-y: auto;
-    color: #A9C3B8;
+    color: #71DADA;
     display: flex;
     align-items: center;
   }
@@ -157,7 +157,7 @@
     margin-right: 10px;
   }
   .clientRadioLabel:hover{
-    background-color: #F26641;
+    background-color: #71DADA;
     box-shadow: 2px 2px 10px 2px black;
     z-index: 500;
     color:#163640;
@@ -166,11 +166,11 @@
 
 
   .clientRadioInput:checked + .clientRadioLabel::before {
-    background-color: #F26641;
+    background-color: #71DADA;
   }
 
 .clientOption{
-    border-bottom: 1px solid #A9C3B8;
+    border-bottom: 1px solid #71DADA;
     height: 50px;
     text-align: center;
     display: flex;
@@ -182,8 +182,8 @@
 
 
 .addClientContainer{
-    background-color: #163640;
-    color: #A9C3B8;
+    background-color: #1636409f;
+    color: #71DADA;
     padding: 20px;
     width: 400px;
     align-items: center;
@@ -222,7 +222,7 @@
     font-family: 'Orbitron';
 }
 .userMenuLink:hover{
-    color:#F26641
+    color:#71DADA
 }
 .userGreeting{
     color: #163640;
@@ -232,7 +232,7 @@
 
 .noteHeader{
     text-align: center;
-    background-color: #F26641;
+    background-color: #71DADA;
     color:#163640;
     height: 25px;
 }

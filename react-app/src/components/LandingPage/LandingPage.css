@@ -2,7 +2,7 @@
 
     padding: 20px;
     text-align: center;
-    color: #A9C3B8; /* Text color on the background image */
+    color: #71DADA; /* Text color on the background image */
     text-shadow: 2px 2px 5px black;
     height: 200px;
     display: flex;
@@ -53,7 +53,7 @@
     margin: 45px;
     padding: 15px;
     color: #7B9092;
-    border: 1px solid #F26641;
+    border: 1px solid #DADF60;
     border-radius: 10px;
     height: 150px;
     gap: 20px;
@@ -88,5 +88,5 @@ a{
     color: #7B9092;
 }
 a:hover{
-    color:#F26641
+    color:#DADF60
 }

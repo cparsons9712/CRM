@@ -1,29 +1,29 @@
 .rbc-header{
-    background-color: #A9C3B8;
+    background-color: #71DADA;
     color:#163640;
 }
 
 .rbc-btn-group > button:first-child:not(:last-child) {
-    background-color: #A9C3B8;
+    background-color: #71DADA;
     color:#163640;
 }
 
 .rbc-btn-group button + button{
-    background-color: #A9C3B8;
+    background-color: #71DADA;
     color:#163640;
 }
 .rbc-toolbar .rbc-toolbar-label{
-    color: #F26641;
+    color: #DADF60;
     font-family: 'Kirsty';
 }
 
 .rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
-    color: #F26641 !important;
+    color: #DADF60 !important;
     background-color: #1d4d4d !important;
 }
 
 .rbc-time-content > .rbc-time-gutter{
-    color: #A9C3B8;
+    color: #71DADA;
 
 }
 
@@ -32,7 +32,7 @@
 }
 
 .rbc-event{
-    background-color: #F26641 !important;
+    background-color: #DADF60 !important;
     color: #163640;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .rbc-agenda-view table.rbc-agenda-table tbody > tr > td{
-    color: #A9C3B8;
+    color: #71DADA;
 }
 .rbc-time-content > * + * > *{
     border-left: #2c4e52 !important;

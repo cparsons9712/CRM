@@ -1,7 +1,7 @@
 .componentTitle{
     font-family: 'Kirsty';
-    color:#A9C3B8;
-    margin-left: 5px;
+    color:#E0FFE9;
+    margin-left: 30px;
     margin-bottom: 5px;
     margin-top: 10px;
     font-size: x-large;
@@ -13,7 +13,7 @@
 .sliceCont{
     display: flex;
     flex-direction: row;
-    background-color:#a9c3b811;
+    background-color:#0d3f36a3;
     padding: 5px;
     margin-left: 20px;
     margin-right: 20px;
@@ -21,7 +21,7 @@
     height: 160px;
     width: 95%;
 
-    border: 1px solid rgba(0, 0, 0, 0.293)
+
 }
 .scrollable-content{
     width: 95%;
@@ -36,8 +36,8 @@
     height: 95%;
     width: 30px; /* Set the width of the scroll buttons */
    /* Make them transparent */
-    background-color: #163640;
-    color: #A9C3B8;
+    background-color: #0A4740;
+    color: #E0FFE9;
     cursor: pointer;
     font-size: 24px; /* Adjust the font size for arrow buttons */
   }
@@ -50,11 +50,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.componentMenu{
-    margin-top: 15px;
-    color:#A9C3B8;
 
-}
 
 .dashboard{
     display: flex;

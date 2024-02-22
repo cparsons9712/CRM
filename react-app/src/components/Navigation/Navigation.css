@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #163640;
   justify-content: space-between;
 
 }
@@ -22,20 +21,20 @@
 }
 .bantam{
   font-family: 'Kirsty';
-  color: #F26641;
+  color: #dadf60;
  padding-left: 15px;
   font-size: x-large;
 
 }
 
 .userIcon{
-  color: #F26641;
+  color: #dadf60;
   height: 25px;
   cursor: pointer;
   margin: 15px;
 }
 .userIcon:hover{
-  color:#f28364;
+  color:#abae4c;
 }
 
 .signedInBar{
@@ -51,22 +50,15 @@
 
 .userBar {
     font-family: 'Kirsty';
-    color: #A9C3B8;
+    color: #71CDD4;
     padding: 20px;
     text-decoration: none;
 }
 
 .userBar.active{
-  background-color: #163640;
+  background-color: #0d3f36b7;;
 
-  color: #F26641;
+  color: #E0FFE9;
 
 
-}
-
-.userMenu{
-  background-color: #A9C3B8;
-  text-align: center;
-  padding: 15px;
-  color: #163640;
 }

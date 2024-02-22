@@ -18,8 +18,8 @@
     gap: 10px;
 }
 button{
-    color: #163640;
-    background-color:#F26641;
+    color: #E0FFE9;
+    background-color:#09453E;
     margin-top: 20px;
     font-family: 'Kirsty';
     height:25px;
@@ -28,10 +28,10 @@ button{
     border-radius: 2px;
 }
 button:hover{
-    background-color: #c75030;
+    background-color: #71DADA;
     cursor: pointer;
     box-shadow: 2px 2px 2px black;
-    color:#A9C3B8
+    color:#09453E
 
 
 }
@@ -39,8 +39,8 @@ input{
     height: 25px;
     margin: 5px;
     background-color: #163640;
-    color: #A9C3B8;
-    border: 1px solid #F26641;
+    color: #71DADA;
+    border: 1px solid #dadf60;
     padding: 5px;
     border-radius: 2px;
 
@@ -68,8 +68,8 @@ input{
     cursor: pointer;
     padding: 5px;
     background-color: #163640;
-    color: #A9C3B8;
-    border: 1px solid #F26641;
+    color: #71DADA;
+    border: 1px solid #dadf60;
     transition: background-color 0.4s ease;
 
     position: relative;
@@ -89,28 +89,28 @@ input{
   }
 
   .radio-slider input[type="radio"]:checked + label {
-    background-color: #F26641;
+    background-color: #dadf60;
     color: #fff;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524) ;
   }
 
 .demoUser{
   cursor: pointer;
-  color: #A9C3B8;
+  color: #71DADA;
   margin: 5px;
-  border: 1px solid #F26641;
+  border: 1px solid #dadf60;
   padding: 5px;
   font-size: small;
 }
 .demoUser:hover{
-  background-color: #F26641;
+  background-color: #dadf60;
   color:#163640;
   border:none;
   box-shadow: 2px 2px 2px black;
 }
 
 h1{
-  color: #A9C3B8;
+  color: #71DADA;
 }
 
 .loginbtnCont{
@@ -120,7 +120,7 @@ h1{
 }
 
 .signUpTitle{
-  color:#F26641;
+  color:#dadf60;
   font-size: xx-large;
   margin: 10px;
 }
@@ -144,7 +144,7 @@ h1{
   margin-left: 10px;
 }
 .signUpSecHead{
-  color:#A9C3B8;
+  color:#71DADA;
   text-align: left;
   margin-left: 20px;
 }

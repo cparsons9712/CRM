@@ -9,9 +9,27 @@
 
 
 #root{
-  height: 100vb;
+  height: 100%;
+  background-image: url('./images/BantamBackground.webp') !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 100vh;
+
 
 }
+
+.strongColor{
+  color: #A5C78A;
+}
+
+.accentColor{
+  color: #4D9D9A
+}
+
+.shadowBox{
+  background-color: #0e271888;
+}
+
 
 
 body{
@@ -35,10 +53,9 @@ height: 720px;
   justify-content: space-between;
   position: static;
   bottom: 0px;
-
   padding-right: 20px;
 
 
-  background-color: #163640;
+
 
 }

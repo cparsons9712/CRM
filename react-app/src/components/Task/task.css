@@ -1,5 +1,5 @@
 .taskTile{
-    background-color:#163640;
+    background-color:#0A4740;
     width: 150px;
     min-width: 150px;
     height: 150px;
@@ -20,7 +20,7 @@
 }
 
 .taskHeader{
-    background-color: #F26641;
+    background-color: #DADF60;
 
     color:#163640;
     gap:10px;
@@ -51,7 +51,7 @@
 }
 
 .taskDescription{
-    color: #A9C3B8;
+    color: #71DADA;
 
     overflow-wrap: anywhere;
     overflow: hidden;
@@ -61,7 +61,7 @@
 }
 
 .noteDescription{
-    color: #A9C3B8;
+    color: #71DADA;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
@@ -72,7 +72,7 @@
 
 .taskClient{
     text-align: center;
-    color: #F26641;
+    color: #DADF60;
 
     height: 25px;
     overflow-wrap: anywhere;
@@ -113,8 +113,8 @@
     display: inline-block;
     padding: 5px 10px;
     height: 14.5px;
-    color:#A9C3B8;
-    background-color: #1d3941;
+    color:#87f0f0;
+    background-color: #0d3f36b7;
     margin-right: 10px;
     border: 1px solid rgba(0, 0, 0, 0.293)
 
@@ -126,10 +126,10 @@
 }
 
 .optionsLeft input[type="radio"]:checked + label {
-    color:#F26641;
-    background-color: #203F48;
+    color:#DADF60;
+    background-color: #0d3f36b7;
     border-bottom: none !important;
-    height: 16px;
+    height: 15px;
 }
 
 .addLittle{
@@ -142,16 +142,16 @@
 
 select {
     background-color: #163640;
-    color:#A9C3B8;
-    border: 1px solid #F26641;
+    color:#71DADA;
+    border: 1px solid #DADF60;
     margin: 5px;
     padding: 5px;
 }
 
 .dateInput{
     background-color: #163640;
-    color:#A9C3B8;
-    border: 1px solid #F26641;
+    color:#71DADA;
+    border: 1px solid #DADF60;
     padding: 5px;
     margin: 5px;
 }
@@ -174,7 +174,7 @@ select {
 .detailsContent{
     display: flex;
     flex-direction: row;
-    color:#A9C3B8;
+    color:#71DADA;
     text-align:center;
 }
 
@@ -203,7 +203,7 @@ select {
     color:#163640;
 }
 .taskHeading{
-    background-color: #F26641;
+    background-color: #DADF60;
     color:#163640;
     padding: 15px;
     border-radius: 5px 5px 0px 0px;
