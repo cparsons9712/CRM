@@ -141,7 +141,7 @@
     position: relative;
     width: 100%;
     cursor: pointer;
-    background-color: #163640;
+    background-color: #0d3f36a3;
     grid-row: 1 / span 4;
     height: 100%;
     overflow-y: auto;
