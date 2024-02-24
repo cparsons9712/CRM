@@ -1,5 +1,6 @@
 import React from "react";
 import './LandingPage.css';
+import dealImage from "../../images/Freelancer.webp"
 import notepadImage from "../../images/notepad.png"
 import calenderImage from "../../images/calendar.png"
 import taskImage from "../../images/to-do-list.png"
@@ -11,30 +12,42 @@ import OpenModalButton from "../OpenModalButton";
 const LandingPage = () => {
   return (
     <div className="landingCont">
+
+
       <header className="landingHeader">
+
         <div className="headerText">
+
           <h1>Unlock Your Freelancing Potential</h1>
           <p>Supercharge your workflow with our CRM designed exclusively for freelancers.</p>
           <OpenModalButton
-              buttonText="Sign Up Today"
-              modalComponent={<SignupFormModal />}
-            />
+            id="headerSignUpButton"
+            buttonText="Sign Up Today"
+            modalComponent={<SignupFormModal />}
+          />
+
+        </div>
+
+        <div className="headerImage">
+          <img src={dealImage} alt="Freelancer shaking someones hand" />
         </div>
 
       </header>
 
       <div className="landingFeatures">
-        <div className="landingSectionHead">Why Choose Bantam to handle your needs?</div>
-        <div className="feature">
+        <div className="landingSectionHead">We give you the tools you need to get things done</div>
+
+        <div className="feature" id='f1'>
           <div className="featureImage">
             <img src={notepadImage} alt="Notes" />
           </div>
-          <div className="featureText">
+          <div className="featureText" >
             <h3>Take Notes</h3>
             <p>Take and organize notes specific to each client to remember important details.</p>
           </div>
         </div>
-        <div className="feature">
+
+        <div className="feature" id='f2'>
           <div className="featureImage">
             <img src={taskImage} alt="Tasks" />
           </div>
@@ -43,7 +56,9 @@ const LandingPage = () => {
             <p>Set due dates, priorities, and specify clientsto keep track of your to-dos.</p>
           </div>
         </div>
-        <div className="feature">
+
+
+        <div className="feature" id='f3'>
           <div className="featureImage">
             <img src={calenderImage} alt="Booking" />
           </div>
@@ -52,7 +67,9 @@ const LandingPage = () => {
             <p>Effortlessly book appointments and manage your schedule.</p>
           </div>
         </div>
-        <div className="feature">
+
+
+        <div className="feature" id='f4'>
           <div className="featureImage">
             <img  src={clientsImage} alt="Clients" />
           </div>
