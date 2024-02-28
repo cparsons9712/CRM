@@ -88,19 +88,19 @@
 
 
   padding: 15px;
-  color: #7b9092;
-  background-color: #dbdf60a0;
+  color: #dadf60;
+  background-color: #033236bd;
   height: 500px;
   gap: 20px;
   overflow: hidden;
 }
 .review {
-  color: #023e43;
+  color: #dadf60;
   overflow: hidden;
 }
 .testimonial {
-  background-color: #066e77bd;
-  color: #163640;
+  background-color: #0ddef1ac;
+  color:#033236;
   text-align: center;
   font-size: 25px;
   width: 350px;
