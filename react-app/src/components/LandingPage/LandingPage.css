@@ -76,30 +76,42 @@
   padding: 10px;
   background-color: #cddbd3bf;
 }
-
+.testimonialTitle{
+  width: 30%
+}
 .landingTestimonials {
   display: flex;
-  margin: 45px;
+
+
   padding: 15px;
   color: #7b9092;
-  border: 1px solid #dadf60;
-  border-radius: 10px;
-  height: 150px;
+  background-color: #dbdf60a0;
+  height: 500px;
   gap: 20px;
   overflow: hidden;
 }
 .review {
-  color: #7b9092;
+  color: #023e43;
   overflow: hidden;
 }
 .testimonial {
-  background-color: #7b9092;
+  background-color: #066e77bd;
   color: #163640;
   text-align: center;
+  font-size: 25px;
   width: 350px;
   min-width: 205px;
-  border-radius: 10px;
+  border-radius: 50px;
+  height: 200px;
   box-shadow: 2px 2px 2px 2px #0b1c21;
+}
+.testimonialBlock{
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-content: center;
 }
 .landingCTA {
   width: 650px;

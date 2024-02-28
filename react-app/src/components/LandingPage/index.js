@@ -81,31 +81,34 @@ const LandingPage = () => {
       </div>
 
       <div className="landingTestimonials">
-        <div className="landingSectionHead review">What Our Users Say:</div>
-        <div className="testimonial">
-          <blockquote>
-            "Before I struggled to keep track of everything, now I come into each day prepared!"
-          </blockquote>
-          <p>- Jess Pinn</p>
-        </div>
+        <div className="landingSectionHead review testimonialTitle">But don't take our word for it</div>
+        
+        <div className="testimonialBlock">
+          <div className="testimonial">
+            <blockquote>
+              "Before I struggled to keep track of everything, now I come into each day prepared!"
+            </blockquote>
+            <p>- Jess Pinn</p>
+          </div>
 
-        <div className="testimonial">
-          <blockquote>
-            "My life is infinitely easier thanks to Bantam. "
-          </blockquote>
-          <p>- Sandy Shru</p>
-        </div>
-        <div className="testimonial">
-          <blockquote>
-            "My productivity has gone THROUGH the roof!"
-          </blockquote>
-          <p>- Charlie Zard</p>
-        </div>
-        <div className="testimonial">
-          <blockquote>
-            "Thanks to the note feature my clients are impressed when I remember things "
-          </blockquote>
-          <p>- Luke Cario</p>
+          <div className="testimonial">
+            <blockquote>
+              "My life is infinitely easier thanks to Bantam. "
+            </blockquote>
+            <p>- Sandy Shru</p>
+          </div>
+          <div className="testimonial">
+            <blockquote>
+              "My productivity has gone THROUGH the roof!"
+            </blockquote>
+            <p>- Charlie Zard</p>
+          </div>
+          <div className="testimonial">
+            <blockquote>
+              "Thanks to the note feature my clients are impressed when I remember things "
+            </blockquote>
+            <p>- Luke Cario</p>
+          </div>
         </div>
       </div>
 
