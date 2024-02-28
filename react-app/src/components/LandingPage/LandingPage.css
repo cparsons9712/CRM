@@ -5,13 +5,15 @@
   text-align: center;
   color: #71dada; /* Text color on the background image */
   text-shadow: 2px 2px 5px black;
-  height: 500px;
+  min-height: 500px;
   background-color: #0a0a0ab4;
 }
+
 .headerText {
   text-align: right;
   border-radius: 10px;
   margin: auto;
+  font-size: 15px;
 }
 .headerText {
   font-size: 150%;
@@ -151,4 +153,42 @@ a:hover {
 .disclaimer{
   font-size: 8px;
   justify-content: end;
+}
+
+@media (max-width: 1200px){
+  #root{
+    background-image: none !important;
+  }
+  .NavBarCont{
+    width: 90vw;
+    padding: 10px;
+
+  }
+  .landingHeader{
+    font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    padding-bottom: 30px;
+
+  }
+  .headerText{
+    text-align: center;
+    width: 95vw;
+  }
+  .headerImage img{
+    width: 90vw;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+  }
+  .headerSignUpButton{
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+  }
 }

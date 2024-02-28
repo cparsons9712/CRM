@@ -93,13 +93,13 @@ const LandingPage = () => {
 
           <div className="testimonial">
             <blockquote>
-              "My life is infinitely easier thanks to Bantam. "
+              "My life is infinitely easier thanks to Bantam. I don't know how I ever managed without it. "
             </blockquote>
-            <p>- Sandy Shru</p>
+            <p>- Cass Tradon</p>
           </div>
           <div className="testimonial">
             <blockquote>
-              "My productivity has gone THROUGH the roof!"
+              "My productivity has gone THROUGH the roof and my bottom line is looking better than ever!"
             </blockquote>
             <p>- Charlie Zard</p>
           </div>
