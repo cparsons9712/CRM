@@ -112,6 +112,14 @@ input{
 h1{
   color: #71DADA;
 }
+.loginBtn{
+  background-color: #dadf60;
+  color:#09453E;
+  height: 40px;
+  width: 75px;
+  font-size: 17px;
+  font-weight: 600;
+}
 
 .loginbtnCont{
   margin-top: auto;
