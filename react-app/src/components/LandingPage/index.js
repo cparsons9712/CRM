@@ -21,7 +21,7 @@ const LandingPage = () => {
           <h1>Unlock Your Freelancing Potential</h1>
           <p>Supercharge your workflow with our CRM designed exclusively for freelancers.</p>
           <OpenModalButton
-            id="headerSignUpButton"
+            className="headerSignUpButton"
             buttonText="Sign Up Today"
             modalComponent={<SignupFormModal />}
           />
@@ -82,7 +82,7 @@ const LandingPage = () => {
 
       <div className="landingTestimonials">
         <div className="landingSectionHead review testimonialTitle">But don't take our word for it</div>
-        
+
         <div className="testimonialBlock">
           <div className="testimonial">
             <blockquote>
@@ -114,11 +114,14 @@ const LandingPage = () => {
 
       <div className="landingCTA">
         <h2>Ready to Get Started?</h2>
-        <p>Join thousands of freelancers who have already transformed their work with our CRM.</p>
+        <p>Join handfulls of freelancers who have already transformed their work with our CRM.*</p>
         <OpenModalButton
+              className="ctaButton"
               buttonText="Sign Up Now!"
               modalComponent={<SignupFormModal />}
             />
+          <p className="disclaimer">*by handfulls maybe just the creator ... </p>
+          <p className="disclaimer">testimonials are actually from made up pokemon people</p>
       </div>
 
 

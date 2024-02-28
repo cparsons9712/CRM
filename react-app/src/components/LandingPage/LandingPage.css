@@ -22,8 +22,12 @@
   padding-right: 10px;
   padding-left: 30px;
 }
-#headerSignUpButton {
-  height: 300px !important;
+.headerSignUpButton {
+  height: 50px ;
+  width: 80%;
+  max-width: 350px;
+  background-color: #dbdf60ee;
+  color:#023e43;
 }
 
 .featureImage img {
@@ -114,14 +118,24 @@
   justify-content: center;
 }
 .landingCTA {
-  width: 650px;
-  background-color: #7b9092;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #42e9f8b0;
+  height: 400px;
   padding: 25px;
-  margin: auto;
+  font-size: xx-large;
   text-align: center;
   color: #163640;
-  box-shadow: 2px 2px 2px 2px #0b1c21;
+  justify-content: space-between;
+
+}
+.ctaButton{
+  height: 50px;
+  width: 300px ;
+  background-color: #dbdf60c2;
+  color:#023e43;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -129,4 +143,8 @@ a {
 }
 a:hover {
   color: #dadf60;
+}
+.disclaimer{
+  font-size: 8px;
+  justify-content: end;
 }
