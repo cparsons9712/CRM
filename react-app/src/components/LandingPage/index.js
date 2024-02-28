@@ -35,7 +35,7 @@ const LandingPage = () => {
       </header>
 
       <div className="landingFeatures">
-        <div className="landingSectionHead">We give you the tools you need to get things done</div>
+        <div className="landingSectionHead">We give you the tools you need to<span className="emphasis"> get things done</span> </div>
 
         <div className="feature" id='f1'>
           <div className="featureImage">

@@ -42,6 +42,10 @@
   padding: 20px;
   text-align: right;
 }
+.emphasis{
+  text-decoration:underline;
+  text-decoration-color: #dadf60;
+}
 
 .landingSectionHead {
   margin-top: auto;
