@@ -167,14 +167,16 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     height: auto;
     padding-bottom: 30px;
+
 
   }
   .headerText{
     text-align: center;
     width: 95vw;
+    font-size: large;
   }
   .headerImage img{
     width: 90vw;
@@ -194,9 +196,15 @@ a:hover {
     display: flex;
     flex-direction: column;
     text-align: center;
+
   }
   .feature{
     margin: 10px;
+    width: 50%;
+    min-width: 250px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .landingTestimonials{
@@ -212,5 +220,12 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+  .landingCTA{
+    height: auto;
+  }
+  .ctaButton{
+    width: 60%;
+    max-width: 300px;
   }
 }
