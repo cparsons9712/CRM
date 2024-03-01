@@ -156,9 +156,7 @@ a:hover {
 }
 
 @media (max-width: 1200px){
-  #root{
-    background-image: none !important;
-  }
+
   .NavBarCont{
     width: 90vw;
     padding: 10px;
@@ -190,5 +188,29 @@ a:hover {
     margin-right: auto;
     margin-left: auto;
     font-size: 20px;
+  }
+
+  .landingFeatures{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .feature{
+    margin: 10px;
+  }
+
+  .landingTestimonials{
+    display: flex;
+    flex-direction: column;
+    height:auto;
+  }
+  .testimonialTitle{
+    width: 80%;
+  }
+
+  .testimonialBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
