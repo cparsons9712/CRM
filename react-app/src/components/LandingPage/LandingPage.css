@@ -1,7 +1,7 @@
 .landingHeader {
   display: flex;
   flex-direction: row;
-
+  gap: 25px;
   text-align: center;
   color: #71dada; /* Text color on the background image */
   text-shadow: 2px 2px 5px black;
@@ -11,18 +11,31 @@
 
 .headerText {
   text-align: right;
-  border-radius: 10px;
-  margin: auto;
-  font-size: 15px;
-}
-.headerText {
-  font-size: 150%;
-}
-.headerImage img {
-  height: 100%;
 
-  padding-right: 10px;
-  padding-left: 30px;
+  margin: auto;
+  width: 50%;
+
+}
+.headerText h1{
+  font-size: 60px;
+}
+.headerText p {
+  font-size: 25px;
+}
+
+.headerImage {
+  flex: 1;
+  overflow: hidden; /* Apply overflow hidden here */
+  display: flex; /* Ensures that the img tag can be sized properly */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+}
+
+.headerImage img {
+  min-height: 500px;
+  max-width: 100%; /* Ensures the image is not wider than its container */
+  max-height: 100%; /* Ensures the image is not taller than its container */
+  object-fit: cover; /* Optional: Resize the image to cover the container while maintaining aspect ratio */
 }
 .headerSignUpButton {
   height: 50px ;
@@ -30,6 +43,7 @@
   max-width: 350px;
   background-color: #dbdf60ee;
   color:#023e43;
+  font-size: 25px;
 }
 
 .featureImage img {
@@ -92,11 +106,11 @@
 .landingTestimonials {
   display: flex;
 
-
+  height: auto;
   padding: 15px;
   color: #dadf60;
   background-color: #033236bd;
-  height: 500px;
+
   gap: 20px;
   overflow: hidden;
 }
@@ -109,11 +123,12 @@
   color:#033236;
   text-align: center;
   font-size: 25px;
-  width: 350px;
-  min-width: 205px;
+  width: 80%;
+  min-width: 150px;
   border-radius: 50px;
-  height: 200px;
+  height: auto;
   box-shadow: 2px 2px 2px 2px #0b1c21;
+  margin: 10px;
 }
 .testimonialBlock{
 
@@ -155,7 +170,7 @@ a:hover {
   justify-content: end;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 800px){
 
   .NavBarCont{
     width: 90vw;
@@ -175,7 +190,7 @@ a:hover {
   }
   .headerText{
     text-align: center;
-    width: 95vw;
+    width: 95%;
     font-size: large;
   }
   .headerImage img{
