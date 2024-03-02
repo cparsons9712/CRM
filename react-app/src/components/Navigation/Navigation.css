@@ -62,3 +62,45 @@
 
 
 }
+
+@media (max-width: 800px){
+  .NavBarCont{
+    display: grid;
+    grid-template-columns: 1fr auto; /* Adjusts the column sizes: logo takes more space, user icon takes necessary space */
+    grid-template-rows: auto auto;
+    align-items: center;
+  }
+  .signedInBar{
+    background-color: rgba(0, 0, 0, 0.304);
+    gap: 4%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+  .userBar.active{
+    background-color:#dbdf6065
+  }
+  .buttonBar{
+    grid-column: span 2;
+    grid-row: 2;
+  }
+  .bantam{
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .loginbtnCont{
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .userBar{
+    padding: 10px;
+    width: auto;
+  }
+
+}

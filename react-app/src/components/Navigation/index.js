@@ -12,16 +12,18 @@ function Navigation({ isLoaded }){
 	<div className='NavBarCont'>
 		<h1 className='bantam'>Bantam</h1>
 
+		<div className='buttonBar'>
+			{sessionUser && (
+				<MenuBar />
+			)}
+		</div>
 
-		{sessionUser && (
-			<MenuBar />
-		)}
+			{isLoaded && (
 
-		{isLoaded && (
+				<ProfileButton user={sessionUser} />
 
-			<ProfileButton user={sessionUser} />
+			)}
 
-		)}
 	</div>
 
 	);
