@@ -1,17 +1,16 @@
-.loginCont{
+.loginCont {
   height: 400px;
   display: flex;
   flex-direction: column;
 
-
   text-align: center;
-  font-family: 'Kirsty';
+  font-family: "Kirsty";
   background-color: #163640;
   box-shadow: 5px 5px 10px rgb(6, 6, 6);
   width: 300px;
 }
 
-.loginHeader{
+.loginHeader {
   display: flex;
   height: 100px;
   background-color: #dadf60;
@@ -20,100 +19,96 @@
   justify-content: center;
   margin-bottom: 30px;
 }
-.loginHeader h1{
-  color:#09453E
+.loginHeader h1 {
+  color: #09453e;
 }
 
-
-.loginForm{
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-    gap: 20px;
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  gap: 20px;
 }
-button{
-    color: #E0FFE9;
-    background-color:#09453E;
-    margin-top: 20px;
-    font-family: 'Kirsty';
-    height:25px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 2px;
+button {
+  color: #e0ffe9;
+  background-color: #09453e;
+  margin-top: 20px;
+  font-family: "Kirsty";
+  height: 25px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 2px;
 }
-button:hover{
-    background-color: #71DADA;
-    cursor: pointer;
-    box-shadow: 2px 2px 2px black;
-    color:#09453E
-
-
+button:hover {
+  background-color: #71dada;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px black;
+  color: #09453e;
 }
-.loginFormInput{
+.loginFormInput {
   width: 75%;
 }
-input{
-    height: 25px;
-    margin: 5px;
-    background-color: #163640;
-    color: #71DADA;
-    border: 1px solid #dadf60;
-    padding: 5px;
-    border-radius: 2px;
-
+input {
+  height: 25px;
+  margin: 5px;
+  background-color: #163640;
+  color: #71dada;
+  border: 1px solid #dadf60;
+  padding: 5px;
+  border-radius: 2px;
 }
 
 .radio-slider {
-    display: flex;
-    justify-content: space-between;
-    width: 170px;
-    padding-left: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 25px;
-    gap: 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+  padding-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 25px;
+  gap: 0px;
 }
 .radio-slider input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 
-  .radio-slider label {
-    flex: 1;
-    text-align: center;
-    cursor: pointer;
-    padding: 5px;
-    background-color: #163640;
-    color: #71DADA;
-    border: 1px solid #dadf60;
-    transition: background-color 0.4s ease;
-
-    position: relative;
-  }
-
-  .radio-slider input[type="radio"] + label::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .radio-slider label:hover {
-    background-color: #cccccc21;
-  }
-
-  .radio-slider input[type="radio"]:checked + label {
-    background-color: #dadf60;
-    color: #fff;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524) ;
-  }
-
-.demoUser{
+.radio-slider label {
+  flex: 1;
+  text-align: center;
   cursor: pointer;
-  color: #71DADA;
+  padding: 5px;
+  background-color: #163640;
+  color: #71dada;
+  border: 1px solid #dadf60;
+  transition: background-color 0.4s ease;
+
+  position: relative;
+}
+
+.radio-slider input[type="radio"] + label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.radio-slider label:hover {
+  background-color: #cccccc21;
+}
+
+.radio-slider input[type="radio"]:checked + label {
+  background-color: #dadf60;
+  color: #fff;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.524);
+}
+
+.demoUser {
+  cursor: pointer;
+  color: #71dada;
   margin: 5px;
   border: 1px solid #dadf60;
   padding: 5px;
@@ -122,75 +117,80 @@ input{
   margin-left: auto;
   margin-right: auto;
 }
-.demoUser:hover{
+.demoUser:hover {
   background-color: #dadf60;
-  color:#163640;
-  border:none;
+  color: #163640;
+  border: none;
   box-shadow: 2px 2px 2px black;
 }
-.submitButtonLogin{
+.submitButtonLogin {
   padding: 5px;
   font-size: 20px;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   height: 40px;
-  color:#163640;
-  background-color: #71DADA;
+  color: #163640;
+  background-color: #71dada;
 }
 
-.submitButtonLogin:hover{
+.submitButtonLogin:hover {
   background-color: #dadf60;
 }
 
-h1{
-  color: #71DADA;
+h1 {
+  color: #71dada;
 }
-.loginBtn{
+.loginBtn {
   background-color: #dadf60;
-  color:#09453E;
+  color: #09453e;
   height: 40px;
   width: 75px;
   font-size: 17px;
   font-weight: 600;
 }
 
-.loginbtnCont{
+.loginbtnCont {
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 10px;
 }
 
-.signUpTitle{
-  color:#dadf60;
+.signUpTitle {
+  background-color: #dadf60;
+  color: #163640;
+  height: 100px;
   font-size: xx-large;
-  margin: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.signUpCont{
+.signUpCont {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  border-radius: 10px;
   text-align: center;
-  font-family: 'Kirsty';
+  font-family: "Kirsty";
   background-color: #163640;
   box-shadow: 5px 5px 10px rgb(6, 6, 6);
   width: 400px;
 }
 
-.signUpSect{
+.signUpSect {
   display: flex;
   flex-direction: row;
   margin-left: 10px;
 }
-.signUpSecHead{
-  color:#71DADA;
+.signUpSecHead {
+  color: #71dada;
   text-align: left;
   margin-left: 20px;
 }
 
-#submitSignup{
-  width:auto
+#submitSignup {
+  width: auto;
 }
